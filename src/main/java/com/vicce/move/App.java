@@ -6,8 +6,10 @@ package com.vicce.move;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        VehiculCuMotor vcm = new VehiculCuMotor(100, 1000, 4, 5);
 
-        System.out.println("Hello Cristi!");
+        vcm.afisare();
+
+        System.out.println(vcm.raportVitezaPret());
     }
 }

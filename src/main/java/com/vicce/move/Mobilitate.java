@@ -25,6 +25,8 @@ public abstract class Mobilitate {
         this.pret = pret;
     }
 
+    public abstract float raportVitezaPret();
+
     public abstract void afisare();
 
 }
