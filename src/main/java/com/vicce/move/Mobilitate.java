@@ -1,8 +1,19 @@
 package com.vicce.move;
 
 public abstract class Mobilitate {
-    float vitezaMax;
-    float pret;
+    protected float vitezaMax;
+    protected float pret;
+
+    public Mobilitate() {
+        this.vitezaMax = 0;
+        this.pret = 0;
+    }
+    
+    public Mobilitate(Mobilitate a)
+    {
+        this.vitezaMax = a.vitezaMax;
+        this.pret = a.pret;
+    }
 
     public Mobilitate(float vitezaMax, float pret) {
         this.vitezaMax = vitezaMax;
