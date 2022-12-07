@@ -86,9 +86,6 @@ public void afisare(){
   System.out.println("Acest vehicul are un nr de usi:"+nrUsi+" cu o capacitate cilindirca de "+capacitateMotor+" cu o autonomie de "+autonomie+" si cu o greutate de "+greutate+" si are un numar de scaune:"+nrScaune+" portbagajul este de:"+litriPortbagaj+
   " numarul de km reali este:"+kmReali+" din anul de fabricatie:"+anFabricatie+" cu un numar de pedale = "+nrPedale+" si in final cu un cuplu de : "+cuplu);
 }
-
-//mai trebuie sa fac setter si getter pentru fiecare data membra 
-
 }
   
 
