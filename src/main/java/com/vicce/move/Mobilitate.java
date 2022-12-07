@@ -4,9 +4,19 @@ public abstract class Mobilitate {
     float vitezaMax;
     float pret;
 
+    public Mobilitate(){
+        vitezaMax=300;
+        pret=5000;
+    }
+
     public Mobilitate(float vitezaMax, float pret) {
         this.vitezaMax = vitezaMax;
         this.pret = pret;
+    }
+
+    public Mobilitate(Mobilitate a){
+        this.vitezaMax=a.vitezaMax;
+        this.pret=a.pret;
     }
 
     public float getVitezaMax() {

@@ -4,12 +4,24 @@ public class VehiculCuMotor extends Mobilitate {
     int nrRoti;
     int nrLocuri;
 
+    public VehiculCuMotor(){
+        super();
+        nrRoti=4;
+        nrLocuri=5;
+    }
+
     public VehiculCuMotor(float vitezaMax, float pret, int nrRoti, int nrLocuri) {
         super(vitezaMax, pret);
         this.nrRoti = nrRoti;
         this.nrLocuri = nrLocuri;
     }
 
+    public VehiculCuMotor(VehiculCuMotor v){
+        super(v);
+        this.nrRoti=v.nrRoti;
+        this.nrLocuri=v.nrLocuri;
+
+    }
     public int getNrRoti() {
         return nrRoti;
     }
