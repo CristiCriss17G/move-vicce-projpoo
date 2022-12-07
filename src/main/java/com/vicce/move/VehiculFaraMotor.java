@@ -3,9 +3,9 @@ package com.vicce.move;
 public class VehiculFaraMotor extends Mobilitate {
     protected int nrRoti;
     protected double greutate;
-    int anFabricatie;
-    int nrPedale;
-    int acceleratie;
+    protected int anFabricatie;
+    protected int nrPedale;
+    protected int acceleratie;
 
     public VehiculFaraMotor()
     {
@@ -84,6 +84,12 @@ public class VehiculFaraMotor extends Mobilitate {
     @Override
     public void afisare() {
         System.out.println("Vehicul cu motor cu viteza maxima " + vitezaMax + " si pretul " + pret);
+    }
+
+    @Override
+    public String toString() {
+        return "VehiculCuMotor [nrPedale=" + nrPedale + ", nrRoti=" + nrRoti + ", pret=" + pret + ", vitezaMax="
+                + vitezaMax + "]";
     }
     
 }

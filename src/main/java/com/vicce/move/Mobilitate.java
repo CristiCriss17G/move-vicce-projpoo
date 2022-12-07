@@ -40,4 +40,7 @@ public abstract class Mobilitate {
 
     public abstract void afisare();
 
+    @Override
+    public abstract String toString();
+
 }
