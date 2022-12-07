@@ -1,16 +1,18 @@
 package com.vicce.move;
 
-public class VehiculMElectric extends VehiculCuMotor {
-int nrUsi;
+public class VehiculMElectric extends VehiculCuMotor { //folosesc doar 5 de aici pentru set si get
+
 int capacitateMotor;
 int autonomie;
 double greutate;
-int  nrScaune;
-int litriPortbagaj;
 double kmReali;
 int anFabricatie;
+
+int  nrScaune;
+int litriPortbagaj;
 int nrPedale;
 int cuplu;
+int nrUsi;
 
 public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri,int nrUsi,int capacitateMotor,int autonomie,double greutate,boolean areTrapa,int litriPortbagaj,double kmReali,int anFabricatie,int nrPedale,int cuplu) {
   super(vitezaMax, pret, nrRoti, nrLocuri);
@@ -41,6 +43,43 @@ public VehiculMElectric(VehiculMElectric a){ //tre sa vad ce are aici
   cuplu=a.cuplu;
   
 }
+
+public int getCapacitateMotor(){
+    return capacitateMotor;
+}
+public void setCapacitateMotor(int capacitateMotor) {
+  this.capacitateMotor = capacitateMotor;
+}
+
+
+public int getAutonomie(){
+  return autonomie;
+}
+public void setAutonomie(int autonomie){
+  this.autonomie = autonomie;
+}
+
+public double getGreutate(){
+  return greutate;
+}
+public void setGreutate(double greutate){
+  this.greutate=greutate;
+}
+
+public double getKmReali(){
+  return kmReali;
+}
+public void setKmReali(double kmreali){
+  this.kmReali=kmreali;
+}
+
+public int getAnFabricatie(){
+  return anFabricatie;
+}
+public void setAnFabricatie(int anFabricatie){
+  this.anFabricatie=anFabricatie;
+}
+
 
 @Override
 public void afisare(){
