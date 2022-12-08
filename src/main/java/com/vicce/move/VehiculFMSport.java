@@ -50,6 +50,8 @@ public class VehiculFMSport extends VehiculFaraMotor {
         this.echipamentProtectie = echipamentProtectie;
     }
 
+    
+
     @Override
     public void afisare() {
         super.afisare();

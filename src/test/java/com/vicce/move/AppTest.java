@@ -56,6 +56,5 @@ public class AppTest {
         assertTrue(vfm3.getAcceleratie() == 0);
         assertEquals(vfm3.getTipTeren(), VehiculFMSport.TipTeren.asfalt);
         assertNull(vfm3.getEchipamentProtectie());
-
     }
 }
