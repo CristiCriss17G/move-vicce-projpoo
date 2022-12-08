@@ -47,4 +47,10 @@ public class VehiculCuMotor extends Mobilitate {
     public void afisare() {
         System.out.println("Vehicul cu motor cu viteza maxima " + vitezaMax + " si pretul " + pret);
     }
+
+    @Override
+    public String toString() {
+        return "VehiculCuMotor [nrLocuri=" + nrLocuri + ", nrRoti=" + nrRoti + ", pret=" + pret + ", vitezaMax="
+                + vitezaMax + "]";
+    }
 }
