@@ -45,7 +45,7 @@ public class VehiculFMAgrement extends VehiculFaraMotor {
     }
 
     public ArrayList<EchipamentProtectie> getEchipamentProtectie() {
-        return echipamentProtectie;
+        return this.echipamentProtectie;
     }
 
     public void setEchipamentProtectie(ArrayList<EchipamentProtectie> echipamentProtectie) {
@@ -53,7 +53,7 @@ public class VehiculFMAgrement extends VehiculFaraMotor {
     }
 
     public TipTeren getTipTeren() {
-        return tipTeren;
+        return this.tipTeren;
     }
 
     public void setTipTeren(TipTeren tipTeren) {
@@ -61,7 +61,7 @@ public class VehiculFMAgrement extends VehiculFaraMotor {
     }
 
     public CategVarsta getCategVarsta() {
-        return categVarsta;
+        return this.categVarsta;
     }
 
     public void setCategVarsta(CategVarsta categVarsta) {

@@ -18,9 +18,11 @@ public class VehiculFMSport extends VehiculFaraMotor {
     public VehiculFMSport() {
         super();
         this.tipTeren = TipTeren.asfalt;
-        this.echipamentProtectie = new ArrayList<EchipamentProtectie>(){{
-            add(EchipamentProtectie.nimic);
-        }};
+        this.echipamentProtectie = new ArrayList<EchipamentProtectie>() {
+            {
+                add(EchipamentProtectie.nimic);
+            }
+        };
     }
 
     public VehiculFMSport(VehiculFMSport a) {
@@ -37,7 +39,7 @@ public class VehiculFMSport extends VehiculFaraMotor {
     }
 
     public TipTeren getTipTeren() {
-        return tipTeren;
+        return this.tipTeren;
     }
 
     public void setTipTeren(TipTeren tipTeren) {
@@ -45,14 +47,12 @@ public class VehiculFMSport extends VehiculFaraMotor {
     }
 
     public ArrayList<EchipamentProtectie> getEchipamentProtectie() {
-        return echipamentProtectie;
+        return this.echipamentProtectie;
     }
 
     public void setEchipamentProtectie(ArrayList<EchipamentProtectie> echipamentProtectie) {
         this.echipamentProtectie = echipamentProtectie;
     }
-
-    
 
     @Override
     public void afisare() {

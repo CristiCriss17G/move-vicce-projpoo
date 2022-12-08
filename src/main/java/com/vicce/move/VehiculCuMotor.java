@@ -1,13 +1,20 @@
 package com.vicce.move;
 
 public class VehiculCuMotor extends Mobilitate {
-    int nrRoti;
-    int nrLocuri;
+    protected int nrRoti;
+    protected int nrLocuri;
 
-    public VehiculCuMotor(){
+    public VehiculCuMotor() {
         super();
-        nrRoti=4;
-        nrLocuri=5;
+        this.nrRoti = 4;
+        this.nrLocuri = 5;
+    }
+
+    public VehiculCuMotor(VehiculCuMotor v) {
+        super(v);
+        this.nrRoti = v.nrRoti;
+        this.nrLocuri = v.nrLocuri;
+
     }
 
     public VehiculCuMotor(float vitezaMax, float pret, int nrRoti, int nrLocuri) {
@@ -16,14 +23,8 @@ public class VehiculCuMotor extends Mobilitate {
         this.nrLocuri = nrLocuri;
     }
 
-    public VehiculCuMotor(VehiculCuMotor v){
-        super(v);
-        this.nrRoti=v.nrRoti;
-        this.nrLocuri=v.nrLocuri;
-
-    }
     public int getNrRoti() {
-        return nrRoti;
+        return this.nrRoti;
     }
 
     public void setNrRoti(int nrRoti) {
@@ -31,7 +32,7 @@ public class VehiculCuMotor extends Mobilitate {
     }
 
     public int getNrLocuri() {
-        return nrLocuri;
+        return this.nrLocuri;
     }
 
     public void setNrLocuri(int nrLocuri) {

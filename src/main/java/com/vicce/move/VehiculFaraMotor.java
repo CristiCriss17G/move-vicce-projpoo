@@ -7,8 +7,7 @@ public class VehiculFaraMotor extends Mobilitate {
     protected int nrPedale;
     protected int acceleratie;
 
-    public VehiculFaraMotor()
-    {
+    public VehiculFaraMotor() {
         super();
         this.nrRoti = 0;
         this.greutate = 0;
@@ -17,8 +16,7 @@ public class VehiculFaraMotor extends Mobilitate {
         this.acceleratie = 0;
     }
 
-    public VehiculFaraMotor(VehiculFaraMotor a)
-    {
+    public VehiculFaraMotor(VehiculFaraMotor a) {
         super(a);
         this.nrRoti = a.nrRoti;
         this.greutate = a.greutate;
@@ -27,7 +25,8 @@ public class VehiculFaraMotor extends Mobilitate {
         this.acceleratie = a.acceleratie;
     }
 
-    public VehiculFaraMotor(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale, int acceleratie) {
+    public VehiculFaraMotor(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
+            int acceleratie) {
         super(vitezaMax, pret);
         this.nrRoti = nrRoti;
         this.greutate = greutate;
@@ -37,7 +36,7 @@ public class VehiculFaraMotor extends Mobilitate {
     }
 
     public int getNrRoti() {
-        return nrRoti;
+        return this.nrRoti;
     }
 
     public void setNrRoti(int nrRoti) {
@@ -45,7 +44,7 @@ public class VehiculFaraMotor extends Mobilitate {
     }
 
     public double getGreutate() {
-        return greutate;
+        return this.greutate;
     }
 
     public void setGreutate(double greutate) {
@@ -53,7 +52,7 @@ public class VehiculFaraMotor extends Mobilitate {
     }
 
     public int getAnFabricatie() {
-        return anFabricatie;
+        return this.anFabricatie;
     }
 
     public void setAnFabricatie(int anFabricatie) {
@@ -61,7 +60,7 @@ public class VehiculFaraMotor extends Mobilitate {
     }
 
     public int getNrPedale() {
-        return nrPedale;
+        return this.nrPedale;
     }
 
     public void setNrPedale(int nrPedale) {
@@ -69,7 +68,7 @@ public class VehiculFaraMotor extends Mobilitate {
     }
 
     public int getAcceleratie() {
-        return acceleratie;
+        return this.acceleratie;
     }
 
     public void setAcceleratie(int acceleratie) {
@@ -91,5 +90,4 @@ public class VehiculFaraMotor extends Mobilitate {
         return "VehiculCuMotor [nrPedale=" + nrPedale + ", nrRoti=" + nrRoti + ", pret=" + pret + ", vitezaMax="
                 + vitezaMax + "]";
     }
-    
 }

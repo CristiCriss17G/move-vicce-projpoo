@@ -8,9 +8,8 @@ public abstract class Mobilitate {
         this.vitezaMax = 0;
         this.pret = 0;
     }
-    
-    public Mobilitate(Mobilitate a)
-    {
+
+    public Mobilitate(Mobilitate a) {
         this.vitezaMax = a.vitezaMax;
         this.pret = a.pret;
     }
@@ -21,7 +20,7 @@ public abstract class Mobilitate {
     }
 
     public float getVitezaMax() {
-        return vitezaMax;
+        return this.vitezaMax;
     }
 
     public void setVitezaMax(float vitezaMax) {
@@ -29,7 +28,7 @@ public abstract class Mobilitate {
     }
 
     public float getPret() {
-        return pret;
+        return this.pret;
     }
 
     public void setPret(float pret) {

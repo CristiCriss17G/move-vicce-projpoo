@@ -1,101 +1,107 @@
 package com.vicce.move;
 
-public class VehiculMElectric extends VehiculCuMotor { //folosesc doar 5 de aici pentru set si get
+public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aici pentru set si get
+  protected int capacitateMotor;
+  protected int autonomie;
+  protected double greutate;
+  protected double kmReali;
+  protected int anFabricatie;
 
-int capacitateMotor;
-int autonomie;
-double greutate;
-double kmReali;
-int anFabricatie;
+  protected int nrScaune;
+  protected int litriPortbagaj;
+  protected int nrPedale;
+  protected int cuplu;
+  protected int nrUsi;
 
-int  nrScaune;
-int litriPortbagaj;
-int nrPedale;
-int cuplu;
-int nrUsi;
+  VehiculMElectric() {
+    super();
+    this.capacitateMotor = 10;
+    this.autonomie = 400;
+    this.greutate = 1500.99d;
+    this.kmReali = 20000.99d;
+    this.anFabricatie = 2019;
+  }
 
-VehiculMElectric(){
-  super();
-  capacitateMotor=10;
-  autonomie=400;
-  greutate=1500.99d;
-  kmReali=20000.99d;
-  anFabricatie=2019;
-}
+  public VehiculMElectric(VehiculMElectric a) { // tre sa vad ce are aici
+    System.out.println("Constructor de copiere!");
+    this.nrUsi = a.nrUsi;
+    this.capacitateMotor = a.capacitateMotor;
+    this.autonomie = a.autonomie;
+    this.greutate = a.greutate;
+    this.nrScaune = a.nrScaune;
+    this.litriPortbagaj = a.litriPortbagaj;
+    this.kmReali = a.kmReali;
+    this.anFabricatie = a.anFabricatie;
+    this.nrPedale = a.nrPedale;
+    this.cuplu = a.cuplu;
 
-public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri,int nrUsi,int capacitateMotor,int autonomie,double greutate,boolean areTrapa,int litriPortbagaj,double kmReali,int anFabricatie,int nrPedale,int cuplu) {
-  super(vitezaMax, pret, nrRoti, nrLocuri);
-  
-  this.nrUsi = nrUsi;
-  this.capacitateMotor = capacitateMotor;
-  this.autonomie = autonomie;
-  this.greutate = greutate;
-  this.nrScaune = nrScaune;
-  this.litriPortbagaj = litriPortbagaj;
-  this.kmReali = kmReali;
-  this.anFabricatie = anFabricatie;
-  this.nrPedale = nrPedale;
-  this.cuplu = cuplu;
-}
+  }
 
-public VehiculMElectric(VehiculMElectric a){ //tre sa vad ce are aici
-  System.out.println("Constructor de copiere!");
-  nrUsi=a.nrUsi;
-  capacitateMotor=a.capacitateMotor;
-  autonomie=a.autonomie;
-  greutate=a.greutate;
-  nrScaune=a.nrScaune;
-  litriPortbagaj=a.litriPortbagaj;
-  kmReali=a.kmReali;
-  anFabricatie=a.anFabricatie;
-  nrPedale=a.nrPedale;
-  cuplu=a.cuplu;
-  
-}
+  public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
+      int autonomie, double greutate, boolean areTrapa, int litriPortbagaj, double kmReali, int anFabricatie,
+      int nrPedale, int cuplu) {
+    super(vitezaMax, pret, nrRoti, nrLocuri);
 
-public int getCapacitateMotor(){
-    return capacitateMotor;
-}
-public void setCapacitateMotor(int capacitateMotor) {
-  this.capacitateMotor = capacitateMotor;
-}
+    this.nrUsi = nrUsi;
+    this.capacitateMotor = capacitateMotor;
+    this.autonomie = autonomie;
+    this.greutate = greutate;
+    // this.nrScaune = nrScaune;
+    this.litriPortbagaj = litriPortbagaj;
+    this.kmReali = kmReali;
+    this.anFabricatie = anFabricatie;
+    this.nrPedale = nrPedale;
+    this.cuplu = cuplu;
+  }
 
+  public int getCapacitateMotor() {
+    return this.capacitateMotor;
+  }
 
-public int getAutonomie(){
-  return autonomie;
-}
-public void setAutonomie(int autonomie){
-  this.autonomie = autonomie;
-}
+  public void setCapacitateMotor(int capacitateMotor) {
+    this.capacitateMotor = capacitateMotor;
+  }
 
-public double getGreutate(){
-  return greutate;
-}
-public void setGreutate(double greutate){
-  this.greutate=greutate;
-}
+  public int getAutonomie() {
+    return this.autonomie;
+  }
 
-public double getKmReali(){
-  return kmReali;
-}
-public void setKmReali(double kmreali){
-  this.kmReali=kmreali;
-}
+  public void setAutonomie(int autonomie) {
+    this.autonomie = autonomie;
+  }
 
-public int getAnFabricatie(){
-  return anFabricatie;
-}
-public void setAnFabricatie(int anFabricatie){
-  this.anFabricatie=anFabricatie;
-}
+  public double getGreutate() {
+    return this.greutate;
+  }
 
-//cred ca tre sa mai adaug ceva
+  public void setGreutate(double greutate) {
+    this.greutate = greutate;
+  }
 
-@Override
-public void afisare(){
-  System.out.println("Acest vehicul are un nr de usi:"+nrUsi+" cu o capacitate cilindirca de "+capacitateMotor+" cu o autonomie de "+autonomie+" si cu o greutate de "+greutate+" si are un numar de scaune:"+nrScaune+" portbagajul este de:"+litriPortbagaj+
-  " numarul de km reali este:"+kmReali+" din anul de fabricatie:"+anFabricatie+" cu un numar de pedale = "+nrPedale+" si in final cu un cuplu de : "+cuplu);
-}
-}
-  
+  public double getKmReali() {
+    return this.kmReali;
+  }
 
+  public void setKmReali(double kmreali) {
+    this.kmReali = kmreali;
+  }
+
+  public int getAnFabricatie() {
+    return this.anFabricatie;
+  }
+
+  public void setAnFabricatie(int anFabricatie) {
+    this.anFabricatie = anFabricatie;
+  }
+
+  // cred ca tre sa mai adaug ceva
+
+  @Override
+  public void afisare() {
+    System.out.println("Acest vehicul are un nr de usi:" + nrUsi + " cu o capacitate cilindirca de " + capacitateMotor
+        + " cu o autonomie de " + autonomie + " si cu o greutate de " + greutate + " si are un numar de scaune:"
+        + nrScaune + " portbagajul este de:" + litriPortbagaj +
+        " numarul de km reali este:" + kmReali + " din anul de fabricatie:" + anFabricatie + " cu un numar de pedale = "
+        + nrPedale + " si in final cu un cuplu de : " + cuplu);
+  }
+}

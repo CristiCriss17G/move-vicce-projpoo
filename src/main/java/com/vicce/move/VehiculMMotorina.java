@@ -1,42 +1,43 @@
 package com.vicce.move;
 
-public class VehiculMMotorina extends VehiculCuMotor{
-    
-    String marca;
-    String model;
-    int numarCilindri;
-    int anFabricatie;
-    int putere;
-    float cuplu;
+public class VehiculMMotorina extends VehiculCuMotor {
+
+    protected String marca;
+    protected String model;
+    protected int numarCilindri;
+    protected int anFabricatie;
+    protected int putere;
+    protected float cuplu;
 
     VehiculMMotorina() {
         super();
-        model="Seria 1";
-        marca="BMW";
-        numarCilindri=4;
-        anFabricatie=2000;
-        putere=200;
-        cuplu=350;
+        this.model = "Seria 1";
+        this.marca = "BMW";
+        this.numarCilindri = 4;
+        this.anFabricatie = 2000;
+        this.putere = 200;
+        this.cuplu = 350;
     }
 
-    VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri,String marca,String model,int numarCilindri,int anFabricatie,int putere,int cuplu){
-        super(vitezaMax,pret,nrRoti,nrLocuri);
-        this.marca=marca;
-        this.model=model;
-        this.numarCilindri=numarCilindri;
-        this.anFabricatie=anFabricatie;
-        this.putere=putere;
-        this.cuplu=cuplu;
-    }
-
-    VehiculMMotorina(VehiculMMotorina x){
+    VehiculMMotorina(VehiculMMotorina x) {
         super(x);
-        this.marca=x.marca;
-        this.model=x.model;
-        this.numarCilindri=x.numarCilindri;
-        this.anFabricatie=x.anFabricatie;
-        this.putere=x.putere;
-        this.cuplu=x.cuplu;
+        this.marca = x.marca;
+        this.model = x.model;
+        this.numarCilindri = x.numarCilindri;
+        this.anFabricatie = x.anFabricatie;
+        this.putere = x.putere;
+        this.cuplu = x.cuplu;
+    }
+
+    VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri, String marca, String model,
+            int numarCilindri, int anFabricatie, int putere, int cuplu) {
+        super(vitezaMax, pret, nrRoti, nrLocuri);
+        this.marca = marca;
+        this.model = model;
+        this.numarCilindri = numarCilindri;
+        this.anFabricatie = anFabricatie;
+        this.putere = putere;
+        this.cuplu = cuplu;
     }
 
     public String getMarca() {
@@ -87,7 +88,9 @@ public class VehiculMMotorina extends VehiculCuMotor{
         this.cuplu = cuplu;
     }
 
-    public void afisare(){
-        System.out.println("Vehicul cu motor pe motorina "+marca+" "+ model+" fabricat in anul "+anFabricatie+" cu "+putere+"cai putere"+" si cu "+numarCilindri+ " cilindri si un cuplu de "+cuplu+" Nm.");
+    public void afisare() {
+        System.out.println("Vehicul cu motor pe motorina " + marca + " " + model + " fabricat in anul " + anFabricatie
+                + " cu " + putere + "cai putere" + " si cu " + numarCilindri + " cilindri si un cuplu de " + cuplu
+                + " Nm.");
     }
 }
