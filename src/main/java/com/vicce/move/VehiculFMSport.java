@@ -18,7 +18,9 @@ public class VehiculFMSport extends VehiculFaraMotor {
     public VehiculFMSport() {
         super();
         this.tipTeren = TipTeren.asfalt;
-        this.echipamentProtectie = null;
+        this.echipamentProtectie = new ArrayList<EchipamentProtectie>(){{
+            add(EchipamentProtectie.nimic);
+        }};
     }
 
     public VehiculFMSport(VehiculFMSport a) {
