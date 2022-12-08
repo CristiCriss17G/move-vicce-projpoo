@@ -14,6 +14,15 @@ int nrPedale;
 int cuplu;
 int nrUsi;
 
+VehiculMElectric(){
+  super();
+  capacitateMotor=10;
+  autonomie=400;
+  greutate=1500.99d;
+  kmReali=20000.99d;
+  anFabricatie=2019;
+}
+
 public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri,int nrUsi,int capacitateMotor,int autonomie,double greutate,boolean areTrapa,int litriPortbagaj,double kmReali,int anFabricatie,int nrPedale,int cuplu) {
   super(vitezaMax, pret, nrRoti, nrLocuri);
   
@@ -80,6 +89,7 @@ public void setAnFabricatie(int anFabricatie){
   this.anFabricatie=anFabricatie;
 }
 
+//cred ca tre sa mai adaug ceva
 
 @Override
 public void afisare(){

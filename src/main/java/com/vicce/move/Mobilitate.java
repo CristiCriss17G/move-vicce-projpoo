@@ -4,6 +4,12 @@ public abstract class Mobilitate {
     float vitezaMax;
     float pret;
 
+    //am adaugat asta
+    Mobilitate(){
+        vitezaMax=190.99f;
+        pret=10000;
+    }
+
     public Mobilitate(float vitezaMax, float pret) {
         this.vitezaMax = vitezaMax;
         this.pret = pret;
