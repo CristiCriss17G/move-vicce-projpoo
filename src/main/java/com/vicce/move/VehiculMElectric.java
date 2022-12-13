@@ -104,4 +104,11 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
         " numarul de km reali este:" + kmReali + " din anul de fabricatie:" + anFabricatie + " cu un numar de pedale = "
         + nrPedale + " si in final cu un cuplu de : " + cuplu);
   }
+
+  @Override
+  public String toString(){
+    return "Vehicul cu motor electric: numarul de usi= "+nrUsi+" capacitateMotor= "+capacitateMotor+" autonomie= "+autonomie+
+    " greutate= "+greutate+" numarScaune= "+nrScaune+" portBagaj= "+litriPortbagaj+" nrKmReali= "+kmReali+" anFabricatie= "+anFabricatie+
+    " numarPedale= "+nrPedale+" cuplu= "+cuplu+".";
+  }
 }
