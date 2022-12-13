@@ -1,4 +1,5 @@
 package com.vicce.move;
+import java.util.ArrayList;
 
 public class VehiculMMotorina extends VehiculCuMotor {
 
@@ -8,6 +9,7 @@ public class VehiculMMotorina extends VehiculCuMotor {
     protected int anFabricatie;
     protected int putere;
     protected float cuplu;
+
 
     VehiculMMotorina() {
         super();
@@ -88,9 +90,18 @@ public class VehiculMMotorina extends VehiculCuMotor {
         this.cuplu = cuplu;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicul cu motor pe motorina " + marca + " " + model + " fabricat in anul " + anFabricatie
+        + " cu " + putere + "cai putere" + " si cu " + numarCilindri + " cilindri si un cuplu de " + cuplu
+        + " Nm.";
+    }
+
+    @Override
     public void afisare() {
         System.out.println("Vehicul cu motor pe motorina " + marca + " " + model + " fabricat in anul " + anFabricatie
                 + " cu " + putere + "cai putere" + " si cu " + numarCilindri + " cilindri si un cuplu de " + cuplu
                 + " Nm.");
     }
 }
+
