@@ -10,6 +10,21 @@ import java.util.ArrayList;
  * Unit test for simple App.
  */
 public class AppTest {
+
+    @Test public void VehiculMElectricConstrParametrii(){
+        VehiculMElectric vme =new VehiculMElectric(250f,2500f,4,7,4,2500,450,1500d,7,800,15000d,2018,2,250);
+        assertTrue(vme.getNrRoti() == 5);
+        assertTrue(vme.getNrLocuri() == 7);
+    }
+
+
+
+
+
+
+
+
+
     /**
      * Testeaza constructorii cu parametri si metodele clasei VehiculCuMotor
      */
@@ -28,7 +43,7 @@ public class AppTest {
 
     /**
      * Testeaza constructorii de copiere si metodele clasei VehiculCuMotor
-     */
+     */    
     @Test
     public void VehiculFMSportConstructoriDeCopiere() {
         VehiculFMSport vfm = new VehiculFMSport(100f, 1000f, 4, 5.0, 2010, 2, 10, VehiculFMSport.TipTeren.nisip,

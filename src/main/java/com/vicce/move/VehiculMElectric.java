@@ -1,5 +1,8 @@
 package com.vicce.move;
 
+import java.util.ArrayList;
+import java.util.Vector;
+
 public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aici pentru set si get
   protected int capacitateMotor;
   protected int autonomie;
@@ -12,6 +15,12 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   protected int nrPedale;
   protected int cuplu;
   protected int nrUsi;
+  
+  //aici am adaugat
+  public static enum Electric{
+    fastCharge,pilotAutomat,display,alcantara,range,suportPahare,incalzireScaune,trapa,automana,hybrid
+  };
+  protected ArrayList<Electric> electrics;
 
   VehiculMElectric() {
     super();
@@ -38,7 +47,7 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   }
 
   public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
-      int autonomie, double greutate, boolean areTrapa, int litriPortbagaj, double kmReali, int anFabricatie,
+      int autonomie, double greutate,int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
       int nrPedale, int cuplu) {
     super(vitezaMax, pret, nrRoti, nrLocuri);
 
@@ -46,7 +55,7 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     this.capacitateMotor = capacitateMotor;
     this.autonomie = autonomie;
     this.greutate = greutate;
-    // this.nrScaune = nrScaune;
+    this.nrScaune = nrScaune;
     this.litriPortbagaj = litriPortbagaj;
     this.kmReali = kmReali;
     this.anFabricatie = anFabricatie;
