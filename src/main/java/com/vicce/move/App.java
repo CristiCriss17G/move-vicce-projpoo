@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Base class for the app with javaFX
@@ -39,6 +40,13 @@ public class App extends Application {
 
         System.out.println(vcm.raportVitezaPret());
 
+        VehiculFMSport vfm = new VehiculFMSport(200f, 2000f, 4, 5.0, 2010, 2, 10, VehiculFMSport.TipTeren.nisip,
+                new ArrayList<VehiculFMSport.EchipamentProtectie>() {
+                    {
+                        add(VehiculFMSport.EchipamentProtectie.nimic);
+                    }
+                });
+        System.out.println(vfm.raportVitezaPret());
         launch();
     }
 }

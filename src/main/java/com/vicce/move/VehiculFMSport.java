@@ -35,7 +35,13 @@ public class VehiculFMSport extends VehiculFaraMotor {
             int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie> echipamentProtectie) {
         super(vitezaMax, pret, nrRoti, greutate, anFabricatie, nrPedale, acceleratie);
         this.tipTeren = tipTeren;
-        this.echipamentProtectie = echipamentProtectie;
+        this.echipamentProtectie = echipamentProtectie == null || echipamentProtectie.size() == 0
+                ? new ArrayList<EchipamentProtectie>() {
+                    {
+                        add(EchipamentProtectie.nimic);
+                    }
+                }
+                : echipamentProtectie;
     }
 
     public TipTeren getTipTeren() {
