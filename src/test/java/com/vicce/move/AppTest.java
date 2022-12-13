@@ -11,18 +11,31 @@ import java.util.ArrayList;
  */
 public class AppTest {
 
-    @Test public void VehiculMElectricConstrParametrii(){
+    @Test  //testez constructorul cu parametrii din clasa Vehicul cu motor
+    public void VehiculMElectricConstrParametrii(){
         VehiculMElectric vme =new VehiculMElectric(250f,2500f,4,7,4,2500,450,1500d,7,800,15000d,2018,2,250);
+        new ArrayList<VehiculMElectric.Electric>();
         assertTrue(vme.getNrRoti() == 5);
         assertTrue(vme.getNrLocuri() == 7);
     }
 
+    
+    @Test   //teste constructorul fara parametrii 
+    public void VehiculMElectricConstrFParametrii(){
+        VehiculMElectric vme2= new VehiculMElectric();
+        assertTrue(vme2.getNrRoti() == 0);
+        assertTrue(vme2.getNrLocuri() == 0);
+        
+    }
 
-
-
-
-
-
+    @Test    //teste constructorul de copiere 
+    public void VehiculMElectricConstrCopiere(){
+        VehiculMElectric vme =new VehiculMElectric(250f,2500f,4,7,4,2500,450,1500d,7,800,15000d,2018,2,250);
+        new ArrayList<VehiculMElectric.Electric>();
+        VehiculMElectric vme3 = new VehiculMElectric(vme);
+        assertTrue(vme3.getNrRoti() == 5);
+        assertTrue(vme3.getNrLocuri() == 7);
+    }
 
 
     /**
