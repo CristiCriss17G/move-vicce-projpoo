@@ -60,6 +60,24 @@ public class AppTest {
                 add(VehiculFMSport.EchipamentProtectie.nimic);
             }
         }.toArray());
+    }
 
+    /**
+     * Testeaza metodele clasei parinte Mobilitate
+     */
+    @Test
+    public void MobilitateTest() {
+        VehiculFMSport vfm = new VehiculFMSport(100f, 1000f, 4, 5.0, 2010, 2, 10, VehiculFMSport.TipTeren.nisip,
+                new ArrayList<VehiculFMSport.EchipamentProtectie>());
+        assertTrue(vfm.getVitezaMax() == 100);
+        assertTrue(vfm.getPret() == 1000);
+        vfm.setVitezaMax(200);
+        vfm.setPret(2000);
+        assertTrue(vfm.getVitezaMax() == 200);
+        assertTrue(vfm.getPret() == 2000);
+        assertTrue(vfm.raportVitezaPret() == 0.1f);
+        vfm.afisare();
+        assertEquals(vfm.toString(),
+                "VehiculFMSport [tipTeren=nisip, echipamentProtectie=[nimic], nrRoti=4, greutate=5.0, anFabricatie=2010, nrPedale=2, acceleratie=10, vitezaMax=200.0, pret=2000.0]");
     }
 }
