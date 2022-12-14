@@ -8,9 +8,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import com.vicce.move.seeder.VehiculFMSportSeeder;
 
 /**
  * Base class for the app with javaFX
+ * Testeaza clasa VehiculFMSport
  *
  */
 public class App extends Application {
@@ -34,19 +37,45 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        VehiculCuMotor vcm = new VehiculCuMotor(100, 1000, 4, 5);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Optiuni: ");
+        System.out.println("1. Vizualizare vehicule din baza de date");
+        System.out.println("2. Adaugare vehicule in baza de date");
+        System.out.println("3. Stergere vehicule din baza de date si refacere baza de date");
 
-        vcm.afisare();
+        System.out.println("Introduceti numarul optiunii: ");
+        int optiune = scanner.nextInt();
+        switch (optiune) {
+            case 1:
+                ArrayList<VehiculFMSport> vehicule2 = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
+                for (VehiculFMSport vehicul : vehicule2) {
+                    vehicul.afisare();
+                    System.out.println(vehicul.raportVitezaPret());
+                }
+                break;
+            case 2:
+                System.out.println("Introduceti numarul de vehicule de tipul VehiculFMSport: ");
+                int nr = scanner.nextInt();
+                ArrayList<VehiculFMSport> vehiculeOld = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
+                ArrayList<VehiculFMSport> vehiculeNew = VehiculFMSportSeeder.seed(nr);
+                ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+                vehicule.addAll(vehiculeOld);
+                vehicule.addAll(vehiculeNew);
+                VehiculFMSportSeeder.JSONseed(vehicule);
+                break;
+            case 3:
+                System.out.println("Introduceti numarul de vehicule de tipul VehiculFMSport: ");
+                nr = scanner.nextInt();
+                ArrayList<VehiculFMSport> vehicule3 = VehiculFMSportSeeder.seed(nr);
+                VehiculFMSportSeeder.JSONseed(vehicule3);
+                break;
+            default:
+                System.out.println("Optiune invalida");
+                break;
+        }
 
-        System.out.println(vcm.raportVitezaPret());
+        scanner.close();
 
-        VehiculFMSport vfm = new VehiculFMSport(200f, 2000f, 4, 5.0, 2010, 2, 10, VehiculFMSport.TipTeren.nisip,
-                new ArrayList<VehiculFMSport.EchipamentProtectie>() {
-                    {
-                        add(VehiculFMSport.EchipamentProtectie.nimic);
-                    }
-                });
-        System.out.println(vfm.raportVitezaPret());
         launch();
     }
 }

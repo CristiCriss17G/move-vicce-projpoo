@@ -82,12 +82,18 @@ public class VehiculFaraMotor extends Mobilitate {
 
     @Override
     public void afisare() {
-        System.out.println("Vehicul cu motor cu viteza maxima " + vitezaMax + " si pretul " + pret);
+        System.out.println("Vehicul fara motor " + id + " cu viteza maxima " + vitezaMax + " si pretul " + pret
+                + " are " + nrRoti
+                + " roti, greutatea " + greutate + " kg, a fost fabricat in anul " + anFabricatie + ", are " + nrPedale
+                + " pedale si accelereaza in " + acceleratie + " secunde.");
     }
 
     @Override
     public String toString() {
-        return "VehiculCuMotor [nrPedale=" + nrPedale + ", nrRoti=" + nrRoti + ", pret=" + pret + ", vitezaMax="
-                + vitezaMax + "]";
+        return "VehiculFaraMotor " + id + " [vitezaMax=" + vitezaMax + ", pret=" + pret + ", nrRoti=" + nrRoti
+                + ", greutate="
+                + greutate + ", anFabricatie=" + anFabricatie + ", nrPedale=" + nrPedale + ", acceleratie="
+                + acceleratie
+                + "]";
     }
 }

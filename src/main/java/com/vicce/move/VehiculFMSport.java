@@ -69,7 +69,8 @@ public class VehiculFMSport extends VehiculFaraMotor {
 
     @Override
     public String toString() {
-        return "VehiculFMSport [tipTeren=" + tipTeren + ", echipamentProtectie=" + echipamentProtectie + ", nrRoti="
+        return "VehiculFMSport " + id + " [tipTeren=" + tipTeren + ", echipamentProtectie=" + echipamentProtectie
+                + ", nrRoti="
                 + nrRoti + ", greutate=" + greutate + ", anFabricatie=" + anFabricatie + ", nrPedale=" + nrPedale
                 + ", acceleratie=" + acceleratie + ", vitezaMax=" + vitezaMax + ", pret=" + pret + "]";
     }
