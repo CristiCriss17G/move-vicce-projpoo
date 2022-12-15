@@ -60,6 +60,30 @@ public class VehiculFMSport extends VehiculFaraMotor {
         this.echipamentProtectie = echipamentProtectie;
     }
 
+    public ArrayList<VehiculFMSport> filtrareViteza(ArrayList<VehiculFMSport> vehicule, float vitezaMaxim,
+            float vitezaMinima) {
+        ArrayList<VehiculFMSport> vehiculeFiltrate = new ArrayList<VehiculFMSport>();
+        for (VehiculFMSport vehicul : vehicule) {
+            if (vehicul.getVitezaMax() <= vitezaMaxim
+                    && vehicul.getVitezaMax() >= vitezaMinima) {
+                vehiculeFiltrate.add(vehicul);
+            }
+        }
+        return vehiculeFiltrate;
+    }
+
+    public ArrayList<VehiculFMSport> filtrarePret(ArrayList<VehiculFMSport> vehicule, float pretMaxim,
+            float pretMinim) {
+        ArrayList<VehiculFMSport> vehiculeFiltrate = new ArrayList<VehiculFMSport>();
+        for (VehiculFMSport vehicul : vehicule) {
+            if (vehicul.getPret() <= pretMaxim
+                    && vehicul.getPret() >= pretMinim) {
+                vehiculeFiltrate.add(vehicul);
+            }
+        }
+        return vehiculeFiltrate;
+    }
+
     @Override
     public void afisare() {
         super.afisare();

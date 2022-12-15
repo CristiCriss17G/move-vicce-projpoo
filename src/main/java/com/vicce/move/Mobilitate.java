@@ -1,6 +1,7 @@
 package com.vicce.move;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable {
     private static long idPool = 1;
@@ -66,6 +67,12 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
     public abstract float raportVitezaPret();
 
     public abstract void afisare();
+
+    // public abstract ArrayList<Mobilitate> filtrareViteza(ArrayList<Mobilitate> vehicule, float vitezaMaxima,
+    //         float vitezaMinima);
+
+    // public abstract ArrayList<Mobilitate> filtrarePret(ArrayList<Mobilitate> vehicule, float pretMaxim,
+    //         float pretMinim);
 
     @Override
     public abstract String toString();
