@@ -25,9 +25,12 @@ public class App {
         VehiculMElectric e9 = new VehiculMElectric(170, 10000, 5, 2, 2, 3200, 600, 1000, 5, 1200, 6000, 2018, 2, 422);
         VehiculMElectric e10 = new VehiculMElectric(200, 5000, 5, 2, 2, 2000, 700, 1200, 4, 900, 7000, 2016, 3, 560);
 
-        VehiculMElectric[] vme={e1,e2,e3,e4,e5,e6,e7,e8,e9,e10};
+        VehiculMElectric[] vme = {e1,e2,e3,e4,e5,e6,e7,e8,e9,e10};
 
-
+        //afisarea vectorului :
+        for(int i=0;i<vme.length;i++){
+            vme[i].afisare();
+        }
     
     }
 }
