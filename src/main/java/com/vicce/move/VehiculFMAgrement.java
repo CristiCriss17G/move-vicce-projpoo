@@ -23,7 +23,11 @@ public class VehiculFMAgrement extends VehiculFaraMotor {
 
     public VehiculFMAgrement() {
         super();
-        this.echipamentProtectie = null;
+        this.echipamentProtectie = new ArrayList<EchipamentProtectie>() {
+            {
+                add(EchipamentProtectie.nimic);
+            }};
+
         this.tipTeren = TipTeren.asfalt;
         this.categVarsta = CategVarsta.adulti;
     }
