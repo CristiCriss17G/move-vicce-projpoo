@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
+import java.nio.file.NoSuchFileException;
 
 import com.vicce.move.VehiculFMSport;
 import java.util.ArrayList;
@@ -136,8 +137,12 @@ public class VehiculFMSportSeeder {
                         echipamente);
                 vehicule.add(vfm);
             }
+        } catch (NoSuchFileException e) {
+            // e.printStackTrace();
+            throw new IllegalArgumentException("Fisierul nu exista; eroare de I/O: " + e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
+            throw new IllegalArgumentException("Fisierul nu poate fi citit; eroare de I/O: " + e.getMessage());
         }
 
         return vehicule;

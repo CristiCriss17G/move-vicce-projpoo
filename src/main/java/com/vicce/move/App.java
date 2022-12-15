@@ -20,16 +20,26 @@ public class App {
         int optiune = scanner.nextInt();
         switch (optiune) {
             case 1:
-                ArrayList<VehiculFMSport> vehicule2 = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
-                for (VehiculFMSport vehicul : vehicule2) {
-                    vehicul.afisare();
-                    System.out.println(vehicul.raportVitezaPret());
+                try {
+                    ArrayList<VehiculFMSport> vehicule2 = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
+                    for (VehiculFMSport vehicul : vehicule2) {
+                        vehicul.afisare();
+                        System.out.println(vehicul.raportVitezaPret());
+                    }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("Nu exista vehicule in baza de date");
                 }
                 break;
             case 2:
                 System.out.println("Introduceti numarul de vehicule de tipul VehiculFMSport: ");
                 int nr = scanner.nextInt();
-                ArrayList<VehiculFMSport> vehiculeOld = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
+                ArrayList<VehiculFMSport> vehiculeOld;
+                try {
+                    vehiculeOld = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
+                } catch (IllegalArgumentException e) {
+                    vehiculeOld = new ArrayList<VehiculFMSport>();
+                }
                 ArrayList<VehiculFMSport> vehiculeNew = VehiculFMSportSeeder.seed(nr);
                 ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
                 vehicule.addAll(vehiculeOld);
