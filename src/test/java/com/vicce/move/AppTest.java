@@ -13,7 +13,7 @@ import com.vicce.move.seeder.VehiculFMSportSeeder;
  */
 public class AppTest {
     /**
-     * Testeaza constructorii cu parametri si metodele clasei VehiculCuMotor
+     * Testeaza constructorii cu parametri si metodele clasei VehiculFMSport
      */
     @Test
     public void VehiculFMSportConstructoriCuParametri() {
@@ -31,7 +31,7 @@ public class AppTest {
     }
 
     /**
-     * Testeaza constructorii de copiere si metodele clasei VehiculCuMotor
+     * Testeaza constructorii de copiere si metodele clasei VehiculFMSport
      */
     @Test
     public void VehiculFMSportConstructoriDeCopiere() {
@@ -50,7 +50,7 @@ public class AppTest {
     }
 
     /**
-     * Testeaza constructorii fara parametri si metodele clasei VehiculCuMotor
+     * Testeaza constructorii fara parametri si metodele clasei VehiculFMSport
      */
     @Test
     public void VehiculFMSportConstructoriFaraParametri() {
