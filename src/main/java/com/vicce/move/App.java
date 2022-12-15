@@ -26,6 +26,35 @@ public class App {
                         vehicul.afisare();
                         System.out.println(vehicul.raportVitezaPret());
                     }
+                    System.out.println("Doriti sa filtrati dupa pret? (y/n)");
+                    VehiculFMSport filtru = new VehiculFMSport();
+                    String raspuns = scanner.next();
+                    if (raspuns.equals("y")) {
+                        System.out.println("Introduceti pretul maxim: ");
+                        float pretMaxim = scanner.nextFloat();
+                        System.out.println("Vehiculele minim: ");
+                        float pretMinim = scanner.nextFloat();
+                        ArrayList<VehiculFMSport> vehiculeFiltrate = filtru.filtrarePret(vehicule2, pretMaxim,
+                                pretMinim);
+                        for (VehiculFMSport vehicul : vehiculeFiltrate) {
+                            vehicul.afisare();
+                            System.out.println(vehicul.raportVitezaPret());
+                        }
+                    }
+                    System.out.println("Doriti sa filtrati dupa viteza? (y/n)");
+                    raspuns = scanner.next();
+                    if (raspuns.equals("y")) {
+                        System.out.println("Introduceti viteza maxima: ");
+                        float vitezaMaxima = scanner.nextFloat();
+                        System.out.println("Introduceti viteza minima: ");
+                        float vitezaMinima = scanner.nextFloat();
+                        ArrayList<VehiculFMSport> vehiculeFiltrate = filtru.filtrareViteza(vehicule2, vitezaMaxima,
+                                vitezaMinima);
+                        for (VehiculFMSport vehicul : vehiculeFiltrate) {
+                            vehicul.afisare();
+                            System.out.println(vehicul.raportVitezaPret());
+                        }
+                    }
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                     System.out.println("Nu exista vehicule in baza de date");
