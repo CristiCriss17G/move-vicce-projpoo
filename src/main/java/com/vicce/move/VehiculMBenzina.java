@@ -1,12 +1,12 @@
 package com.vicce.move;
 
 public class VehiculMBenzina extends VehiculCuMotor {
-    int caiPutere;
-    int capacitateMotor;
-    String marca;
-    String model;
-    int anFabricatie;
-    double consumUrban;
+    protected int caiPutere;
+    protected int capacitateMotor;
+    protected String marca;
+    protected String model;
+    protected int anFabricatie;
+    protected double consumUrban;
 
 
     VehiculMBenzina(){
