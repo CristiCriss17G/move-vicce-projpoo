@@ -3,7 +3,6 @@ package com.vicce.move;
 public class VehiculMBenzina extends VehiculCuMotor {
     protected int caiPutere;
     protected int capacitateMotor;
-    protected String marca;
     protected String model;
     protected int anFabricatie;
     protected double consumUrban;
@@ -13,17 +12,15 @@ public class VehiculMBenzina extends VehiculCuMotor {
         super();
         caiPutere=100;
         capacitateMotor=1600;
-        marca="VW";
-        model="Passat";
+        model="Golf 6";
         anFabricatie=2000;
         consumUrban=5.6;
     }
 
-    VehiculMBenzina(float vitezaMax, float pret, int nrRoti, int nrLocuri,int putere,int capacitate,String marca,String model,int an, double consum){
+    VehiculMBenzina(float vitezaMax, float pret, int nrRoti, int nrLocuri,int putere,int capacitate,String model,int an, double consum){
         super(vitezaMax,pret,nrRoti,nrLocuri);
         this.caiPutere=putere;
         this.capacitateMotor=capacitate;
-        this.marca=marca;
         this.model=model;
         this.anFabricatie=an;
         this.consumUrban=consum;
@@ -33,7 +30,6 @@ public class VehiculMBenzina extends VehiculCuMotor {
         super(m);
         this.caiPutere=m.caiPutere;
         this.capacitateMotor=m.capacitateMotor;
-        this.marca=m.marca;
         this.model=m.model;
         this.anFabricatie=m.anFabricatie;
         this.consumUrban=m.consumUrban;
@@ -53,14 +49,6 @@ public class VehiculMBenzina extends VehiculCuMotor {
 
     public void setCapacitateMotor(int capacitate){
         this.capacitateMotor=capacitate;
-    }
-
-    public String getMarca(){
-        return marca;
-    }
-
-    public void setMarca(String marca){
-        this.marca=marca;
     }
 
     public String getModel(){
@@ -89,14 +77,14 @@ public class VehiculMBenzina extends VehiculCuMotor {
 
     @Override
     public String toString(){
-        return "Vehicul cu motor pe benzina "+marca+" "+ model+" fabricat in anul "+anFabricatie+" cu "+caiPutere+" cai putere"+" si o capacitate de "+capacitateMotor+ " si un consum urban de "+consumUrban+"l/100km";
+        return "Vehicul cu motor pe benzina "+ model+" fabricat in anul "+anFabricatie+" cu "+caiPutere+" cai putere"+" si o capacitate de "+capacitateMotor+ " si un consum urban de "+consumUrban+"l/100km";
 
     }
     
 
     @Override
     public void afisare(){
-        System.out.println("Vehicul cu motor pe benzina "+marca+" "+ model+" fabricat in anul "+anFabricatie+" cu "+caiPutere+"cai putere"+" si o capacitate de "+capacitateMotor+ " si un consum urban de "+consumUrban+"l/100km");
+        System.out.println("Vehicul cu motor pe benzina "+ model+" fabricat in anul "+anFabricatie+" cu "+caiPutere+"cai putere"+" si o capacitate de "+capacitateMotor+ " si un consum urban de "+consumUrban+"l/100km");
     }
 
 }
