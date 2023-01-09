@@ -79,6 +79,30 @@ public class VehiculFMAgrement extends VehiculFaraMotor {
         this.categVarsta = categVarsta;
     }
 
+    public ArrayList<VehiculFMAgrement> filtrareViteza(ArrayList<VehiculFMAgrement> vehicule, float vitezaMaxim,
+            float vitezaMinima) {
+        ArrayList<VehiculFMAgrement> vehiculeFiltrate = new ArrayList<VehiculFMAgrement>();
+        for (VehiculFMAgrement vehicul : vehicule) {
+            if (vehicul.getVitezaMax() <= vitezaMaxim
+                    && vehicul.getVitezaMax() >= vitezaMinima) {
+                vehiculeFiltrate.add(vehicul);
+            }
+        }
+        return vehiculeFiltrate;
+    }
+
+    public ArrayList<VehiculFMAgrement> filtrarePret(ArrayList<VehiculFMAgrement> vehicule, float pretMaxim,
+            float pretMinim) {
+        ArrayList<VehiculFMAgrement> vehiculeFiltrate = new ArrayList<VehiculFMAgrement>();
+        for (VehiculFMAgrement vehicul : vehicule) {
+            if (vehicul.getPret() <= pretMaxim
+                    && vehicul.getPret() >= pretMinim) {
+                vehiculeFiltrate.add(vehicul);
+            }
+        }
+        return vehiculeFiltrate;
+    }
+
     @Override
     public void afisare() {
         super.afisare();
