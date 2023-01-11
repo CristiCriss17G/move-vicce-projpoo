@@ -39,13 +39,6 @@ public class App extends Application {
 
         System.out.println(vcm.raportVitezaPret());
 
-        // try {
-        // System.out.println(loadFXML("primary"));
-        // } catch (IOException e) {
-        // System.out.println("IOException");
-        // System.out.println(e);
-        // }
-
         launch();
     }
 }
