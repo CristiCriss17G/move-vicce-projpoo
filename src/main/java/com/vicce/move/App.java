@@ -14,6 +14,7 @@ public class App {
         vcm.afisare();
         System.out.println(vcm.raportVitezaPret());
 
+        //cele 10 campuri :
         VehiculMElectric e1 = new VehiculMElectric(150, 9000, 5, 4, 4, 2500, 890, 800, 5, 600, 1000, 2018, 3, 450);
         VehiculMElectric e2 = new VehiculMElectric(240, 7000, 4, 2, 2, 3000, 250, 1000,4, 300, 700, 2020, 2, 500);
         VehiculMElectric e3 = new VehiculMElectric(250, 3000, 5, 7, 4, 2700, 230, 900, 5, 800, 9000, 2019, 3, 350);
@@ -25,6 +26,7 @@ public class App {
         VehiculMElectric e9 = new VehiculMElectric(170, 10000, 5, 2, 2, 3200, 600, 1000, 5, 1200, 6000, 2018, 2, 422);
         VehiculMElectric e10 = new VehiculMElectric(200, 5000, 5, 2, 2, 2000, 700, 1200, 4, 900, 7000, 2016, 3, 560);
 
+        //vectorul
         VehiculMElectric[] vme = {e1,e2,e3,e4,e5,e6,e7,e8,e9,e10};
 
         //afisarea vectorului :
