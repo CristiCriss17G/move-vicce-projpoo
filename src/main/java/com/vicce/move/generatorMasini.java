@@ -1,7 +1,7 @@
 package com.vicce.move;
 import java.util.Random;
-
 import javax.naming.ldap.Rdn;
+
 public class generatorMasini {
     static private float [] vitezaMaxima={150,170,180,200,240,250,270,280,300,320};
     static private float [] pret={3000,4000,6000,8000,10000,12000,15000,19000,2400,28000};
