@@ -23,6 +23,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 640, 480);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
@@ -37,12 +38,26 @@ public class App extends Application {
     }
 
     static void showVehicule() {
+        showVehicule(false);
+    }
+
+    static String showVehicule(boolean returnVal) {
         Scanner scanner = new Scanner(System.in);
         try {
             ArrayList<VehiculFMSport> vehicule2 = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
+            StringBuilder sb = new StringBuilder();
             for (VehiculFMSport vehicul : vehicule2) {
-                vehicul.afisare();
-                System.out.println(vehicul.raportVitezaPret());
+                if (returnVal) {
+                    sb.append(vehicul.toString());
+                    sb.append(vehicul.raportVitezaPret());
+                } else {
+                    vehicul.afisare();
+                    System.out.println(vehicul.raportVitezaPret());
+                }
+            }
+            if (returnVal) {
+                scanner.close();
+                return sb.toString();
             }
             System.out.println("Doriti sa filtrati dupa pret? (y/n)");
             VehiculFMSport filtru = new VehiculFMSport();
@@ -78,6 +93,7 @@ public class App extends Application {
             System.out.println("Nu exista vehicule in baza de date");
         }
         scanner.close();
+        return "";
     }
 
     static void addVehicle() {
