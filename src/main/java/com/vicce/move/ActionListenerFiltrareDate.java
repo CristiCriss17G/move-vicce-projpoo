@@ -2,8 +2,8 @@ package com.vicce.move;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JTextField;
+
 import com.vicce.move.FiltruElectric;
 
 public class ActionListenerFiltrareDate implements ActionListener {
