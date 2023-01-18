@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class GeneratorElectric {
   
-  public static ArrayList<VehiculMElectric> genereazaRandomCopaci(int n){
+  public static ArrayList<VehiculMElectric> genereazaRandomMasini(int n){
     ArrayList<VehiculMElectric> listaMasini = new ArrayList<>();
     
     VehiculMElectric primaMasina;
