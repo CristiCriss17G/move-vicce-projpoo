@@ -19,29 +19,30 @@ public class TestareInterfata {
 
         JButton genereazaBT =new JButton("Genereaza date");
         genereazaBT.setBounds(20,50,200,30);
-        genereazaBT.addActionListener(new ActionListenerFiltrareDate(nrTF));
+        genereazaBT.addActionListener(new ActionListenerGenerareDate(nrTF));
 
 
-        JLabel capacitate = new JLabel("Capacitate motor:");
-		capacitate.setBounds(20, 100, 80, 20);	
+        JLabel model = new JLabel("Model:");
+		model.setBounds(20, 100, 80, 20);	
 	
-		JTextField capacitateTF = new JTextField();
-		capacitateTF.setBounds(120, 100, 100, 20);
+		JTextField modelTF = new JTextField();
+		modelTF.setBounds(120, 100, 100, 20);
 
-		JButton capacitateBT = new JButton("Filtreaza dupa capacitate: ");
-		capacitateBT.setBounds(20, 130, 200, 30);	
-		capacitateBT.addActionListener(new ActionListenerFiltrareDate(capacitateTF));
+		JButton modelBT = new JButton("Filtreaza dupa model: ");
+		modelBT.setBounds(20, 130, 200, 30);	
+		modelBT.addActionListener(new ActionListenerFiltrareDate(modelTF));
 		
 		
 		frame.add(nr);				
 		frame.add(nrTF);
 		frame.add(genereazaBT);
 		
-		frame.add(capacitate);
-		frame.add(capacitateTF);
-		frame.add(capacitateBT);
+		frame.add(model);
+		frame.add(modelTF);
+		frame.add(modelBT);
+
 		
-		frame.setSize(255, 250);
+		frame.setSize(300, 250);
 		frame.setTitle("Vehicule cu motor pe benzina");
 		frame.setLayout(null);
 		frame.setVisible(true);

@@ -14,8 +14,8 @@ public class ActionListenerFiltrareDate implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e){
-        TestareInterfata.listaMasini=FiltrareMasini.filtreazaDupaCapacitate(TestareInterfata.listaVehicule, 1600, Integer.parseInt(jtext.getText()));
-        System.out.println("Date filtrate ");
+        TestareInterfata.listaMasini=FiltrareMasini.filtreazaDupaModel(TestareInterfata.listaVehicule, jtext.getText());
+        System.out.println("\nDate filtrate \n");
         System.out.println(TestareInterfata.listaMasini);
     }
 
