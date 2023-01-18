@@ -1,16 +1,6 @@
 package com.vicce.move;
 
 public abstract class Mobilitate implements Comparable<Mobilitate> {
-    private static long idPool = 1;
-
-    /**
-     * Temporary for testing purposes
-     */
-    public final static void resetIdPool() {
-        idPool = 1;
-    }
-
-    protected final long id;
     protected float vitezaMax;
     protected float pret;
 
