@@ -1,5 +1,6 @@
 package com.vicce.move;
 
+import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) {
@@ -37,6 +38,13 @@ public class App {
             vmm[i].afisare();
         }
         }
+
+        ArrayList<VehiculMMotorina> listaVehicule = Generator.genereazaRandomMasini(10);
+System.out.println("\nLista masinilor este =");
+for (VehiculMMotorina vehicul : listaVehicule) {
+    System.out.println(vehicul);
+}
+
     }
 
 }

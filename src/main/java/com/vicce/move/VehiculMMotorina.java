@@ -94,13 +94,13 @@ public class VehiculMMotorina extends VehiculCuMotor {
     public String toString() {
         return "Vehicul cu motor pe motorina " + marca + " " + model + " fabricat in anul " + anFabricatie
         + " cu " + putere + "cai putere" + " si cu " + numarCilindri + " cilindri si un cuplu de " + cuplu
-        + " Nm.";
+        + " Nm.\n";
     }
 
     @Override
     public void afisare() {
         System.out.println("Vehicul cu motor pe motorina " + marca + " " + model + " fabricat in anul " + anFabricatie
                 + " cu " + putere + "cai putere" + " si cu " + numarCilindri + " cilindri si un cuplu de " + cuplu
-                + " Nm.");
+                + " Nm.\n");
     }
 }

@@ -22,7 +22,8 @@ public class Generator {
             int numarCilindri=new Random().nextInt(4,8);
             int anFabricatie=new Random().nextInt(2000,2021);
             int putere=new Random().nextInt(200,850);
-            float cuplu=new Random().nextInt(100,500);
+            int cuplu=new Random().nextInt(100,500);
+           
             
 
             Masina=new VehiculMMotorina(vitezaMax,pret,nrRoti,nrLocuri,marca,model,numarCilindri,anFabricatie,putere,cuplu);
