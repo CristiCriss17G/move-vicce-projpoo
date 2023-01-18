@@ -22,7 +22,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("primary"), 960, 640);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
@@ -39,6 +39,21 @@ public class App extends Application {
 
     static void showVehicule() {
         showVehicule(false);
+    }
+
+    static ArrayList<VehiculFMSport> getVehicule() {
+        ArrayList<VehiculFMSport> vehicule = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
+        return vehicule;
+    }
+
+    static ArrayList<VehiculFMSport> getVehicule(float pretMin, float pretMax, float vitezaMin, float vitezaMax) {
+        ArrayList<VehiculFMSport> vehicule = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
+        VehiculFMSport filtru = new VehiculFMSport();
+        if (pretMin > 0 || pretMax > 0)
+            vehicule = filtru.filtrarePret(vehicule, pretMax, pretMin);
+        if (vitezaMin > 0 || vitezaMax > 0)
+            vehicule = filtru.filtrareViteza(vehicule, vitezaMax, vitezaMin);
+        return vehicule;
     }
 
     static String showVehicule(boolean returnVal) {
@@ -96,6 +111,21 @@ public class App extends Application {
         return "";
     }
 
+    static boolean addVehicle(int nr) {
+        ArrayList<VehiculFMSport> vehiculeOld;
+        try {
+            vehiculeOld = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
+        } catch (IllegalArgumentException e) {
+            vehiculeOld = new ArrayList<VehiculFMSport>();
+        }
+        ArrayList<VehiculFMSport> vehiculeNew = VehiculFMSportSeeder.seed(nr);
+        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        vehicule.addAll(vehiculeOld);
+        vehicule.addAll(vehiculeNew);
+        VehiculFMSportSeeder.JSONseed(vehicule);
+        return true;
+    }
+
     static void addVehicle() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduceti numarul de vehicule de tipul VehiculFMSport: ");
@@ -112,6 +142,16 @@ public class App extends Application {
         vehicule.addAll(vehiculeNew);
         VehiculFMSportSeeder.JSONseed(vehicule);
         scanner.close();
+    }
+
+    static boolean resetData() {
+        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>() {
+            {
+                add(new VehiculFMSport());
+            }
+        };
+        VehiculFMSportSeeder.JSONseed(vehicule);
+        return true;
     }
 
     static void resetVehicule() {

@@ -77,7 +77,7 @@ public class VehiculFMSportSeeder {
         JSONseed(vehicule, "vehicule.test.json");
     }
 
-    public static void JSONseed(ArrayList<VehiculFMSport> vehicule, String path) {
+    public static void JSONseed(ArrayList<VehiculFMSport> vehicule, String path) throws IllegalArgumentException {
         if (vehicule == null || vehicule.size() == 0) {
             throw new IllegalArgumentException("Lista de vehicule nu poate fi nula sau goala");
         }
