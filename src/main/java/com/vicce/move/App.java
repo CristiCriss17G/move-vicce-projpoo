@@ -25,6 +25,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("primary"), 960, 640);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
+        stage.setTitle("Vehicule");
         stage.show();
     }
 
@@ -145,12 +146,9 @@ public class App extends Application {
     }
 
     static boolean resetData() {
-        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>() {
-            {
-                add(new VehiculFMSport());
-            }
-        };
-        VehiculFMSportSeeder.JSONseed(vehicule);
+        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        VehiculFMSportSeeder.JSONseed(true, vehicule);
+        VehiculFMSport.resetIdPool();
         return true;
     }
 

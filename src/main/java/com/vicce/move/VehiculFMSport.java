@@ -44,6 +44,19 @@ public class VehiculFMSport extends VehiculFaraMotor {
                 : echipamentProtectie;
     }
 
+    public VehiculFMSport(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
+            int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie> echipamentProtectie, long id) {
+        super(vitezaMax, pret, nrRoti, greutate, anFabricatie, nrPedale, acceleratie, id);
+        this.tipTeren = tipTeren;
+        this.echipamentProtectie = echipamentProtectie == null || echipamentProtectie.size() == 0
+                ? new ArrayList<EchipamentProtectie>() {
+                    {
+                        add(EchipamentProtectie.nimic);
+                    }
+                }
+                : echipamentProtectie;
+    }
+
     public TipTeren getTipTeren() {
         return this.tipTeren;
     }

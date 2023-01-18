@@ -2,6 +2,7 @@ package com.vicce.move;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
@@ -10,6 +11,9 @@ import java.util.function.UnaryOperator;
 public class addVehiculFMSport {
     @FXML
     private TextField textFieldAddVehicule;
+
+    @FXML
+    private Label labelStatus;
 
     public void initialize() {
         UnaryOperator<TextFormatter.Change> intFilter = change -> {
@@ -40,6 +44,9 @@ public class addVehiculFMSport {
             numarVehicule = 0;
         }
 
-        App.addVehicle(numarVehicule);
+        if (App.addVehicle(numarVehicule))
+            labelStatus.setText("Vehicule adaugate cu succes!");
+        else
+            labelStatus.setText("Nu s-au putut adauga vehiculele!");
     }
 }

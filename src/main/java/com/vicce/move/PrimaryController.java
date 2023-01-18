@@ -60,8 +60,9 @@ public class PrimaryController {
 
     @FXML
     private void showData() {
-        // clar the table first
+        // clear the table first
         tableView.getItems().clear();
+        tableView.getColumns().clear();
 
         TableColumn<VehiculFMSport, Long> idColumn = new TableColumn<>("ID");
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -133,7 +134,6 @@ public class PrimaryController {
             vitezaMax = 0;
         }
 
-        System.out.println(App.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
         tableView.getItems().addAll(App.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
 
     }

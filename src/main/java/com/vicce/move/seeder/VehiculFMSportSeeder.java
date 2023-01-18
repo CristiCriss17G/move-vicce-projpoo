@@ -77,8 +77,17 @@ public class VehiculFMSportSeeder {
         JSONseed(vehicule, "vehicule.test.json");
     }
 
-    public static void JSONseed(ArrayList<VehiculFMSport> vehicule, String path) throws IllegalArgumentException {
-        if (vehicule == null || vehicule.size() == 0) {
+    public static void JSONseed(boolean canBeNull, ArrayList<VehiculFMSport> vehicule) {
+        JSONseed(canBeNull, vehicule, "vehicule.test.json");
+    }
+
+    public static void JSONseed(ArrayList<VehiculFMSport> vehicule, String path) {
+        JSONseed(false, vehicule, path);
+    }
+
+    public static void JSONseed(boolean canBeNull, ArrayList<VehiculFMSport> vehicule, String path)
+            throws IllegalArgumentException {
+        if ((vehicule == null || vehicule.size() == 0) && !canBeNull) {
             throw new IllegalArgumentException("Lista de vehicule nu poate fi nula sau goala");
         }
         JSONArray vehiculeJSON = new JSONArray();
@@ -86,6 +95,7 @@ public class VehiculFMSportSeeder {
             VehiculFMSport vfm = vehicule.get(i);
 
             JSONObject vehicul = new JSONObject();
+            vehicul.put("id", vfm.getId());
             vehicul.put("vitezaMax", vfm.getVitezaMax());
             vehicul.put("pret", vfm.getPret());
             vehicul.put("nrRoti", vfm.getNrRoti());
@@ -119,6 +129,7 @@ public class VehiculFMSportSeeder {
             JSONArray vehiculeJSON = new JSONArray(content);
             for (int i = 0; i < vehiculeJSON.length(); i++) {
                 JSONObject vehicul = vehiculeJSON.getJSONObject(i);
+                long id = vehicul.getLong("id");
                 float vitezaMax = (float) vehicul.getDouble("vitezaMax");
                 float pret = (float) vehicul.getDouble("pret");
                 int nrRoti = vehicul.getInt("nrRoti");
@@ -132,9 +143,10 @@ public class VehiculFMSportSeeder {
                 for (int j = 0; j < echipamenteJSON.length(); j++) {
                     echipamente.add(VehiculFMSport.EchipamentProtectie.valueOf(echipamenteJSON.getString(j)));
                 }
-                VehiculFMSport vfm = new VehiculFMSport(vitezaMax, pret, nrRoti, greutate, an, nrPedale, acceleratie,
+                VehiculFMSport vfm = new VehiculFMSport(vitezaMax, pret, nrRoti, greutate, an, nrPedale,
+                        acceleratie,
                         tipTeren,
-                        echipamente);
+                        echipamente, id);
                 vehicule.add(vfm);
             }
         } catch (NoSuchFileException e) {

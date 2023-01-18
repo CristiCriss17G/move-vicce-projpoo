@@ -24,7 +24,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
     }
 
     public Mobilitate(Mobilitate a) {
-        this.id = idPool++;
+        this.id = a.id;
         this.vitezaMax = a.vitezaMax;
         this.pret = a.pret;
     }
@@ -33,6 +33,14 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.id = idPool++;
         this.vitezaMax = vitezaMax;
         this.pret = pret;
+    }
+
+    public Mobilitate(float vitezaMax, float pret, long id) {
+        this.id = id;
+        this.vitezaMax = vitezaMax;
+        this.pret = pret;
+        if (idPool <= id)
+            idPool = id + 1;
     }
 
     public final long getId() {
@@ -68,11 +76,13 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
 
     public abstract void afisare();
 
-    // public abstract ArrayList<Mobilitate> filtrareViteza(ArrayList<Mobilitate> vehicule, float vitezaMaxima,
-    //         float vitezaMinima);
+    // public abstract ArrayList<Mobilitate> filtrareViteza(ArrayList<Mobilitate>
+    // vehicule, float vitezaMaxima,
+    // float vitezaMinima);
 
-    // public abstract ArrayList<Mobilitate> filtrarePret(ArrayList<Mobilitate> vehicule, float pretMaxim,
-    //         float pretMinim);
+    // public abstract ArrayList<Mobilitate> filtrarePret(ArrayList<Mobilitate>
+    // vehicule, float pretMaxim,
+    // float pretMinim);
 
     @Override
     public abstract String toString();
