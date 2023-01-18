@@ -4,9 +4,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
+import java.nio.file.NoSuchFileException;
 
 import com.vicce.move.VehiculFMAgrement;
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -57,7 +57,8 @@ public class VehiculFMAgrementSeeder {
             for (int j = 0; j < nrEchipamente; j++) {
                 echipamente.add(echipamenteProtectie[random.nextInt(echipamenteProtectie.length)]);
             }
-            VehiculFMAgrement vfm = new VehiculFMAgrement(vitezaMax, pret, nrRoti, greutate, an, nrPedale, acceleratie,echipamente,tipTeren,categVarsta);
+            VehiculFMAgrement vfm = new VehiculFMAgrement(vitezaMax, pret, nrRoti, greutate, an, nrPedale, acceleratie,
+                    echipamente, tipTeren, categVarsta);
             // vfm.afisare();
             // System.out.println(vfm.raportVitezaPret());
             vehicule.add(vfm);
@@ -77,8 +78,17 @@ public class VehiculFMAgrementSeeder {
         JSONseed(vehicule, "vehicule.test.json");
     }
 
+    public static void JSONseed(boolean canBeNull, ArrayList<VehiculFMAgrement> vehicule) {
+        JSONseed(canBeNull, vehicule, "vehicule.test.json");
+    }
+
     public static void JSONseed(ArrayList<VehiculFMAgrement> vehicule, String path) {
-        if (vehicule == null || vehicule.size() == 0) {
+        JSONseed(false, vehicule, path);
+    }
+
+    public static void JSONseed(boolean canBeNull, ArrayList<VehiculFMAgrement> vehicule, String path)
+            throws IllegalArgumentException {
+        if ((vehicule == null || vehicule.size() == 0) && !canBeNull) {
             throw new IllegalArgumentException("Lista de vehicule nu poate fi nula sau goala");
         }
         JSONArray vehiculeJSON = new JSONArray();
@@ -128,19 +138,25 @@ public class VehiculFMAgrementSeeder {
                 int nrPedale = vehicul.getInt("nrPedale");
                 int acceleratie = vehicul.getInt("acceleratie");
                 VehiculFMAgrement.TipTeren tipTeren = VehiculFMAgrement.TipTeren.valueOf(vehicul.getString("tipTeren"));
-                VehiculFMAgrement.CategVarsta categVarsta = VehiculFMAgrement.CategVarsta.valueOf(vehicul.getString("categVarsta"));
+                VehiculFMAgrement.CategVarsta categVarsta = VehiculFMAgrement.CategVarsta
+                        .valueOf(vehicul.getString("categVarsta"));
                 JSONArray echipamenteJSON = vehicul.getJSONArray("echipamente");
                 ArrayList<VehiculFMAgrement.EchipamentProtectie> echipamente = new ArrayList<VehiculFMAgrement.EchipamentProtectie>();
                 for (int j = 0; j < echipamenteJSON.length(); j++) {
                     echipamente.add(VehiculFMAgrement.EchipamentProtectie.valueOf(echipamenteJSON.getString(j)));
                 }
-                VehiculFMAgrement vfm = new VehiculFMAgrement(vitezaMax, pret, nrRoti, greutate, an, nrPedale, acceleratie,echipamente,tipTeren,categVarsta);
+                VehiculFMAgrement vfm = new VehiculFMAgrement(vitezaMax, pret, nrRoti, greutate, an, nrPedale,
+                        acceleratie, echipamente, tipTeren, categVarsta);
                 vehicule.add(vfm);
             }
+        } catch (NoSuchFileException e) {
+            // e.printStackTrace();
+            throw new IllegalArgumentException("Fisierul nu exista; eroare de I/O: " + e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
+            throw new IllegalArgumentException("Fisierul nu poate fi citit; eroare de I/O: " + e.getMessage());
         }
-
+        
         return vehicule;
     }
 }
