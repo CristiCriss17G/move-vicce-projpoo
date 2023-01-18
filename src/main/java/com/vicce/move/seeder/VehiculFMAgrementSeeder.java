@@ -95,6 +95,7 @@ public class VehiculFMAgrementSeeder {
             vehicul.put("acceleratie", vfm.getAcceleratie());
             vehicul.put("tipTeren", vfm.getTipTeren());
             vehicul.put("echipamente", vfm.getEchipamentProtectie());
+            vehicul.put("categVarsta", vfm.getCategVarsta());
             vehiculeJSON.put(vehicul);
         }
         try {
