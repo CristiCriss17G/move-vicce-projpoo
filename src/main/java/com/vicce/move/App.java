@@ -62,7 +62,6 @@ public class App {
 		for(int i=0;i<listaVehicule.size();i++)
 			System.out.println(listaVehicule.get(i));
 
-        
 
         //Testare tema 4
        
