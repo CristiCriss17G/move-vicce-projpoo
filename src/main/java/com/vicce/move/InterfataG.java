@@ -24,11 +24,11 @@ InterfataG(){
   genereazaBT.addActionListener(new ActionListnerGenerareDate(nrTF));
 
 
-  JLabel capacitateM = new JLabel("Capacitate motor:");
+  JLabel capacitateM = new JLabel("Capacitatea:");
   capacitateM.setBounds(20,100,80,20);
 
   JTextField capacitateMTF = new JTextField();
-  capacitateMTF.setBounds(20,130,200,30);
+  capacitateMTF.setBounds(120,100,100,20);
 
   JButton capacitateMBT= new JButton("Filtreaza dupa capacitate motor ");
   capacitateMBT.setBounds(20,130,200,30);
@@ -42,7 +42,7 @@ InterfataG(){
   frame.add(capacitateMTF);
   frame.add(capacitateMBT);
 
-  frame.setSize(255,250);
+  frame.setSize(350,350);
   frame.setTitle("Masini Electrice");
   frame.setLayout(null);
   frame.setVisible(true);
