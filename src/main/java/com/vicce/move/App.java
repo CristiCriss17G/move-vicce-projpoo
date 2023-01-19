@@ -21,9 +21,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 800, 550);
+        scene = new Scene(loadFXML("primary"), 960, 640);
         stage.setScene(scene);
         stage.setTitle("Vehicule");
+        // set app icon
+        // stage.getIcons().add(new Image("file:resources/images/icon.png"));
         stage.show();
     }
 
