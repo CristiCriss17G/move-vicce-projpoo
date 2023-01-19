@@ -2,6 +2,9 @@ package com.vicce.move;
 
 import java.util.ArrayList;
 
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 public class VehiculFMSport extends VehiculFaraMotor {
     public static enum TipTeren {
         asfalt, nisip, zapada, gheata, munte, panta, pietris
@@ -44,9 +47,40 @@ public class VehiculFMSport extends VehiculFaraMotor {
                 : echipamentProtectie;
     }
 
+    public VehiculFMSport(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int nrRoti, double greutate,
+            int anFabricatie, int nrPedale,
+            int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie> echipamentProtectie) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, greutate, anFabricatie, nrPedale, acceleratie);
+        this.tipTeren = tipTeren;
+        this.echipamentProtectie = echipamentProtectie == null || echipamentProtectie.size() == 0
+                ? new ArrayList<EchipamentProtectie>() {
+                    {
+                        add(EchipamentProtectie.nimic);
+                    }
+                }
+                : echipamentProtectie;
+    }
+
     public VehiculFMSport(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
             int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie> echipamentProtectie, long id) {
         super(vitezaMax, pret, nrRoti, greutate, anFabricatie, nrPedale, acceleratie, id);
+        this.tipTeren = tipTeren;
+        this.echipamentProtectie = echipamentProtectie == null || echipamentProtectie.size() == 0
+                ? new ArrayList<EchipamentProtectie>() {
+                    {
+                        add(EchipamentProtectie.nimic);
+                    }
+                }
+                : echipamentProtectie;
+    }
+
+    public VehiculFMSport(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int nrRoti, double greutate,
+            int anFabricatie, int nrPedale,
+            int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie> echipamentProtectie, long id) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, greutate, anFabricatie, nrPedale, acceleratie,
+                id);
         this.tipTeren = tipTeren;
         this.echipamentProtectie = echipamentProtectie == null || echipamentProtectie.size() == 0
                 ? new ArrayList<EchipamentProtectie>() {
@@ -102,6 +136,22 @@ public class VehiculFMSport extends VehiculFaraMotor {
         super.afisare();
         System.out.println("Tip teren: " + this.tipTeren);
         System.out.println("Echipament protectie: " + this.echipamentProtectie);
+    }
+
+    public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
+        ArrayList<TableColumn<Mobilitate, ?>> columns = VehiculFaraMotor.getTableColumns();
+
+        TableColumn<Mobilitate, TipTeren> tipTerenColumn = new TableColumn<>("Tip teren");
+        tipTerenColumn.setCellValueFactory(new PropertyValueFactory<>("tipTeren"));
+        columns.add(tipTerenColumn);
+
+        TableColumn<Mobilitate, ArrayList<EchipamentProtectie>> echipamentProtectieColumn = new TableColumn<>(
+                "Echipament protectie");
+        echipamentProtectieColumn.setCellValueFactory(
+                new PropertyValueFactory<>("echipamentProtectie"));
+        columns.add(echipamentProtectieColumn);
+
+        return columns;
     }
 
     @Override

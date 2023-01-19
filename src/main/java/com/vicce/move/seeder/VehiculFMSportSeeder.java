@@ -8,6 +8,7 @@ import java.nio.file.NoSuchFileException;
 
 import com.vicce.move.VehiculFMSport;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,6 +23,8 @@ public class VehiculFMSportSeeder {
     private static final int MIN_VITEZA = 100;
     private static final int MAX_PRET = 10000;
     private static final int MIN_PRET = 500;
+    private static final String[] manufacturers = { "Nike", "Adidas", "Under Armour", "Puma", "Reebok", "Asics",
+            "New Balance", "Jordan", "Wilson", "Columbia" };
     private static final int MAX_AN = 2020;
     private static final int MIN_AN = 1990;
     private static final int MAX_NRROTI = 8;
