@@ -13,13 +13,13 @@ public class InterfataG {
 InterfataG(){
   JFrame frame=new JFrame();
 
-  JLabel nr=new JLabel("Nr. masini:");
+  JLabel nr=new JLabel("Numarul de masici:");
   nr.setBounds(20,20,80,20);
 
   JTextField nrTF= new JTextField();
   nrTF.setBounds(120,20,100,20);
 
-  JButton genereazaBT= new JButton("Genereaza date");
+  JButton genereazaBT= new JButton("Export date:");
   genereazaBT.setBounds(20,50,200,30);
   genereazaBT.addActionListener(new ActionListnerGenerareDate(nrTF));
 
@@ -30,7 +30,7 @@ InterfataG(){
   JTextField capacitateMTF = new JTextField();
   capacitateMTF.setBounds(120,100,100,20);
 
-  JButton capacitateMBT= new JButton("Filtreaza dupa capacitate motor ");
+  JButton capacitateMBT= new JButton("Filtreaza capacitatea:");
   capacitateMBT.setBounds(20,130,200,30);
   capacitateMBT.addActionListener(new ActionListenerFiltrareDate(capacitateMTF));
 
@@ -43,7 +43,7 @@ InterfataG(){
   frame.add(capacitateMBT);
 
   frame.setSize(350,350);
-  frame.setTitle("Masini Electrice");
+  frame.setTitle("Electric cars");
   frame.setLayout(null);
   frame.setVisible(true);
   frame.setResizable(false);
