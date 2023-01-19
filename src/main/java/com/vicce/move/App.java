@@ -127,7 +127,7 @@ public class App extends Application {
 
     static void addVehicle() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Introduceti numarul de vehicule de tipul VehiculFMSport: ");
+        System.out.println("Introduceti numarul de vehicule de tipul VehiculFMAgrement: ");
         int nr = scanner.nextInt();
         ArrayList<VehiculFMAgrement> vehiculeOld;
         try {
@@ -154,7 +154,7 @@ public class App extends Application {
         Scanner scanner = new Scanner(System.in);
         ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
         VehiculFMAgrementSeeder.JSONseed(vehicule);
-        System.out.println("Introduceti numarul de vehicule de tipul VehiculFMSport: ");
+        System.out.println("Introduceti numarul de vehicule de tipul VehiculFMAgrement: ");
         int nr = scanner.nextInt();
         ArrayList<VehiculFMAgrement> vehicule3 = VehiculFMAgrementSeeder.seed(nr);
         VehiculFMAgrementSeeder.JSONseed(vehicule3);

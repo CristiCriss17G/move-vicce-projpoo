@@ -1,6 +1,9 @@
 package com.vicce.move;
 
-public abstract class Mobilitate implements Comparable<Mobilitate> {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable {
     private static long idPool = 1;
 
     /**
@@ -30,6 +33,14 @@ public abstract class Mobilitate implements Comparable<Mobilitate> {
         this.id = idPool++;
         this.vitezaMax = vitezaMax;
         this.pret = pret;
+    }
+
+    public Mobilitate(float vitezaMax, float pret, long id) {
+        this.id = idPool++;
+        this.vitezaMax = vitezaMax;
+        this.pret = pret;
+        if (idPool <= id)
+        idPool = id + 1;
     }
 
     public final long getId() {

@@ -35,6 +35,16 @@ public class VehiculFaraMotor extends Mobilitate {
         this.acceleratie = acceleratie;
     }
 
+    public VehiculFaraMotor(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
+            int acceleratie, long id) {
+        super(vitezaMax, pret, id);
+        this.nrRoti = nrRoti;
+        this.greutate = greutate;
+        this.anFabricatie = anFabricatie;
+        this.nrPedale = nrPedale;
+        this.acceleratie = acceleratie;
+    }
+
     public int getNrRoti() {
         return this.nrRoti;
     }

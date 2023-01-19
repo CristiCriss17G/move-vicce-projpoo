@@ -55,6 +55,21 @@ public class VehiculFMAgrement extends VehiculFaraMotor {
         this.categVarsta = categVarsta;
     }
 
+    public VehiculFMAgrement(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
+            int acceleratie, ArrayList<EchipamentProtectie> echipamentProtectie, TipTeren tipTeren,
+            CategVarsta categVarsta, long id) {
+        super(vitezaMax, pret, nrRoti, greutate, anFabricatie, nrPedale, acceleratie, id);
+        this.echipamentProtectie = echipamentProtectie == null || echipamentProtectie.size() == 0
+                ? new ArrayList<EchipamentProtectie>() {
+                    {
+                        add(EchipamentProtectie.nimic);
+                    }
+                }
+                : echipamentProtectie;
+        this.tipTeren = tipTeren;
+        this.categVarsta = categVarsta;
+    }
+
     public ArrayList<EchipamentProtectie> getEchipamentProtectie() {
         return this.echipamentProtectie;
     }
