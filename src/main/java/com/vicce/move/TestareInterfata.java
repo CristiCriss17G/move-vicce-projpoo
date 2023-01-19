@@ -17,7 +17,7 @@ public class TestareInterfata {
         JTextField nrTF =new JTextField();
         nrTF.setBounds(120,20,100,20);
 
-        JButton genereazaBT =new JButton("Genereaza date");
+        JButton genereazaBT =new JButton("Genereaza masini");
         genereazaBT.setBounds(20,50,200,30);
         genereazaBT.addActionListener(new ActionListenerGenerareDate(nrTF));
 
@@ -50,7 +50,6 @@ public class TestareInterfata {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		TestareInterfata i1 = new TestareInterfata();
 	}
 
