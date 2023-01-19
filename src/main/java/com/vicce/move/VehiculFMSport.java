@@ -77,8 +77,8 @@ public class VehiculFMSport extends VehiculFaraMotor {
             float vitezaMinima) {
         ArrayList<VehiculFMSport> vehiculeFiltrate = new ArrayList<VehiculFMSport>();
         for (VehiculFMSport vehicul : vehicule) {
-            if (vehicul.getVitezaMax() <= vitezaMaxim
-                    && vehicul.getVitezaMax() >= vitezaMinima) {
+            if ((vitezaMaxim == 0 || vehicul.getVitezaMax() <= vitezaMaxim)
+                    && (vitezaMinima == 0 || vehicul.getVitezaMax() >= vitezaMinima)) {
                 vehiculeFiltrate.add(vehicul);
             }
         }
@@ -89,8 +89,8 @@ public class VehiculFMSport extends VehiculFaraMotor {
             float pretMinim) {
         ArrayList<VehiculFMSport> vehiculeFiltrate = new ArrayList<VehiculFMSport>();
         for (VehiculFMSport vehicul : vehicule) {
-            if (vehicul.getPret() <= pretMaxim
-                    && vehicul.getPret() >= pretMinim) {
+            if ((pretMaxim == 0 || vehicul.getPret() <= pretMaxim)
+                    && (pretMinim == 0 || vehicul.getPret() >= pretMinim)) {
                 vehiculeFiltrate.add(vehicul);
             }
         }

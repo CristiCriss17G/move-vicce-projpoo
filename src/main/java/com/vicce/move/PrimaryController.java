@@ -56,6 +56,8 @@ public class PrimaryController {
         textFieldVitezaMax.setTextFormatter(vitezaMaxFormatter);
         textFieldVitezaMax.setPromptText("Viteza maxima");
 
+        showData();
+
     }
 
     @FXML
