@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Pair;
 
 public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable {
     private static long idPool = 1;

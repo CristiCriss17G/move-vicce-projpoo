@@ -8,7 +8,6 @@ import java.nio.file.NoSuchFileException;
 
 import com.vicce.move.VehiculFMSport;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -25,6 +24,19 @@ public class VehiculFMSportSeeder {
     private static final int MIN_PRET = 500;
     private static final String[] manufacturers = { "Nike", "Adidas", "Under Armour", "Puma", "Reebok", "Asics",
             "New Balance", "Jordan", "Wilson", "Columbia" };
+    private static final String[] models = { "Road Bike", "Mountain Bike", "Hybrid Bike", "Touring Bike",
+            "Fixed Gear Bike", "BMX Bike", "Cruiser Bike", "Tandem Bike", "Folding Bike", "Recumbent Bike",
+            "Skateboard", "Longboard", "Inline Skates", "Roller Skates", "Scooter", "Unicycle" };
+    private static final String[] types = { "Road", "Mountain", "Hybrid", "Touring", "Fixed Gear", "BMX", "Cruiser" };
+    private static final String[] proprietari = { "Andrea Ortiz", "Kadence Carney", "Hunter Heath", "Elianna Diaz",
+            "Marina Barajas", "Ayanna Daniel", "Skylar Jensen", "Laura Hudson", "Oswaldo Rosario", "Marvin Clayton",
+            "Nora Avila", "Tony Yang", "Jesus Beck", "Cayden Hurst", "Brayden Young", "Esteban Larsen",
+            "Scarlett Horne", "Logan Estes", "Kyra Berger", "Charlize Wang", "Kael Gomez", "Vivian Levy",
+            "Isabella Grant", "Spencer Hooper", "Danica Kane", "Emelia Hernandez", "Armani Hammond", "Raquel Burke",
+            "Ruth Christian", "Prince Kim", "Ellis Wright", "Penelope Bean", "Raul Waller", "Kaylynn Hayden",
+            "Sean Crawford", "Kaya Roth", "Ally Cross", "Sage King", "Payten Bentley", "Gianni Woodward",
+            "Yandel Marshall", "Kailey Kramer", "Dax Bolton", "Makenna Parks", "Dangelo Vang", "Sandra Schmidt",
+            "Jon Carson", "Haiden Newton", "Rachel Stanton", "Jaylon Cobb" };
     private static final int MAX_AN = 2020;
     private static final int MIN_AN = 1990;
     private static final int MAX_NRROTI = 8;
@@ -47,6 +59,10 @@ public class VehiculFMSportSeeder {
         for (int i = 0; i < nr; i++) {
             float vitezaMax = random.nextFloat() * (MAX_VITEZA - MIN_VITEZA) + MIN_VITEZA;
             float pret = random.nextFloat() * (MAX_PRET - MIN_PRET) + MIN_PRET;
+            String marca = manufacturers[random.nextInt(manufacturers.length)];
+            String model = models[random.nextInt(models.length)];
+            String tip = types[random.nextInt(types.length)];
+            String proprietar = proprietari[random.nextInt(proprietari.length)];
             int nrRoti = random.nextInt(MAX_NRROTI - MIN_NRROTI) + MIN_NRROTI;
             float greutate = random.nextFloat() * (MAX_GREUTATE - MIN_GREUTATE) + MIN_GREUTATE;
             int an = random.nextInt(MAX_AN - MIN_AN) + MIN_AN;
@@ -58,7 +74,8 @@ public class VehiculFMSportSeeder {
             for (int j = 0; j < nrEchipamente; j++) {
                 echipamente.add(echipamenteProtectie[random.nextInt(echipamenteProtectie.length)]);
             }
-            VehiculFMSport vfm = new VehiculFMSport(vitezaMax, pret, nrRoti, greutate, an, nrPedale, acceleratie,
+            VehiculFMSport vfm = new VehiculFMSport(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+                    greutate, an, nrPedale, acceleratie,
                     tipTeren,
                     echipamente);
             // vfm.afisare();
@@ -101,6 +118,10 @@ public class VehiculFMSportSeeder {
             vehicul.put("id", vfm.getId());
             vehicul.put("vitezaMax", vfm.getVitezaMax());
             vehicul.put("pret", vfm.getPret());
+            vehicul.put("marca", vfm.getMarca());
+            vehicul.put("model", vfm.getModel());
+            vehicul.put("tip", vfm.getTip());
+            vehicul.put("proprietar", vfm.getProprietar());
             vehicul.put("nrRoti", vfm.getNrRoti());
             vehicul.put("greutate", vfm.getGreutate());
             vehicul.put("an", vfm.getAnFabricatie());
@@ -135,6 +156,10 @@ public class VehiculFMSportSeeder {
                 long id = vehicul.getLong("id");
                 float vitezaMax = (float) vehicul.getDouble("vitezaMax");
                 float pret = (float) vehicul.getDouble("pret");
+                String marca = vehicul.getString("marca");
+                String model = vehicul.getString("model");
+                String tip = vehicul.getString("tip");
+                String proprietar = vehicul.getString("proprietar");
                 int nrRoti = vehicul.getInt("nrRoti");
                 float greutate = (float) vehicul.getDouble("greutate");
                 int an = vehicul.getInt("an");
@@ -146,7 +171,8 @@ public class VehiculFMSportSeeder {
                 for (int j = 0; j < echipamenteJSON.length(); j++) {
                     echipamente.add(VehiculFMSport.EchipamentProtectie.valueOf(echipamenteJSON.getString(j)));
                 }
-                VehiculFMSport vfm = new VehiculFMSport(vitezaMax, pret, nrRoti, greutate, an, nrPedale,
+                VehiculFMSport vfm = new VehiculFMSport(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+                        greutate, an, nrPedale,
                         acceleratie,
                         tipTeren,
                         echipamente, id);

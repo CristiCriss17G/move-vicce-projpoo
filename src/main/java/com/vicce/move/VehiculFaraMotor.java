@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Pair;
 
 public class VehiculFaraMotor extends Mobilitate {
     protected int nrRoti;

@@ -153,11 +153,11 @@ public class PrimaryController {
             vitezaMax = 0;
         }
 
+        tableView.getColumns().setAll(VehiculFMSport.getTableColumns());
+
         mobilitateList.addAll(App.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
 
         tableView.setItems(mobilitateList);
-        tableView.getColumns().setAll(VehiculFMSport.getTableColumns());
-    
 
     }
 

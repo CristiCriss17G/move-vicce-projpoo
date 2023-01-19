@@ -107,7 +107,7 @@ public class VehiculFMSport extends VehiculFaraMotor {
         this.echipamentProtectie = echipamentProtectie;
     }
 
-    public ArrayList<VehiculFMSport> filtrareViteza(ArrayList<VehiculFMSport> vehicule, float vitezaMaxim,
+    public static ArrayList<VehiculFMSport> filtrareViteza(ArrayList<VehiculFMSport> vehicule, float vitezaMaxim,
             float vitezaMinima) {
         ArrayList<VehiculFMSport> vehiculeFiltrate = new ArrayList<VehiculFMSport>();
         for (VehiculFMSport vehicul : vehicule) {
@@ -119,7 +119,7 @@ public class VehiculFMSport extends VehiculFaraMotor {
         return vehiculeFiltrate;
     }
 
-    public ArrayList<VehiculFMSport> filtrarePret(ArrayList<VehiculFMSport> vehicule, float pretMaxim,
+    public static ArrayList<VehiculFMSport> filtrarePret(ArrayList<VehiculFMSport> vehicule, float pretMaxim,
             float pretMinim) {
         ArrayList<VehiculFMSport> vehiculeFiltrate = new ArrayList<VehiculFMSport>();
         for (VehiculFMSport vehicul : vehicule) {

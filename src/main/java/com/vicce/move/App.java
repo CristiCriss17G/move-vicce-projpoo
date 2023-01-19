@@ -49,11 +49,10 @@ public class App extends Application {
 
     static ArrayList<VehiculFMSport> getVehicule(float pretMin, float pretMax, float vitezaMin, float vitezaMax) {
         ArrayList<VehiculFMSport> vehicule = VehiculFMSportSeeder.JSONReadSeed("vehicule.test.json");
-        VehiculFMSport filtru = new VehiculFMSport();
         if (pretMin > 0 || pretMax > 0)
-            vehicule = filtru.filtrarePret(vehicule, pretMax, pretMin);
+            vehicule = VehiculFMSport.filtrarePret(vehicule, pretMax, pretMin);
         if (vitezaMin > 0 || vitezaMax > 0)
-            vehicule = filtru.filtrareViteza(vehicule, vitezaMax, vitezaMin);
+            vehicule = VehiculFMSport.filtrareViteza(vehicule, vitezaMax, vitezaMin);
         return vehicule;
     }
 
@@ -76,14 +75,13 @@ public class App extends Application {
                 return sb.toString();
             }
             System.out.println("Doriti sa filtrati dupa pret? (y/n)");
-            VehiculFMSport filtru = new VehiculFMSport();
             String raspuns = scanner.next();
             if (raspuns.equals("y")) {
                 System.out.println("Introduceti pretul maxim: ");
                 float pretMaxim = scanner.nextFloat();
                 System.out.println("Vehiculele minim: ");
                 float pretMinim = scanner.nextFloat();
-                ArrayList<VehiculFMSport> vehiculeFiltrate = filtru.filtrarePret(vehicule2, pretMaxim,
+                ArrayList<VehiculFMSport> vehiculeFiltrate = VehiculFMSport.filtrarePret(vehicule2, pretMaxim,
                         pretMinim);
                 for (VehiculFMSport vehicul : vehiculeFiltrate) {
                     vehicul.afisare();
@@ -97,7 +95,7 @@ public class App extends Application {
                 float vitezaMaxima = scanner.nextFloat();
                 System.out.println("Introduceti viteza minima: ");
                 float vitezaMinima = scanner.nextFloat();
-                ArrayList<VehiculFMSport> vehiculeFiltrate = filtru.filtrareViteza(vehicule2, vitezaMaxima,
+                ArrayList<VehiculFMSport> vehiculeFiltrate = VehiculFMSport.filtrareViteza(vehicule2, vitezaMaxima,
                         vitezaMinima);
                 for (VehiculFMSport vehicul : vehiculeFiltrate) {
                     vehicul.afisare();
