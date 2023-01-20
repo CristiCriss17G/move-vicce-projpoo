@@ -52,17 +52,43 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     super(vitezaMax, pret, nrRoti, nrLocuri);
 
     this.nrUsi = nrUsi;
-    this.capacitateMotor = capacitateMotor;
-    this.autonomie = autonomie;
-    this.greutate = greutate;
+    this.capacitateMotor = capacitateMotor; //
+    this.autonomie = autonomie;//
+    this.greutate = greutate;//
     this.nrScaune = nrScaune;
     this.litriPortbagaj = litriPortbagaj;
-    this.kmReali = kmReali;
-    this.anFabricatie = anFabricatie;
+    this.kmReali = kmReali;//
+    this.anFabricatie = anFabricatie;//
     this.nrPedale = nrPedale;
     this.cuplu = cuplu;
   }
 
+  public static ArrayList<VehiculMElectric> filtrareViteza(ArrayList<VehiculMElectric> vehicule, float vitezaMaxim,
+            float vitezaMinima) {
+        ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
+        for (VehiculMElectric vehicul : vehicule) {
+            if ((vitezaMaxim == 0 || vehicul.getVitezaMax() <= vitezaMaxim)
+                    && (vitezaMinima == 0 || vehicul.getVitezaMax() >= vitezaMinima)) {
+                vehiculeFiltrate.add(vehicul);
+            }
+        }
+        return vehiculeFiltrate;
+    }
+  
+
+    public static ArrayList<VehiculMElectric> filtrarePret(ArrayList<VehiculMElectric> vehicule, float pretMaxim,
+    float pretMinim) {
+ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
+for (VehiculMElectric vehicul : vehicule) {
+    if ((pretMaxim == 0 || vehicul.getPret() <= pretMaxim)
+            && (pretMinim == 0 || vehicul.getPret() >= pretMinim)) {
+        vehiculeFiltrate.add(vehicul);
+    }
+  }
+  return vehiculeFiltrate;  
+}
+
+    
   public int getCapacitateMotor() {
     return this.capacitateMotor;
   }
@@ -121,3 +147,4 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     " numarPedale= "+nrPedale+" cuplu= "+cuplu+".";
   }
 }
+
