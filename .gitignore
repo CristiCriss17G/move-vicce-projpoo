@@ -25,4 +25,4 @@ replay_pid*
 
 .vscode/
 *.test.json
-target/classes/
+target/
