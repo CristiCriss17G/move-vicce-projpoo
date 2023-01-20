@@ -7,6 +7,3 @@ module com.vicce.move {
 
   exports com.vicce.move;
 }
-
-
-module-info.java
