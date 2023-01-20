@@ -1,5 +1,5 @@
 package com.vicce.move;
-
+//aici
 public abstract class Mobilitate {
     protected float vitezaMax;
     protected float pret;

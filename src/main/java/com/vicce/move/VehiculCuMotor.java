@@ -1,5 +1,7 @@
 package com.vicce.move;
 
+
+//aici
 public class VehiculCuMotor extends Mobilitate {
     protected int nrRoti;
     protected int nrLocuri;

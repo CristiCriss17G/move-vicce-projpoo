@@ -22,7 +22,7 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   };
   protected ArrayList<Electric> electrics;
 
-  VehiculMElectric() {
+  public VehiculMElectric() {
     super();
     this.capacitateMotor = 10;
     this.autonomie = 400;
