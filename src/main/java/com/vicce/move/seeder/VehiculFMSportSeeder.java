@@ -137,6 +137,15 @@ public class VehiculFMSportSeeder {
             vehiculeJSON.put(vehicul);
         }
 
+        try {
+            FileWriter file = new FileWriter(path);
+            file.write(vehiculeJSON.toString());
+            file.flush();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return vehiculeJSON;
     }
 

@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
@@ -34,9 +33,6 @@ public class PrimaryController {
     @FXML
     private TextField textFieldVitezaMax;
 
-    @FXML
-    private ComboBox<String> comboBoxSelectVehicul;
-
     public void initialize() {
         UnaryOperator<TextFormatter.Change> floatFilter = change -> {
             String newText = change.getControlNewText();
@@ -59,14 +55,8 @@ public class PrimaryController {
         textFieldVitezaMax.setTextFormatter(vitezaMaxFormatter);
         textFieldVitezaMax.setPromptText("Viteza maxima");
 
-        initializeComboBox();
-
         showData();
 
-    }
-
-    private void initializeComboBox() {
-        comboBoxSelectVehicul.getItems().addAll("VehiculFMSport", "VehiculFMSport", "VehiculFMSport");
     }
 
     private void resetTable() {
