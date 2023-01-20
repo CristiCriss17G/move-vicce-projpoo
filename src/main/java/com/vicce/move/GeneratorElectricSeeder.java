@@ -3,11 +3,10 @@ package com.vicce.move;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GeneratorElectric {
+public class GeneratorElectricSeeder {
   
   public static ArrayList<VehiculMElectric> genereazaRandomMasini(int n){
     ArrayList<VehiculMElectric> listaMasini = new ArrayList<>();
-    
     VehiculMElectric primaMasina;
     for(int i=0;i<n;i++){
       int capacitateMotor =new Random().nextInt(2000);
