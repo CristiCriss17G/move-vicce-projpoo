@@ -8,7 +8,9 @@ import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
 import java.util.function.UnaryOperator;
 
-public class addVehiculFMSport {
+import com.vicce.move.seeder.*;
+
+public class AddVehiculController {
     @FXML
     private TextField textFieldAddVehicule;
 
@@ -44,7 +46,7 @@ public class addVehiculFMSport {
             numarVehicule = 0;
         }
 
-        if (App.addVehicle(numarVehicule))
+        if (VehiculFMSportSeeder.addVehicle(numarVehicule))
             labelStatus.setText("Vehicule adaugate cu succes!");
         else
             labelStatus.setText("Nu s-au putut adauga vehiculele!");

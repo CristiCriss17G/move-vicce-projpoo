@@ -1,7 +1,6 @@
 package com.vicce.move;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.function.UnaryOperator;
 
@@ -10,10 +9,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.FloatStringConverter;
 
@@ -35,6 +33,9 @@ public class PrimaryController {
 
     @FXML
     private TextField textFieldVitezaMax;
+
+    @FXML
+    private ComboBox<String> comboBoxSelectVehicul;
 
     public void initialize() {
         UnaryOperator<TextFormatter.Change> floatFilter = change -> {
@@ -58,69 +59,25 @@ public class PrimaryController {
         textFieldVitezaMax.setTextFormatter(vitezaMaxFormatter);
         textFieldVitezaMax.setPromptText("Viteza maxima");
 
+        initializeComboBox();
+
         showData();
 
+    }
+
+    private void initializeComboBox() {
+        comboBoxSelectVehicul.getItems().addAll("VehiculFMSport", "VehiculFMSport", "VehiculFMSport");
+    }
+
+    private void resetTable() {
+        tableView.getItems().clear();
+        tableView.getColumns().clear();
     }
 
     @FXML
     private void showData() {
         // clear the table first
-        tableView.getItems().clear();
-        tableView.getColumns().clear();
-
-        /*
-         * TableColumn<VehiculFMSport, Long> idColumn = new TableColumn<>("ID");
-         * idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-         * tableView.getColumns().add(idColumn);
-         * 
-         * TableColumn<VehiculFMSport, Float> vitezaMaxColumn = new
-         * TableColumn<>("Viteza maxima");
-         * vitezaMaxColumn.setCellValueFactory(new PropertyValueFactory<>("vitezaMax"));
-         * tableView.getColumns().add(vitezaMaxColumn);
-         * 
-         * TableColumn<VehiculFMSport, Float> pretColumn = new TableColumn<>("Pret");
-         * pretColumn.setCellValueFactory(new PropertyValueFactory<>("pret"));
-         * tableView.getColumns().add(pretColumn);
-         * 
-         * TableColumn<VehiculFMSport, Integer> nrRotiColumn = new
-         * TableColumn<>("Numar roti");
-         * nrRotiColumn.setCellValueFactory(new PropertyValueFactory<>("nrRoti"));
-         * tableView.getColumns().add(nrRotiColumn);
-         * 
-         * TableColumn<VehiculFMSport, Double> greutateColumn = new
-         * TableColumn<>("Greutate");
-         * greutateColumn.setCellValueFactory(new PropertyValueFactory<>("greutate"));
-         * tableView.getColumns().add(greutateColumn);
-         * 
-         * TableColumn<VehiculFMSport, Integer> anFabricatieColumn = new
-         * TableColumn<>("An fabricatie");
-         * anFabricatieColumn.setCellValueFactory(new
-         * PropertyValueFactory<>("anFabricatie"));
-         * tableView.getColumns().add(anFabricatieColumn);
-         * 
-         * TableColumn<VehiculFMSport, Integer> nrPedaleColumn = new
-         * TableColumn<>("Numar pedale");
-         * nrPedaleColumn.setCellValueFactory(new PropertyValueFactory<>("nrPedale"));
-         * tableView.getColumns().add(nrPedaleColumn);
-         * 
-         * TableColumn<VehiculFMSport, Integer> acceleratieColumn = new
-         * TableColumn<>("Acceleratie");
-         * acceleratieColumn.setCellValueFactory(new
-         * PropertyValueFactory<>("acceleratie"));
-         * tableView.getColumns().add(acceleratieColumn);
-         * 
-         * TableColumn<VehiculFMSport, VehiculFMSport.TipTeren> tipTerenColumn = new
-         * TableColumn<>("Tip teren");
-         * tipTerenColumn.setCellValueFactory(new PropertyValueFactory<>("tipTeren"));
-         * tableView.getColumns().add(tipTerenColumn);
-         * 
-         * TableColumn<VehiculFMSport, ArrayList<VehiculFMSport.EchipamentProtectie>>
-         * echipamentProtectieColumn = new TableColumn<>(
-         * "Echipament protectie");
-         * echipamentProtectieColumn.setCellValueFactory(new
-         * PropertyValueFactory<>("echipamentProtectie"));
-         * tableView.getColumns().add(echipamentProtectieColumn);
-         */
+        resetTable();
 
         ObservableList<Mobilitate> mobilitateList = FXCollections.observableArrayList();
 
@@ -155,7 +112,7 @@ public class PrimaryController {
 
         tableView.getColumns().setAll(VehiculFMSport.getTableColumns());
 
-        mobilitateList.addAll(App.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
+        mobilitateList.addAll(VehiculFMSportSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
 
         tableView.setItems(mobilitateList);
 
@@ -175,7 +132,7 @@ public class PrimaryController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            App.resetData();
+            VehiculFMSportSeeder.resetData();
             App.setRoot("addVehiculFMSport");
         }
     }

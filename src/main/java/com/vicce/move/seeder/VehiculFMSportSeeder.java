@@ -16,6 +16,7 @@ import org.json.JSONArray;
 
 public class VehiculFMSportSeeder {
     private static Random random = new Random();
+    private static final String fileName = "vehicule.test.json";
     private static final int MAX = 100;
     private static final int MIN = 1;
     private static final int MAX_VITEZA = 300;
@@ -78,8 +79,6 @@ public class VehiculFMSportSeeder {
                     greutate, an, nrPedale, acceleratie,
                     tipTeren,
                     echipamente);
-            // vfm.afisare();
-            // System.out.println(vfm.raportVitezaPret());
             vehicule.add(vfm);
         }
         return vehicule;
@@ -94,11 +93,11 @@ public class VehiculFMSportSeeder {
     }
 
     public static void JSONseed(ArrayList<VehiculFMSport> vehicule) {
-        JSONseed(vehicule, "vehicule.test.json");
+        JSONseed(vehicule, fileName);
     }
 
     public static void JSONseed(boolean canBeNull, ArrayList<VehiculFMSport> vehicule) {
-        JSONseed(canBeNull, vehicule, "vehicule.test.json");
+        JSONseed(canBeNull, vehicule, fileName);
     }
 
     public static void JSONseed(ArrayList<VehiculFMSport> vehicule, String path) {
@@ -141,7 +140,7 @@ public class VehiculFMSportSeeder {
         }
     }
 
-    public static ArrayList<VehiculFMSport> JSONReadSeed(String path) {
+    public static ArrayList<VehiculFMSport> JSONReadSeed(String path) throws IllegalArgumentException {
         if (path == null || path.isEmpty()) {
             throw new IllegalArgumentException("Path-ul nu poate fi nul sau gol");
         }
@@ -188,4 +187,52 @@ public class VehiculFMSportSeeder {
 
         return vehicule;
     }
+
+    public static ArrayList<VehiculFMSport> getVehicule() {
+        ArrayList<VehiculFMSport> vehicule;
+        try {
+            vehicule = JSONReadSeed(fileName);
+        } catch (IllegalArgumentException e) {
+            vehicule = new ArrayList<VehiculFMSport>();
+        }
+        return vehicule;
+    }
+
+    public static ArrayList<VehiculFMSport> getVehicule(float pretMin, float pretMax, float vitezaMin,
+            float vitezaMax) {
+        ArrayList<VehiculFMSport> vehicule;
+        try {
+            vehicule = JSONReadSeed(fileName);
+        } catch (IllegalArgumentException e) {
+            vehicule = new ArrayList<VehiculFMSport>();
+        }
+        if (pretMin > 0 || pretMax > 0)
+            vehicule = VehiculFMSport.filtrarePret(vehicule, pretMax, pretMin);
+        if (vitezaMin > 0 || vitezaMax > 0)
+            vehicule = VehiculFMSport.filtrareViteza(vehicule, vitezaMax, vitezaMin);
+        return vehicule;
+    }
+
+    public static boolean addVehicle(int nr) {
+        ArrayList<VehiculFMSport> vehiculeOld;
+        try {
+            vehiculeOld = JSONReadSeed(fileName);
+        } catch (IllegalArgumentException e) {
+            vehiculeOld = new ArrayList<VehiculFMSport>();
+        }
+        ArrayList<VehiculFMSport> vehiculeNew = seed(nr);
+        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        vehicule.addAll(vehiculeOld);
+        vehicule.addAll(vehiculeNew);
+        JSONseed(vehicule);
+        return true;
+    }
+
+    public static boolean resetData() {
+        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        VehiculFMSportSeeder.JSONseed(true, vehicule);
+        VehiculFMSport.resetIdPool();
+        return true;
+    }
+
 }
