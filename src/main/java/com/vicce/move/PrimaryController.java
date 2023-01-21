@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
@@ -33,6 +34,9 @@ public class PrimaryController {
     @FXML
     private TextField textFieldVitezaMax;
 
+    @FXML
+    private ComboBox<String> comboBoxTipVehicule;
+
     public void initialize() {
         UnaryOperator<TextFormatter.Change> floatFilter = change -> {
             String newText = change.getControlNewText();
@@ -55,8 +59,18 @@ public class PrimaryController {
         textFieldVitezaMax.setTextFormatter(vitezaMaxFormatter);
         textFieldVitezaMax.setPromptText("Viteza maxima");
 
-        showData();
+        initializeComboBox();
 
+        // showData();
+
+    }
+
+    private void initializeComboBox() {
+        ObservableList<String> tipVehiculeList = FXCollections.observableArrayList();
+        tipVehiculeList.add("Toate");
+        tipVehiculeList.add("VehiculFMSport");
+        comboBoxTipVehicule.setItems(tipVehiculeList);
+        comboBoxTipVehicule.getSelectionModel().selectFirst();
     }
 
     private void resetTable() {
@@ -102,7 +116,8 @@ public class PrimaryController {
 
         tableView.getColumns().setAll(VehiculFMSport.getTableColumns());
 
-        mobilitateList.addAll(VehiculFMSportSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
+        mobilitateList
+                .addAll(Seeder.getVehicule(comboBoxTipVehicule.getValue(), pretMin, pretMax, vitezaMin, vitezaMax));
 
         tableView.setItems(mobilitateList);
 
