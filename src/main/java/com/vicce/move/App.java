@@ -1,50 +1,169 @@
 package com.vicce.move;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import com.vicce.move.seeder.VehiculMMotorinaSeeder;
 
-public class App {
-    public static void main(String[] args) {
-        VehiculCuMotor vcm = new VehiculCuMotor(100, 1000, 4, 5);
+/**
+ * Base class for the app with javaFX
+ * Testeaza clasa VehiculFMSport
+ *
+ */
+public class App extends Application {
 
-        vcm.afisare();
+    private static Scene scene;
 
-        System.out.println(vcm.raportVitezaPret());
-
-        VehiculMMotorina m1=new VehiculMMotorina(100,20000,4,5,"Audi","A4",4,2004,100,200);
-        VehiculMMotorina m2=new VehiculMMotorina(150,30000,4,2,"BMW","Seria 2",5,2020,200,175);
-        VehiculMMotorina m3=new VehiculMMotorina(250,25000,4,4,"Audi","A4",3,2014,400,290);
-        VehiculMMotorina m4=new VehiculMMotorina(200,40000,4,5,"Ford","Focus",2,2017,300,3500);
-        VehiculMMotorina m5=new VehiculMMotorina(180,20000,4,5,"Ford","Fiesta",5,2019,500,2500);
-        VehiculMMotorina m6=new VehiculMMotorina();
-        VehiculMMotorina m7=new VehiculMMotorina(m3);
-        VehiculMMotorina m8=new VehiculMMotorina(100,50000,4,4,"Dacia","Logan",6,2021,100,200);
-        VehiculMMotorina m9=new VehiculMMotorina(150,15000,4,5,"BMW","Seria 5",7,2002,100,200);
-        VehiculMMotorina m10=new VehiculMMotorina(m8);
-        VehiculMMotorina[] vmm={m1,m2,m3,m4,m5,m6,m7,m8,m9,m10};
-
-        System.out.println("Afisare elemente din vector:");
-        for (int i=0;i<vmm.length; i++){
-            vmm[i].afisare();
-        }
-        System.out.println("\nAfisare elemente din vector care au mai mult de 200 de cai putere:");
-        for (int i=0;i<vmm.length; i++){
-            if (vmm[i].getPutere()>200){
-            vmm[i].afisare();
-        }
-        }
-        System.out.println("\nAfisare elemente din vector care au pret mai mic de 20000:");
-        for (int i=0;i<vmm.length; i++){
-            if (vmm[i].getPret()<20000){
-            vmm[i].afisare();
-        }
-        }
-
-        ArrayList<VehiculMMotorina> listaVehicule = Generator.genereazaRandomMasini(10);
-System.out.println("\nLista masinilor este =");
-for (VehiculMMotorina vehicul : listaVehicule) {
-    System.out.println(vehicul);
-}
-
+    @Override
+    public void start(Stage stage) throws IOException {
+        scene = new Scene(loadFXML("primary"), 960, 640);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        stage.setScene(scene);
+        stage.setTitle("Vehicule");
+        stage.show();
     }
 
+    static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
+
+    static void showVehicule() {
+        showVehicule(false);
+    }
+
+    static ArrayList<VehiculMMotorina> getVehicule() {
+        ArrayList<VehiculMMotorina> vehicule = VehiculMMotorinaSeeder.JSONReadSeed("vehicule.test.json");
+        return vehicule;
+    }
+
+    static ArrayList<VehiculMMotorina> getVehicule(float pretMin, float pretMax, float vitezaMin, float vitezaMax) {
+        ArrayList<VehiculMMotorina> vehicule = VehiculMMotorinaSeeder.JSONReadSeed("vehicule.test.json");
+        VehiculMMotorina filtru = new VehiculMMotorina();
+        if (pretMin > 0 || pretMax > 0)
+            vehicule = filtru.filtrarePret(vehicule, pretMax, pretMin);
+        if (vitezaMin > 0 || vitezaMax > 0)
+            vehicule = filtru.filtrareViteza(vehicule, vitezaMax, vitezaMin);
+        return vehicule;
+    }
+
+    static String showVehicule(boolean returnVal) {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            ArrayList<VehiculMMotorina> vehicule2 = VehiculMMotorinaSeeder.JSONReadSeed("vehicule.test.json");
+            StringBuilder sb = new StringBuilder();
+            for (VehiculMMotorina vehicul : vehicule2) {
+                if (returnVal) {
+                    sb.append(vehicul.toString());
+                    sb.append(vehicul.raportVitezaPret());
+                } else {
+                    vehicul.afisare();
+                    System.out.println(vehicul.raportVitezaPret());
+                }
+            }
+            if (returnVal) {
+                scanner.close();
+                return sb.toString();
+            }
+            System.out.println("Doriti sa filtrati dupa pret? (y/n)");
+            VehiculMMotorina filtru = new VehiculMMotorina();
+            String raspuns = scanner.next();
+            if (raspuns.equals("y")) {
+                System.out.println("Introduceti pretul maxim: ");
+                float pretMaxim = scanner.nextFloat();
+                System.out.println("Vehiculele minim: ");
+                float pretMinim = scanner.nextFloat();
+                ArrayList<VehiculMMotorina> vehiculeFiltrate = filtru.filtrarePret(vehicule2, pretMaxim,
+                        pretMinim);
+                for (VehiculMMotorina vehicul : vehiculeFiltrate) {
+                    vehicul.afisare();
+                    System.out.println(vehicul.raportVitezaPret());
+                }
+            }
+            System.out.println("Doriti sa filtrati dupa viteza? (y/n)");
+            raspuns = scanner.next();
+            if (raspuns.equals("y")) {
+                System.out.println("Introduceti viteza maxima: ");
+                float vitezaMaxima = scanner.nextFloat();
+                System.out.println("Introduceti viteza minima: ");
+                float vitezaMinima = scanner.nextFloat();
+                ArrayList<VehiculMMotorina> vehiculeFiltrate = filtru.filtrareViteza(vehicule2, vitezaMaxima,
+                        vitezaMinima);
+                for (VehiculMMotorina vehicul : vehiculeFiltrate) {
+                    vehicul.afisare();
+                    System.out.println(vehicul.raportVitezaPret());
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Nu exista vehicule in baza de date");
+        }
+        scanner.close();
+        return "";
+    }
+
+    static boolean addVehicle(int nr) {
+        ArrayList<VehiculMMotorina> vehiculeOld;
+        try {
+            vehiculeOld = VehiculMMotorinaSeeder.JSONReadSeed("vehicule.test.json");
+        } catch (IllegalArgumentException e) {
+            vehiculeOld = new ArrayList<VehiculMMotorina>();
+        }
+        ArrayList<VehiculMMotorina> vehiculeNew = VehiculMMotorinaSeeder.seed(nr);
+        ArrayList<VehiculMMotorina> vehicule = new ArrayList<VehiculMMotorina>();
+        vehicule.addAll(vehiculeOld);
+        vehicule.addAll(vehiculeNew);
+        VehiculMMotorinaSeeder.JSONseed(vehicule);
+        return true;
+    }
+
+    static void addVehicle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduceti numarul de vehicule de tipul VehiculMMotorina: ");
+        int nr = scanner.nextInt();
+        ArrayList<VehiculMMotorina> vehiculeOld;
+        try {
+            vehiculeOld = VehiculMMotorinaSeeder.JSONReadSeed("vehicule.test.json");
+        } catch (IllegalArgumentException e) {
+            vehiculeOld = new ArrayList<VehiculMMotorina>();
+        }
+        ArrayList<VehiculMMotorina> vehiculeNew = VehiculMMotorinaSeeder.seed(nr);
+        ArrayList<VehiculMMotorina> vehicule = new ArrayList<VehiculMMotorina>();
+        vehicule.addAll(vehiculeOld);
+        vehicule.addAll(vehiculeNew);
+        VehiculMMotorinaSeeder.JSONseed(vehicule);
+        scanner.close();
+    }
+
+    static boolean resetData() {
+        ArrayList<VehiculMMotorina> vehicule = new ArrayList<VehiculMMotorina>();
+        VehiculMMotorinaSeeder.JSONseed(true, vehicule);
+        VehiculMMotorina.resetIdPool();
+        return true;
+    }
+
+    static void resetVehicule() {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<VehiculMMotorina> vehicule = new ArrayList<VehiculMMotorina>();
+        VehiculMMotorinaSeeder.JSONseed(vehicule);
+        System.out.println("Introduceti numarul de vehicule de tipul VehiculMMotorina: ");
+        int nr = scanner.nextInt();
+        ArrayList<VehiculMMotorina> vehicule3 = VehiculMMotorinaSeeder.seed(nr);
+        VehiculMMotorinaSeeder.JSONseed(vehicule3);
+        scanner.close();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
 }

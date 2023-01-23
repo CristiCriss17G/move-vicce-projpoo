@@ -1,5 +1,6 @@
 package com.vicce.move;
 
+import java.util.ArrayList;
 
 public class VehiculMMotorina extends VehiculCuMotor {
 
@@ -10,8 +11,7 @@ public class VehiculMMotorina extends VehiculCuMotor {
     protected int putere;
     protected float cuplu;
 
-
-    VehiculMMotorina() {
+    public VehiculMMotorina() {
         super();
         this.model = "Seria 1";
         this.marca = "BMW";
@@ -21,7 +21,7 @@ public class VehiculMMotorina extends VehiculCuMotor {
         this.cuplu = 350;
     }
 
-    VehiculMMotorina(VehiculMMotorina x) {
+    public VehiculMMotorina(VehiculMMotorina x) {
         super(x);
         this.marca = x.marca;
         this.model = x.model;
@@ -31,9 +31,20 @@ public class VehiculMMotorina extends VehiculCuMotor {
         this.cuplu = x.cuplu;
     }
 
-    VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri, String marca, String model,
-            int numarCilindri, int anFabricatie, int putere, int cuplu) {
+    public VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri, String marca, String model,
+            int numarCilindri, int anFabricatie, int putere, float cuplu) {
         super(vitezaMax, pret, nrRoti, nrLocuri);
+        this.marca = marca;
+        this.model = model;
+        this.numarCilindri = numarCilindri;
+        this.anFabricatie = anFabricatie;
+        this.putere = putere;
+        this.cuplu = cuplu;
+    }
+
+    public VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri, String marca, String model,
+            int numarCilindri, int anFabricatie, int putere, float cuplu, long id) {
+        super(vitezaMax, pret, nrRoti, nrLocuri, id);
         this.marca = marca;
         this.model = model;
         this.numarCilindri = numarCilindri;
@@ -93,8 +104,8 @@ public class VehiculMMotorina extends VehiculCuMotor {
     @Override
     public String toString() {
         return "Vehicul cu motor pe motorina " + marca + " " + model + " fabricat in anul " + anFabricatie
-        + " cu " + putere + "cai putere" + " si cu " + numarCilindri + " cilindri si un cuplu de " + cuplu
-        + " Nm.\n";
+                + " cu " + putere + "cai putere" + " si cu " + numarCilindri + " cilindri si un cuplu de " + cuplu
+                + " Nm.\n";
     }
 
     @Override
@@ -103,4 +114,29 @@ public class VehiculMMotorina extends VehiculCuMotor {
                 + " cu " + putere + "cai putere" + " si cu " + numarCilindri + " cilindri si un cuplu de " + cuplu
                 + " Nm.\n");
     }
+
+    public static ArrayList<VehiculMMotorina> filtrareViteza(ArrayList<VehiculMMotorina> vehicule, float vitezaMaxim,
+            float vitezaMinima) {
+        ArrayList<VehiculMMotorina> vehiculeFiltrate = new ArrayList<VehiculMMotorina>();
+        for (VehiculMMotorina vehicul : vehicule) {
+            if ((vitezaMaxim == 0 || vehicul.getVitezaMax() <= vitezaMaxim)
+                    && (vitezaMinima == 0 || vehicul.getVitezaMax() >= vitezaMinima)) {
+                vehiculeFiltrate.add(vehicul);
+            }
+        }
+        return vehiculeFiltrate;
+    }
+
+    public static ArrayList<VehiculMMotorina> filtrarePret(ArrayList<VehiculMMotorina> vehicule, float pretMaxim,
+            float pretMinim) {
+        ArrayList<VehiculMMotorina> vehiculeFiltrate = new ArrayList<VehiculMMotorina>();
+        for (VehiculMMotorina vehicul : vehicule) {
+            if ((pretMaxim == 0 || vehicul.getPret() <= pretMaxim)
+                    && (pretMinim == 0 || vehicul.getPret() >= pretMinim)) {
+                vehiculeFiltrate.add(vehicul);
+            }
+        }
+        return vehiculeFiltrate;
+    }
+
 }
