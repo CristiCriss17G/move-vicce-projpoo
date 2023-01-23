@@ -210,7 +210,7 @@ public class VehiculFMSportSeeder {
                 String tip = vehicul.getString("tip");
                 String proprietar = vehicul.getString("proprietar");
                 int nrRoti = vehicul.getInt("nrRoti");
-                float greutate = (float) vehicul.getDouble("greutate");
+                double greutate = vehicul.getDouble("greutate");
                 int an = vehicul.getInt("an");
                 int nrPedale = vehicul.getInt("nrPedale");
                 int acceleratie = vehicul.getInt("acceleratie");
@@ -298,6 +298,32 @@ public class VehiculFMSportSeeder {
         ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
         vehicule.addAll(vehiculeOld);
         vehicule.addAll(vehiculeNew);
+        return JSONseed(vehicule);
+    }
+
+    public static JSONArray addVehicule(VehiculFMSport vfm) {
+        ArrayList<VehiculFMSport> vehiculeOld;
+        try {
+            vehiculeOld = JSONReadSeed(fileName);
+        } catch (IllegalArgumentException e) {
+            vehiculeOld = new ArrayList<VehiculFMSport>();
+        }
+        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        vehicule.addAll(vehiculeOld);
+        vehicule.add(vfm);
+        return JSONseed(vehicule);
+    }
+
+    public static JSONArray addVehicule(ArrayList<VehiculFMSport> vfm) {
+        ArrayList<VehiculFMSport> vehiculeOld;
+        try {
+            vehiculeOld = JSONReadSeed(fileName);
+        } catch (IllegalArgumentException e) {
+            vehiculeOld = new ArrayList<VehiculFMSport>();
+        }
+        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        vehicule.addAll(vehiculeOld);
+        vehicule.addAll(vfm);
         return JSONseed(vehicule);
     }
 

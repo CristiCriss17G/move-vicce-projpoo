@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 
 import com.vicce.move.Mobilitate;
+import com.vicce.move.VehiculFMSport;
 
 public class Seeder {
 
@@ -38,6 +39,34 @@ public class Seeder {
             default:
                 break;
         }
+    }
+
+    public static boolean addVehicule(String tipVehicul, int nr) {
+        return switch (tipVehicul) {
+            case "Toate", "VehiculFMSport" -> {
+                VehiculFMSportSeeder.addVehicule(nr);
+                yield true;
+            }
+            default -> false;
+        };
+    }
+
+    public static boolean addVehicule(Mobilitate vehicul) {
+        return switch (vehicul.getClass().getSimpleName()) {
+            case "VehiculFMSport" -> {
+                VehiculFMSportSeeder.addVehicule((VehiculFMSport) vehicul);
+                yield true;
+            }
+            default -> false;
+        };
+    }
+
+    public static boolean addVehicule(ArrayList<Mobilitate> vehicule) {
+        boolean success = true;
+        for (Mobilitate vehicul : vehicule) {
+            success = success && addVehicule(vehicul);
+        }
+        return success;
     }
 
 }
