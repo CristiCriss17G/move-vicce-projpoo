@@ -137,8 +137,8 @@ public class PrimaryController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            VehiculMMotorinaSeeder.resetData();
-            App.setRoot("addVehiculeMMotorina");
+            Seeder.resetVehicule(comboBoxTipVehicule.getValue());
+            App.setRoot("addVehiculFMSport");
         }
     }
 
