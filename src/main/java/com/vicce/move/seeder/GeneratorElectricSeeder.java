@@ -6,7 +6,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.NoSuchFileException;
 
+import com.vicce.move.Mobilitate;
 import com.vicce.move.VehiculFMAgrement;
+import com.vicce.move.VehiculMElectric;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -87,15 +90,15 @@ public static ArrayList<VehiculMElectric> seed(int nr) {
     }
 
     public static void JSONseed(boolean canBeNull, ArrayList<VehiculMElectric> vehicule) {
-      JSONseed(canBeNull, vehicule, "vehicule.test.json");
+      JSONseed(vehicule, "vehicule.test.json");
     }
 
     
     public static void JSONseed(ArrayList<VehiculMElectric> vehicule, String path) {
-      JSONseed(false, vehicule, path);
+      JSONseed(vehicule, path);
     }
 
-    public static void JSONseed(boolean canBeNull, ArrayList<VehiculFMAgrement> vehicule, String path)
+    public static void JSONseed(boolean canBeNull, ArrayList<VehiculMElectric> vehicule, String path)
     throws IllegalArgumentException {
       if ((vehicule == null || vehicule.size() == 0) && !canBeNull) {
         throw new IllegalArgumentException("Lista de vehicule nu poate fi nula sau goala");
@@ -106,6 +109,7 @@ public static ArrayList<VehiculMElectric> seed(int nr) {
       VehiculMElectric vfm = vehicule.get(i);
 
       JSONObject vehicul = new JSONObject();
+      Mobilitate vme;
       vehicul.put("vitezaMax", vme.getVitezaMax());
       vehicul.put("pret", vme.getPret());
       vehicul.put("capacitateMotor", vme.getCapacitateMotor());
@@ -130,7 +134,7 @@ public static ArrayList<VehiculMElectric> seed(int nr) {
     if (path == null || path.isEmpty()) {
         throw new IllegalArgumentException("Path-ul nu poate fi nul sau gol");
     }
-    ArrayList<VehiculeMElectric> vehicule = new ArrayList<VehiculMElectric>();
+    ArrayList<VehiculMElectric> vehicule = new ArrayList<VehiculMElectric>();
     try {
       Scanner scanner = new Scanner(Paths.get(path), StandardCharsets.UTF_8.name());
       String content = scanner.useDelimiter("\\A").next();
@@ -197,7 +201,7 @@ public static boolean addVehicle(int nr) {
   } catch (IllegalArgumentException e) {
       vehiculeOld = new ArrayList<VehiculMElectric>();
   }
-  ArrayList<VehiculMElecrtic> vehiculeNew = seed(nr);
+  ArrayList<VehiculMElectric> vehiculeNew = seed(nr);
   ArrayList<VehiculMElectric> vehicule = new ArrayList<VehiculMElectric>();
   vehicule.addAll(vehiculeOld);
   vehicule.addAll(vehiculeNew);
@@ -207,8 +211,8 @@ public static boolean addVehicle(int nr) {
 
 public static boolean resetData() {
   ArrayList<VehiculMElectric> vehicule = new ArrayList<VehiculMElectric>();
-  VehiculFMSportSeeder.JSONseed(true, vehicule);
-  VehiculFMSport.resetIdPool();
+  GeneratorElectricSeeder.JSONseed(true, vehicule);
+  VehiculMElectric.resetIdPool();
   return true;
 }
 
