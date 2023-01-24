@@ -149,8 +149,8 @@ public static ArrayList<VehiculMElectric> seed(int nr) {
         double greutate = vehicul.getDouble("greutate");
         double kmReali = vehicul.getDouble("kmReali");
         int anFabricatie = vehicul.getInt("anFabricatie");
-        VehiculMElectric vme = new VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
-        int autonomie, double greutate,int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,int nrPedale, int cuplu);
+        VehiculMElectric vme = new VehiculMElectric(vitezaMax,pret,nrRoti,nrLocuri,nrUsi,capacitateMotor,
+        autonomie, greutate,nrScaune, litriPortbagaj, kmReali, anFabricatie,nrPedale, cuplu);
                 vehicule.add(vme);
   }
 }
