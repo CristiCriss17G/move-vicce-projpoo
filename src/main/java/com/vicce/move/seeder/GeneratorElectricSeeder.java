@@ -85,11 +85,11 @@ public static ArrayList<VehiculMElectric> seed(int nr) {
         JSONseed(vehicule);
       }
 
-      public static void JSONseed(ArrayList<VehiculMElectric> vehicule) {
+      public static boolean JSONseed(ArrayList<VehiculMElectric> vehicule) {
         JSONseed(vehicule, "vehicule.test.json");
     }
 
-    public static void JSONseed(boolean canBeNull, ArrayList<VehiculMElectric> vehicule) {
+    public static JSONArray JSONseed(boolean canBeNull, ArrayList<VehiculMElectric> vehicule) {
       JSONseed(vehicule, "vehicule.test.json");
     }
 
@@ -205,8 +205,8 @@ public static boolean addVehicle(int nr) {
   ArrayList<VehiculMElectric> vehicule = new ArrayList<VehiculMElectric>();
   vehicule.addAll(vehiculeOld);
   vehicule.addAll(vehiculeNew);
-  JSONseed(vehicule);
-  return true;
+
+  return JSONseed(vehicule);  
 }
 
 public static boolean resetData() {
@@ -215,6 +215,14 @@ public static boolean resetData() {
   VehiculMElectric.resetIdPool();
   return true;
 }
+
+// pentru resetarea fisierului 
+public static JSONArray resetVehicule() {
+  ArrayList<VehiculMElectric> vehicule = new ArrayList<VehiculMElectric>();
+  VehiculMElectric.resetIdPool();
+  return JSONseed(true, vehicule);
+}
+
 
 
 }
