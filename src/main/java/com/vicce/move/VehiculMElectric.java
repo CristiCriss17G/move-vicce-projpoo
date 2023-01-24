@@ -146,5 +146,8 @@ for (VehiculMElectric vehicul : vehicule) {
     " greutate= "+greutate+" numarScaune= "+nrScaune+" portBagaj= "+litriPortbagaj+" nrKmReali= "+kmReali+" anFabricatie= "+anFabricatie+
     " numarPedale= "+nrPedale+" cuplu= "+cuplu+".";
   }
+
+  public static void resetIdPool() {
+  }
 }
 
