@@ -67,8 +67,9 @@ public class PrimaryController {
 
     private void initializeComboBox() {
         ObservableList<String> tipVehiculeList = FXCollections.observableArrayList();
-        tipVehiculeList.add("Toate");
+        // tipVehiculeList.add("Toate");
         tipVehiculeList.add("VehiculFMSport");
+        tipVehiculeList.add("VehiculMMotorina");
         comboBoxTipVehicule.setItems(tipVehiculeList);
         comboBoxTipVehicule.getSelectionModel().selectFirst();
     }
@@ -114,7 +115,18 @@ public class PrimaryController {
             vitezaMax = 0;
         }
 
-        tableView.getColumns().setAll(VehiculMMotorina.getTableColumns());
+        switch (comboBoxTipVehicule.getValue()) {
+            case "Toate":
+                tableView.getColumns().setAll(VehiculMMotorina.getTableColumns());
+                tableView.getColumns().addAll(VehiculFMSport.getTableColumns());
+                break;
+            case "VehiculFMSport":
+                tableView.getColumns().setAll(VehiculFMSport.getTableColumns());
+                break;
+            case "VehiculMMotorina":
+                tableView.getColumns().setAll(VehiculMMotorina.getTableColumns());
+                break;
+        }
 
         mobilitateList
                 .addAll(Seeder.getVehicule(comboBoxTipVehicule.getValue(), pretMin, pretMax, vitezaMin, vitezaMax));
@@ -125,7 +137,7 @@ public class PrimaryController {
 
     @FXML
     private void addData() throws IOException {
-        App.setRoot("addVehiculeMMotorina");
+        App.setRoot("addVehicule");
     }
 
     @FXML
@@ -138,7 +150,7 @@ public class PrimaryController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             Seeder.resetVehicule(comboBoxTipVehicule.getValue());
-            App.setRoot("addVehiculFMSport");
+            App.setRoot("addVehicule");
         }
     }
 

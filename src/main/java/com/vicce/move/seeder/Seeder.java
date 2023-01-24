@@ -6,6 +6,7 @@ import org.json.JSONArray;
 
 import com.vicce.move.Mobilitate;
 import com.vicce.move.VehiculFMSport;
+import com.vicce.move.VehiculMMotorina;
 
 public class Seeder {
 
@@ -19,9 +20,13 @@ public class Seeder {
         switch (categorie) {
             case "Toate":
                 vehicule.addAll(getVehicule("VehiculFMSport", pretMin, pretMax, vitezaMin, vitezaMax));
+                vehicule.addAll(getVehicule("VehiculMMotorina", pretMin, pretMax, vitezaMin, vitezaMax));
                 break;
             case "VehiculFMSport":
                 vehicule.addAll(VehiculFMSportSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
+                break;
+            case "VehiculMMotorina":
+                vehicule.addAll(VehiculMMotorinaSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
                 break;
             default:
                 vehicule = new ArrayList<Mobilitate>();
@@ -33,8 +38,14 @@ public class Seeder {
     public static void resetVehicule(String tipVehicul) {
         switch (tipVehicul) {
             case "Toate":
+                VehiculFMSportSeeder.resetVehicule();
+                VehiculMMotorinaSeeder.resetVehicule();
+                break;
             case "VehiculFMSport":
                 VehiculFMSportSeeder.resetVehicule();
+                break;
+            case "VehiculMMotorina":
+                VehiculMMotorinaSeeder.resetVehicule();
                 break;
             default:
                 break;
@@ -43,8 +54,17 @@ public class Seeder {
 
     public static boolean addVehicule(String tipVehicul, int nr) {
         return switch (tipVehicul) {
-            case "Toate", "VehiculFMSport" -> {
+            case "Toate" -> {
                 VehiculFMSportSeeder.addVehicule(nr);
+                VehiculMMotorinaSeeder.addVehicule(nr);
+                yield true;
+            }
+            case "VehiculFMSport" -> {
+                VehiculFMSportSeeder.addVehicule(nr);
+                yield true;
+            }
+            case "VehiculMMotorina" -> {
+                VehiculMMotorinaSeeder.addVehicule(nr);
                 yield true;
             }
             default -> false;
@@ -55,6 +75,10 @@ public class Seeder {
         return switch (vehicul.getClass().getSimpleName()) {
             case "VehiculFMSport" -> {
                 VehiculFMSportSeeder.addVehicule((VehiculFMSport) vehicul);
+                yield true;
+            }
+            case "VehiculMMotorina" -> {
+                VehiculMMotorinaSeeder.addVehicule((VehiculMMotorina) vehicul);
                 yield true;
             }
             default -> false;

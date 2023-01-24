@@ -245,6 +245,19 @@ public class VehiculMMotorinaSeeder {
         return true;
     }
 
+    public static JSONArray addVehicule(VehiculMMotorina vmm) {
+        ArrayList<VehiculMMotorina> vehiculeOld;
+        try {
+            vehiculeOld = JSONReadSeed(fileName);
+        } catch (IllegalArgumentException e) {
+            vehiculeOld = new ArrayList<VehiculMMotorina>();
+        }
+        ArrayList<VehiculMMotorina> vehicule = new ArrayList<VehiculMMotorina>();
+        vehicule.addAll(vehiculeOld);
+        vehicule.add(vmm);
+        return JSONseed(vehicule);
+    }
+
     public static JSONArray addVehicule(int nr) {
         ArrayList<VehiculMMotorina> vehiculeOld;
         try {

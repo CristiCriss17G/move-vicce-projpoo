@@ -62,6 +62,7 @@ public class AddVehiculController {
         ObservableList<String> tipVehiculeList = FXCollections.observableArrayList();
         tipVehiculeList.add("Toate");
         tipVehiculeList.add("VehiculFMSport");
+        tipVehiculeList.add("VehiculMMotorina");
         comboBoxTipVehicule.setItems(tipVehiculeList);
         comboBoxTipVehicule.getSelectionModel().selectFirst();
     }
