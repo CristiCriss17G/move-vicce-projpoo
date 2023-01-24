@@ -1,17 +1,16 @@
 package com.vicce.move;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.function.UnaryOperator;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.FloatStringConverter;
 
@@ -20,7 +19,7 @@ import com.vicce.move.seeder.VehiculMMotorinaSeeder;
 public class PrimaryController {
 
     @FXML
-    private TableView<VehiculMMotorina> tableView;
+    private TableView<Mobilitate> tableView;
 
     @FXML
     private TextField textFieldPretMin;
@@ -58,52 +57,17 @@ public class PrimaryController {
         showData();
     }
 
+    private void resetTable() {
+        tableView.getItems().clear();
+        tableView.getColumns().clear();
+    }
+
     @FXML
     private void showData() {
         // clear the table first
-        tableView.getItems().clear();
-        tableView.getColumns().clear();
+        resetTable();
 
-        TableColumn<VehiculMMotorina, Long> idColumn = new TableColumn<>("ID");
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tableView.getColumns().add(idColumn);
-
-        TableColumn<VehiculMMotorina, Float> vitezaMaxColumn = new TableColumn<>("Viteza maxima");
-        vitezaMaxColumn.setCellValueFactory(new PropertyValueFactory<>("vitezaMax"));
-        tableView.getColumns().add(vitezaMaxColumn);
-
-        TableColumn<VehiculMMotorina, Float> pretColumn = new TableColumn<>("Pret");
-        pretColumn.setCellValueFactory(new PropertyValueFactory<>("pret"));
-        tableView.getColumns().add(pretColumn);
-
-        TableColumn<VehiculMMotorina, Integer> nrRotiColumn = new TableColumn<>("Numar roti");
-        nrRotiColumn.setCellValueFactory(new PropertyValueFactory<>("nrRoti"));
-        tableView.getColumns().add(nrRotiColumn);
-
-
-        TableColumn<VehiculMMotorina, Integer> anFabricatieColumn = new TableColumn<>("An fabricatie");
-        anFabricatieColumn.setCellValueFactory(new PropertyValueFactory<>("anFabricatie"));
-        tableView.getColumns().add(anFabricatieColumn);
-
-        TableColumn<VehiculMMotorina, Integer> numarCilindriColumn = new TableColumn<>("Numar Cilindri ");
-        numarCilindriColumn.setCellValueFactory(new PropertyValueFactory<>("numarCilindri"));
-        tableView.getColumns().add(numarCilindriColumn);
-
-        TableColumn<VehiculMMotorina, Integer> marcaColumn = new TableColumn<>("Marca");
-        marcaColumn.setCellValueFactory(new PropertyValueFactory<>("marca"));
-        tableView.getColumns().add(marcaColumn);
-
-        TableColumn<VehiculMMotorina, Integer> modelColumn = new TableColumn<>("Model");
-        modelColumn.setCellValueFactory(new PropertyValueFactory<>("model"));
-        tableView.getColumns().add(modelColumn);
-
-        TableColumn<VehiculMMotorina, Integer> putereColumn = new TableColumn<>("Putere");
-        putereColumn.setCellValueFactory(new PropertyValueFactory<>("putere"));
-        tableView.getColumns().add(putereColumn);
-
-        TableColumn<VehiculMMotorina, Integer> cupluColumn = new TableColumn<>("Cuplu");
-        cupluColumn.setCellValueFactory(new PropertyValueFactory<>("cuplu"));
-        tableView.getColumns().add(cupluColumn);
+        ObservableList<Mobilitate> mobilitateList = FXCollections.observableArrayList();
 
         float pretMin;
         float pretMax;
@@ -134,8 +98,17 @@ public class PrimaryController {
             vitezaMax = 0;
         }
 
-        tableView.getItems().addAll(App.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
+        tableView.getColumns().setAll(VehiculMMotorina.getTableColumns());
 
+        mobilitateList.addAll(VehiculMMotorinaSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
+
+        tableView.setItems(mobilitateList);
+
+    }
+
+    @FXML
+    private void addData() throws IOException {
+        App.setRoot("addVehiculeMMotorina");
     }
 
     @FXML
@@ -147,15 +120,9 @@ public class PrimaryController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            App.resetData();
-            showData();
-            // App.setRoot("secondary");
+            VehiculMMotorinaSeeder.resetData();
+            App.setRoot("addVehiculeMMotorina");
         }
-    }
-
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
     }
 
 }

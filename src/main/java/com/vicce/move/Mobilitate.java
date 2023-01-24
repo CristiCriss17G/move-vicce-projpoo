@@ -149,46 +149,46 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         return 0;
     }
 
-    // public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
-    //     ArrayList<TableColumn<Mobilitate, ?>> columns = new ArrayList<>();
+    public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
+        ArrayList<TableColumn<Mobilitate, ?>> columns = new ArrayList<>();
 
-    //     TableColumn<Mobilitate, Long> idCol = new TableColumn<>("ID");
-    //     idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-    //     // idCol.setMinWidth(50);
-    //     columns.add(idCol);
+        TableColumn<Mobilitate, Long> idCol = new TableColumn<>("ID");
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        // idCol.setMinWidth(50);
+        columns.add(idCol);
 
-    //     TableColumn<Mobilitate, Float> vitezaMaxCol = new TableColumn<>("Viteza Maxima");
-    //     vitezaMaxCol.setCellValueFactory(new PropertyValueFactory<>("vitezaMax"));
-    //     // vitezaMaxCol.setMinWidth(100);
-    //     columns.add(vitezaMaxCol);
+        TableColumn<Mobilitate, Float> vitezaMaxCol = new TableColumn<>("Viteza Maxima");
+        vitezaMaxCol.setCellValueFactory(new PropertyValueFactory<>("vitezaMax"));
+        // vitezaMaxCol.setMinWidth(100);
+        columns.add(vitezaMaxCol);
 
-    //     TableColumn<Mobilitate, Float> pretCol = new TableColumn<>("Pret");
-    //     pretCol.setCellValueFactory(new PropertyValueFactory<>("pret"));
-    //     // pretCol.setMinWidth(100);
-    //     columns.add(pretCol);
+        TableColumn<Mobilitate, Float> pretCol = new TableColumn<>("Pret");
+        pretCol.setCellValueFactory(new PropertyValueFactory<>("pret"));
+        // pretCol.setMinWidth(100);
+        columns.add(pretCol);
 
-    //     TableColumn<Mobilitate, String> marcaCol = new TableColumn<>("Marca");
-    //     marcaCol.setCellValueFactory(new PropertyValueFactory<>("marca"));
-    //     // marcaCol.setMinWidth(100);
-    //     columns.add(marcaCol);
+        TableColumn<Mobilitate, String> marcaCol = new TableColumn<>("Marca");
+        marcaCol.setCellValueFactory(new PropertyValueFactory<>("marca"));
+        // marcaCol.setMinWidth(100);
+        columns.add(marcaCol);
 
-    //     TableColumn<Mobilitate, String> modelCol = new TableColumn<>("Model");
-    //     modelCol.setCellValueFactory(new PropertyValueFactory<>("model"));
-    //     // modelCol.setMinWidth(100);
-    //     columns.add(modelCol);
+        TableColumn<Mobilitate, String> modelCol = new TableColumn<>("Model");
+        modelCol.setCellValueFactory(new PropertyValueFactory<>("model"));
+        // modelCol.setMinWidth(100);
+        columns.add(modelCol);
 
-    //     TableColumn<Mobilitate, String> tipCol = new TableColumn<>("Tip");
-    //     tipCol.setCellValueFactory(new PropertyValueFactory<>("tip"));
-    //     // tipCol.setMinWidth(100);
-    //     columns.add(tipCol);
+        TableColumn<Mobilitate, String> tipCol = new TableColumn<>("Tip");
+        tipCol.setCellValueFactory(new PropertyValueFactory<>("tip"));
+        // tipCol.setMinWidth(100);
+        columns.add(tipCol);
 
-    //     TableColumn<Mobilitate, String> proprietarCol = new TableColumn<>("Proprietar");
-    //     proprietarCol.setCellValueFactory(new PropertyValueFactory<>("proprietar"));
-    //     // proprietarCol.setMinWidth(100);
-    //     columns.add(proprietarCol);
+        TableColumn<Mobilitate, String> proprietarCol = new TableColumn<>("Proprietar");
+        proprietarCol.setCellValueFactory(new PropertyValueFactory<>("proprietar"));
+        // proprietarCol.setMinWidth(100);
+        columns.add(proprietarCol);
 
-    //     return columns;
-    // }
+        return columns;
+    }
 
     public abstract float raportVitezaPret();
 

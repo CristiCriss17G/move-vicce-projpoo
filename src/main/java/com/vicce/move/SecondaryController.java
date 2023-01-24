@@ -8,6 +8,8 @@ import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
 import java.util.function.UnaryOperator;
 
+import com.vicce.move.seeder.VehiculMMotorinaSeeder;
+
 public class SecondaryController {
 
     @FXML
@@ -33,8 +35,7 @@ public class SecondaryController {
 
     @FXML
     private void showData() throws IOException {
-        App.setRoot("primary");
-        
+        App.setRoot("primaryMMotorina");
     }
 
     @FXML
@@ -46,14 +47,10 @@ public class SecondaryController {
             numarVehicule = 0;
         }
 
-        if (App.addVehicle(numarVehicule))
+        if (VehiculMMotorinaSeeder.addVehicle(numarVehicule))
             labelStatus.setText("Vehicule adaugate cu succes!");
         else
             labelStatus.setText("Nu s-au putut adauga vehiculele!");
     }
 
-    @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
-    }
 }

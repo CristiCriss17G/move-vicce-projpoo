@@ -1,11 +1,11 @@
 package com.vicce.move;
 
 import java.util.ArrayList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class VehiculMMotorina extends VehiculCuMotor {
 
-    protected String marca;
-    protected String model;
     protected int numarCilindri;
     protected int anFabricatie;
     protected int putere;
@@ -13,8 +13,6 @@ public class VehiculMMotorina extends VehiculCuMotor {
 
     public VehiculMMotorina() {
         super();
-        this.model = "Seria 1";
-        this.marca = "BMW";
         this.numarCilindri = 4;
         this.anFabricatie = 2000;
         this.putere = 200;
@@ -23,50 +21,48 @@ public class VehiculMMotorina extends VehiculCuMotor {
 
     public VehiculMMotorina(VehiculMMotorina x) {
         super(x);
-        this.marca = x.marca;
-        this.model = x.model;
         this.numarCilindri = x.numarCilindri;
         this.anFabricatie = x.anFabricatie;
         this.putere = x.putere;
         this.cuplu = x.cuplu;
     }
 
-    public VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri, String marca, String model,
+    public VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri,
             int numarCilindri, int anFabricatie, int putere, float cuplu) {
         super(vitezaMax, pret, nrRoti, nrLocuri);
-        this.marca = marca;
-        this.model = model;
         this.numarCilindri = numarCilindri;
         this.anFabricatie = anFabricatie;
         this.putere = putere;
         this.cuplu = cuplu;
     }
 
-    public VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri, String marca, String model,
+    public VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri,
             int numarCilindri, int anFabricatie, int putere, float cuplu, long id) {
         super(vitezaMax, pret, nrRoti, nrLocuri, id);
-        this.marca = marca;
-        this.model = model;
         this.numarCilindri = numarCilindri;
         this.anFabricatie = anFabricatie;
         this.putere = putere;
         this.cuplu = cuplu;
     }
 
-    public String getMarca() {
-        return this.marca;
+    public VehiculMMotorina(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int nrRoti, int nrLocuri, int numarCilindri,
+            int anFabricatie, int putere, float cuplu) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri);
+        this.numarCilindri = numarCilindri;
+        this.anFabricatie = anFabricatie;
+        this.putere = putere;
+        this.cuplu = cuplu;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getModel() {
-        return this.model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
+    public VehiculMMotorina(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int nrRoti, int nrLocuri, int numarCilindri,
+            int anFabricatie, int putere, float cuplu, long id) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri, id);
+        this.numarCilindri = numarCilindri;
+        this.anFabricatie = anFabricatie;
+        this.putere = putere;
+        this.cuplu = cuplu;
     }
 
     public int getNumarCilindri() {
@@ -137,6 +133,34 @@ public class VehiculMMotorina extends VehiculCuMotor {
             }
         }
         return vehiculeFiltrate;
+    }
+
+    public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
+        ArrayList<TableColumn<Mobilitate, ?>> columns = VehiculCuMotor.getTableColumns();
+
+        TableColumn<Mobilitate, Integer> numarCilindriColumn = new TableColumn<>("Numar Cilindri");
+        numarCilindriColumn.setCellValueFactory(new PropertyValueFactory<>("numarCilindri"));
+        columns.add(numarCilindriColumn);
+
+        TableColumn<Mobilitate, Integer> anFabricatieColumn = new TableColumn<>(
+                "An Fabricatie");
+        anFabricatieColumn.setCellValueFactory(
+                new PropertyValueFactory<>("anFabricatie"));
+        columns.add(anFabricatieColumn);
+
+        TableColumn<Mobilitate, Integer> putereColumn = new TableColumn<>(
+                "Putere");
+        putereColumn.setCellValueFactory(
+                new PropertyValueFactory<>("putere"));
+        columns.add(putereColumn);
+
+        TableColumn<Mobilitate, Float> cupluColumn = new TableColumn<>(
+                "Cuplu");
+        cupluColumn.setCellValueFactory(
+                new PropertyValueFactory<>("cuplu"));
+        columns.add(cupluColumn);
+
+        return columns;
     }
 
 }
