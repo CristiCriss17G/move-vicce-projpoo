@@ -149,5 +149,9 @@ for (VehiculMElectric vehicul : vehicule) {
 
   public static void resetIdPool() {
   }
+
+  public static boolean addVehicle(int numarVehicule) {
+    return false;
+  }
 }
 
