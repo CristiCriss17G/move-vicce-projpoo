@@ -100,9 +100,9 @@ public class PrimaryController {
             vitezaMax = 0;
         }
 
-        tableView.getColumns().setAll(VehiculFMSport.getTableColumns());
+        tableView.getColumns().setAll(VehiculMMotorina.getTableColumns());
 
-        mobilitateList.addAll(VehiculFMSportSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
+        mobilitateList.addAll(VehiculMMotorinaSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
 
         tableView.setItems(mobilitateList);
 
@@ -110,7 +110,7 @@ public class PrimaryController {
 
     @FXML
     private void addData() throws IOException {
-        App.setRoot("addVehiculFMSport");
+        App.setRoot("addVehiculeMMotorina");
     }
 
     @FXML
@@ -122,8 +122,9 @@ public class PrimaryController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            VehiculFMSportSeeder.resetData();
-            App.setRoot("addVehiculFMSport");
+            VehiculMMotorinaSeeder.resetData();
+            App.setRoot("addVehiculeMMotorina");
         }
     }
+
 }
