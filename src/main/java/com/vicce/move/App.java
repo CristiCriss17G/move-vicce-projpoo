@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
 /**
  * Base class for the app with javaFX
  * Testeaza clasa VehiculFMSport
@@ -35,7 +34,6 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
-
 
     public static void main(String[] args) {
         launch();

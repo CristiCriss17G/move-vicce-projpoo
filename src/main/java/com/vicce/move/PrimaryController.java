@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.FloatStringConverter;
 
-import com.vicce.move.seeder.VehiculMMotorinaSeeder;
+import com.vicce.move.seeder.*;
 
 public class PrimaryController {
 
@@ -54,7 +54,9 @@ public class PrimaryController {
         textFieldVitezaMin.setPromptText("Viteza minima");
         textFieldVitezaMax.setTextFormatter(vitezaMaxFormatter);
         textFieldVitezaMax.setPromptText("Viteza maxima");
+
         showData();
+
     }
 
     private void resetTable() {

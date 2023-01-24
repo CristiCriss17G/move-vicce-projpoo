@@ -16,13 +16,13 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         idPool = 1;
     }
 
-    protected final long id;
+    protected final long id; // adaugat + getter
     protected float vitezaMax;
     protected float pret;
-    protected String marca = "";
-    protected String model = "";
-    protected String tip = "";
-    protected String proprietar = "";
+    protected String marca = ""; // adaugat + getter + setter
+    protected String model = "";// adaugat + getter + setter
+    protected String tip = "";// adaugat + getter + setter
+    protected String proprietar = "";// adaugat + getter + setter
 
     public Mobilitate() {
         this.id = idPool++;
@@ -54,7 +54,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.proprietar = this.marca;
     }
 
-    public Mobilitate(float vitezaMax, float pret, long id) {
+    public Mobilitate(float vitezaMax, float pret, long id) { // initilizare cu id
         this.id = id;
         this.vitezaMax = vitezaMax;
         this.pret = pret;
@@ -76,6 +76,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.proprietar = proprietar;
     }
 
+    // initilizare cu id
     public Mobilitate(float vitezaMax, float pret, String marca, String model, String tip, String proprietar, long id) {
         this.id = id;
         this.vitezaMax = vitezaMax;
@@ -149,7 +150,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         return 0;
     }
 
-    public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
+    public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() { // adugat pt interfata
         ArrayList<TableColumn<Mobilitate, ?>> columns = new ArrayList<>();
 
         TableColumn<Mobilitate, Long> idCol = new TableColumn<>("ID");
