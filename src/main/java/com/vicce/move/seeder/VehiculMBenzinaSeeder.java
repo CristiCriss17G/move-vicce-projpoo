@@ -135,7 +135,7 @@ public class VehiculMBenzinaSeeder {
             vehicul.put("id", vmb.getId());
             vehicul.put("vitezaMax", vmb.getVitezaMax());
             vehicul.put("pret", vmb.getPret());
-            vehicul.put("an", vmb.getAnFabricatie());
+            vehicul.put("anFabricatie", vmb.getAnFabricatie());
             vehicul.put("nrRoti", vmb.getNrRoti());
             vehicul.put("nrLocuri",vmb.getNrLocuri());
             vehicul.put("caiPutere",vmb.getCaiPutere());
@@ -143,6 +143,8 @@ public class VehiculMBenzinaSeeder {
             vehicul.put("consumUrban",vmb.getConsumUrban());
             vehicul.put("model",vmb.getModel());
             vehicul.put("marca",vmb.getMarca());
+            vehicul.put("tip",vmb.getTip());
+            vehicul.put("proprietar",vmb.getProprietar());
             vehiculeJSON.put(vehicul);
         }
         try {

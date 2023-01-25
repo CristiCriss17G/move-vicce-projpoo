@@ -10,7 +10,7 @@ import java.util.function.UnaryOperator;
 
 import com.vicce.move.seeder.*;
 
-public class AddVehicleController {
+public class AddVehiculController {
     @FXML
     private TextField textFieldAddVehicule;
 
@@ -34,7 +34,7 @@ public class AddVehicleController {
 
     @FXML
     private void showData() throws IOException {
-        App.setRoot("primary");
+        App.setRoot("primaryMBenzina");
     }
 
     @FXML
