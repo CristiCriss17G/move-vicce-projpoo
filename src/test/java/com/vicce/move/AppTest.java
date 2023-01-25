@@ -22,7 +22,7 @@ public class AppTest {
     
     @Test   //teste constructorul fara parametrii 
     public void VehiculMElectricConstrFParametrii(){
-        VehiculMElectric vme2= new VehiculMElectric();
+        VehiculMElectric vme2= new VehiculMElectric(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         assertTrue(vme2.getNrRoti() == 0);
         assertTrue(vme2.getNrLocuri() == 0);
         

@@ -148,31 +148,31 @@ for (VehiculMElectric vehicul : vehicule) {
     " numarPedale= "+nrPedale+" cuplu= "+cuplu+".";
   }
 
-  public static void resetIdPool() {
-  }
+  // public static void resetIdPool() {
+  // }
 
   public static boolean addVehicle(int numarVehicule) {
     return false;
   }
 
-  public Collection<?> getId() {
-    return null;
-  }
+  // public Collection<?> getId() {
+  //   return null;
+  // }
 
-  public Collection<?> getMarca() {
-    return null;
-  }
+  // public Collection<?> getMarca() {
+  //   return null;
+  // }
 
-  public Collection<?> getModel() {
-    return null;
-  }
+  // public Collection<?> getModel() {
+  //   return null;
+  // }
 
-  public Collection<?> getTip() {
-    return null;
-  }
+  // public Collection<?> getTip() {
+  //   return null;
+  // }
 
-  public Collection<?> getProprietar() {
-    return null;
-  }
+  // public Collection<?> getProprietar() {
+  //   return null;
+  // }
 }
 
