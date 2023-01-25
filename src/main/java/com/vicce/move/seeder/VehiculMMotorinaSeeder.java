@@ -24,12 +24,14 @@ public class VehiculMMotorinaSeeder {
     private static final int MIN_VITEZA = 100;
     private static final int MAX_PRET = 10000;
     private static final int MIN_PRET = 500;
-    private static final String[] manufacturers = { "Nike", "Adidas", "Under Armour", "Puma", "Reebok", "Asics",
-            "New Balance", "Jordan", "Wilson", "Columbia" };
-    private static final String[] models = { "Road Bike", "Mountain Bike", "Hybrid Bike", "Touring Bike",
-            "Fixed Gear Bike", "BMX Bike", "Cruiser Bike", "Tandem Bike", "Folding Bike", "Recumbent Bike",
-            "Skateboard", "Longboard", "Inline Skates", "Roller Skates", "Scooter", "Unicycle" };
-    private static final String[] types = { "Road", "Mountain", "Hybrid", "Touring", "Fixed Gear", "BMX", "Cruiser" };
+    private static final String[] manufacturers = { "Audi", "BMW", "Ford", "Dacia", "Mercedes-Benz", "Skoda",
+            "Volkswagen", "Renault", "Opel", "Toyota", "Volvo", "Peugeot", "Mazda", "Nissan" };
+    private static final String[] models = { "A4", "A6", "Q5", "Seria 5",
+            "Seria 7", "X3", "Focus", "Kuga", "Mondeo", "Duster",
+            "Logan", "Sandero", "C", "GLE Coupe", "GLC", "Octavia", "Fabia", "Superb", "Megane", "Clio", "Laguna",
+            "Astra", "Corsa", "Insignia", "Auris", "Corolla", "Land Cruiser", "XC 60", "V40", "S60", "508", "Partner",
+            "407", "CX-7", "CX-5", "CX-3", "Qashqai", "Juke", "Navara" };
+    private static final String[] types = { "Sport", "Road", "Mountain", "Hybrid", "Touring", "SUV", "LUX" };
     private static final String[] proprietari = { "Andrea Ortiz", "Kadence Carney", "Hunter Heath", "Elianna Diaz",
             "Marina Barajas", "Ayanna Daniel", "Skylar Jensen", "Laura Hudson", "Oswaldo Rosario", "Marvin Clayton",
             "Nora Avila", "Tony Yang", "Jesus Beck", "Cayden Hurst", "Brayden Young", "Esteban Larsen",
