@@ -1,5 +1,9 @@
 package com.vicce.move;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Vector;
+
 public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aici pentru set si get
   protected int capacitateMotor;
   protected int autonomie;
@@ -12,8 +16,14 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   protected int nrPedale;
   protected int cuplu;
   protected int nrUsi;
+  
+  //aici am adaugat
+  public static enum Electric{
+    fastCharge,pilotAutomat,display,alcantara,range,suportPahare,incalzireScaune,trapa,automana,hybrid
+  };
+  protected ArrayList<Electric> electrics;
 
-  VehiculMElectric() {
+  public VehiculMElectric(float vitezaMax, float pret, int capacitateMotor2, String marca, String model, String tip, String proprietar, int autonomie2, double greutate2, double kmReali2, int anFabricatie2, long id) {
     super();
     this.capacitateMotor = 10;
     this.autonomie = 400;
@@ -38,22 +48,48 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   }
 
   public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
-      int autonomie, double greutate, boolean areTrapa, int litriPortbagaj, double kmReali, int anFabricatie,
+      int autonomie, double greutate,int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
       int nrPedale, int cuplu) {
     super(vitezaMax, pret, nrRoti, nrLocuri);
 
     this.nrUsi = nrUsi;
-    this.capacitateMotor = capacitateMotor;
-    this.autonomie = autonomie;
-    this.greutate = greutate;
-    // this.nrScaune = nrScaune;
+    this.capacitateMotor = capacitateMotor; //
+    this.autonomie = autonomie;//
+    this.greutate = greutate;//
+    this.nrScaune = nrScaune;
     this.litriPortbagaj = litriPortbagaj;
-    this.kmReali = kmReali;
-    this.anFabricatie = anFabricatie;
+    this.kmReali = kmReali;//
+    this.anFabricatie = anFabricatie;//
     this.nrPedale = nrPedale;
     this.cuplu = cuplu;
   }
 
+  public static ArrayList<VehiculMElectric> filtrareViteza(ArrayList<VehiculMElectric> vehicule, float vitezaMaxim,
+            float vitezaMinima) {
+        ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
+        for (VehiculMElectric vehicul : vehicule) {
+            if ((vitezaMaxim == 0 || vehicul.getVitezaMax() <= vitezaMaxim)
+                    && (vitezaMinima == 0 || vehicul.getVitezaMax() >= vitezaMinima)) {
+                vehiculeFiltrate.add(vehicul);
+            }
+        }
+        return vehiculeFiltrate;
+    }
+  
+
+    public static ArrayList<VehiculMElectric> filtrarePret(ArrayList<VehiculMElectric> vehicule, float pretMaxim,
+    float pretMinim) {
+ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
+for (VehiculMElectric vehicul : vehicule) {
+    if ((pretMaxim == 0 || vehicul.getPret() <= pretMaxim)
+            && (pretMinim == 0 || vehicul.getPret() >= pretMinim)) {
+        vehiculeFiltrate.add(vehicul);
+    }
+  }
+  return vehiculeFiltrate;  
+}
+
+    
   public int getCapacitateMotor() {
     return this.capacitateMotor;
   }
@@ -104,4 +140,39 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
         " numarul de km reali este:" + kmReali + " din anul de fabricatie:" + anFabricatie + " cu un numar de pedale = "
         + nrPedale + " si in final cu un cuplu de : " + cuplu);
   }
+
+  @Override
+  public String toString(){
+    return "Vehicul cu motor electric: numarul de usi= "+nrUsi+" capacitateMotor= "+capacitateMotor+" autonomie= "+autonomie+
+    " greutate= "+greutate+" numarScaune= "+nrScaune+" portBagaj= "+litriPortbagaj+" nrKmReali= "+kmReali+" anFabricatie= "+anFabricatie+
+    " numarPedale= "+nrPedale+" cuplu= "+cuplu+".";
+  }
+
+  // public static void resetIdPool() {
+  // }
+
+  public static boolean addVehicle(int numarVehicule) {
+    return false;
+  }
+
+  // public Collection<?> getId() {
+  //   return null;
+  // }
+
+  // public Collection<?> getMarca() {
+  //   return null;
+  // }
+
+  // public Collection<?> getModel() {
+  //   return null;
+  // }
+
+  // public Collection<?> getTip() {
+  //   return null;
+  // }
+
+  // public Collection<?> getProprietar() {
+  //   return null;
+  // }
 }
+
