@@ -28,13 +28,14 @@ public class VehiculCuMotor extends Mobilitate {
         this.nrLocuri = nrLocuri;
     }
 
-    
+    // adaugat id
     public VehiculCuMotor(float vitezaMax, float pret, int nrRoti, int nrLocuri, long id) {
         super(vitezaMax, pret, id);
         this.nrRoti = nrRoti;
         this.nrLocuri = nrLocuri;
     }
 
+    // adaugat marca, model, tip, proprietar
     public VehiculCuMotor(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
             int nrRoti, int nrLocuri) {
         super(vitezaMax, pret, marca, model, tip, proprietar);
@@ -42,6 +43,7 @@ public class VehiculCuMotor extends Mobilitate {
         this.nrLocuri = nrLocuri;
     }
 
+    // adaugat id, marca, model, tip, proprietar
     public VehiculCuMotor(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
             int nrRoti, int nrLocuri, long id) {
         super(vitezaMax, pret, marca, model, tip, proprietar, id);
@@ -65,7 +67,8 @@ public class VehiculCuMotor extends Mobilitate {
         this.nrLocuri = nrLocuri;
     }
 
-    // pentru generare tabel
+    // adugat penntru generare tabel, sunt campurile clasei + campurile din clasa
+    // parinte, de implementat in clasa copil
     public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
         ArrayList<TableColumn<Mobilitate, ?>> columns = Mobilitate.getTableColumns();
 

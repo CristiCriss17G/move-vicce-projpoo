@@ -13,13 +13,13 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         idPool = 1;
     }
 
-    protected final long id; 
+    protected final long id;
     protected float vitezaMax;
     protected float pret;
-    protected String marca = ""; 
-    protected String model = "";
-    protected String tip = "";
-    protected String proprietar = "";
+    protected String marca = ""; // adaugat + getter + setter
+    protected String model = "";// adaugat + getter + setter
+    protected String tip = "";// adaugat + getter + setter
+    protected String proprietar = "";// adaugat + getter + setter
 
     public Mobilitate() {
         this.id = idPool++;
