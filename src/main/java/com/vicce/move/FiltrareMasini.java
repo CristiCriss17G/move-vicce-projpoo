@@ -1,4 +1,4 @@
-package com.vicce.move;
+/*package com.vicce.move;
 
 import java.util.ArrayList;
 
@@ -28,4 +28,4 @@ public class FiltrareMasini {
         }
 
 
-}
+}*/

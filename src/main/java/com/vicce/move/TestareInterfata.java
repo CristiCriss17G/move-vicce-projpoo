@@ -1,4 +1,4 @@
-package com.vicce.move;
+/*package com.vicce.move;
 
 import java.util.ArrayList;
 import javax.swing.*;
@@ -55,3 +55,4 @@ public class TestareInterfata {
 
     
 }
+*/
