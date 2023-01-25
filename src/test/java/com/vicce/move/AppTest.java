@@ -6,7 +6,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import com.vicce.move.seeder.VehiculFMSportSeeder;
+import com.vicce.move.seeder.*;
+import com.vicce.move.*;
 
 /**
  * Unit test for simple App.
@@ -113,12 +114,6 @@ public class AppTest {
     /**
      * Testeaza constructorii de copiere si metodele clasei VehiculCuMotor
      */
-    *
-
-    Testeaza constructorii
-    de copiere
-    si metodele
-    clasei VehiculFMSport*/
 
     @Test
     public void VehiculFMSportConstructoriDeCopiere() {
