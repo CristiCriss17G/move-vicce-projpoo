@@ -6,6 +6,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.NoSuchFileException;
 
+import com.vicce.move.VehiculMBenzina;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -13,7 +15,7 @@ import java.util.Scanner;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
-import com.vicce.move.VehiculMBenzina;
+
 
 public class VehiculMBenzinaSeeder {
 
@@ -31,12 +33,13 @@ public class VehiculMBenzinaSeeder {
     private static final int MIN_NRROTI = 1;
     private static final int MAX_NRLOCURI = 8;
     private static final int MIN_NRLOCURI = 2;
-    private static final int MIN_CAI=60;
     private static final int MAX_CAI=600;
-    private static final int MIN_CAPACITATE=1400;
+    private static final int MIN_CAI=60;
     private static final int MAX_CAPACITATE=3500;
-    private static final double MIN_CONSUM=3.4;
+    private static final int MIN_CAPACITATE=1400;
     private static final double MAX_CONSUM=12.5;
+    private static final double MIN_CONSUM=3.4;
+    
 
     //static private String[] modele = new String[]{"VW ","Audi","Ford","BMW ","Hyundai Elantra","Citroen","Skoda"};
     //static private String[] marci = new String[]{"Golf 5","A3","Focus","Seria 3","Elantra"," C3","Superb"};
@@ -44,9 +47,10 @@ public class VehiculMBenzinaSeeder {
     private static final String[] manufacturers = { "VW", "Audi", "Ford", "BMW", "Hyundai", "Citroen",
             "Skoda", "Mercedes-Benz", "Renault","Dacia", "Opel", "Toyota"};
 
-    private static final String[] models = { "Golf 5","A3","Focus","Seria 3","Elantra"," C3","Superb", "C","Clio", "Logan", "Astra", "Corolla"};
+    private static final String[] models = { "Golf 5","Passat","A3","A6","Focus","Fiesta","Seria 3","X3","Elantra","Tucson"," C3","C5","Superb",
+    "Octavia", "C","S","Clio","Megane", "Logan","Duster", "Astra","Corsa", "Corolla","Yaris"};
 
-    private static final String[] types = { "Road", "Mountain", "Hybrid", "Touring", "Fixed Gear", "BMX", "Cruiser" };
+    private static final String[] types = {"Sport", "Road", "Mountain", "Hybrid", "Touring", "SUV", "LUX"  };
 
     private static final String[] proprietari = { "Andrea Ortiz", "Kadence Carney", "Hunter Heath", "Elianna Diaz",
     "Marina Barajas", "Ayanna Daniel", "Skylar Jensen", "Laura Hudson", "Oswaldo Rosario", "Marvin Clayton",
@@ -64,8 +68,8 @@ public class VehiculMBenzinaSeeder {
         if (nr > MAX || nr < MIN) {
             throw new IllegalArgumentException("Numarul de vehicule trebuie sa fie intre " + MIN + " si " + MAX);
         }
-        ArrayList<VehiculMBenzina> listaVehicule = new ArrayList<>();
-        VehiculMBenzina masina;
+        ArrayList<VehiculMBenzina> vehicule = new ArrayList<VehiculMBenzina>();
+        
         for(int i=0;i<nr;i++){
             //int vitezaMax=new Random().nextInt(130,350);
             //int pret=new Random().nextInt(4000,90000);
@@ -92,10 +96,10 @@ public class VehiculMBenzinaSeeder {
             String model = models[random.nextInt(models.length)];
             
 
-            masina=new VehiculMBenzina(vitezaMax,pret,marca,model,tip,proprietar,nrRoti,nrLocuri,caiPutere,capacitateMotor,anFabricatie,consumUrban);
-            listaVehicule.add(masina);
+            VehiculMBenzina masina=new VehiculMBenzina(vitezaMax,pret,marca,model,tip,proprietar,nrRoti,nrLocuri,caiPutere,capacitateMotor,anFabricatie,consumUrban);
+            vehicule.add(masina);
         }
-        return listaVehicule;
+        return vehicule;
     }
 
     public static JSONArray JSONseed(int nr) {
@@ -128,6 +132,7 @@ public class VehiculMBenzinaSeeder {
             VehiculMBenzina vmb = vehicule.get(i);
 
             JSONObject vehicul = new JSONObject();
+            vehicul.put("id", vmb.getId());
             vehicul.put("vitezaMax", vmb.getVitezaMax());
             vehicul.put("pret", vmb.getPret());
             vehicul.put("an", vmb.getAnFabricatie());
@@ -284,7 +289,7 @@ public class VehiculMBenzinaSeeder {
     public static boolean resetData() {
         ArrayList<VehiculMBenzina> vehicule = new ArrayList<VehiculMBenzina>();
         VehiculMBenzinaSeeder.JSONseed(true, vehicule);
-        //VehiculMBenzina.resetIdPool();
+        VehiculMBenzina.resetIdPool();
         return true;
     }
 

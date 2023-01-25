@@ -35,7 +35,7 @@ public class SecondaryController {
 
     @FXML
     private void showData() throws IOException {
-        App.setRoot("primaryMMotorina");
+        App.setRoot("primaryMBenzina");
     }
 
     @FXML
