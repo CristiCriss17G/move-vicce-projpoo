@@ -10,6 +10,7 @@ import java.io.IOException;
 
 /**
  * Base class for the app with javaFX
+ * Testeaza clasa VehiculFMSport
  *
  */
 public class App extends Application {

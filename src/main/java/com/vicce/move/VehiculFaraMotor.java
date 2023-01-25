@@ -50,6 +50,7 @@ public class VehiculFaraMotor extends Mobilitate {
         this.acceleratie = acceleratie;
     }
 
+    // adaugat macara, model, tip, proprietar
     public VehiculFaraMotor(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
             int nrRoti, double greutate, int anFabricatie, int nrPedale, int acceleratie) {
         super(vitezaMax, pret, marca, model, tip, proprietar);
@@ -118,7 +119,10 @@ public class VehiculFaraMotor extends Mobilitate {
 
     @Override
     public void afisare() {
-        System.out.println("Vehicul cu motor cu viteza maxima " + vitezaMax + " si pretul " + pret);
+        System.out.println("Vehicul fara motor " + id + " cu viteza maxima " + vitezaMax + " si pretul " + pret
+                + " are " + nrRoti
+                + " roti, greutatea " + greutate + " kg, a fost fabricat in anul " + anFabricatie + ", are " + nrPedale
+                + " pedale si accelereaza in " + acceleratie + " secunde.");
     }
 
     // adugat penntru generare tabel, sunt campurile clasei + campurile din clasa
@@ -150,7 +154,10 @@ public class VehiculFaraMotor extends Mobilitate {
 
     @Override
     public String toString() {
-        return "VehiculCuMotor [nrPedale=" + nrPedale + ", nrRoti=" + nrRoti + ", pret=" + pret + ", vitezaMax="
-                + vitezaMax + "]";
+        return "VehiculFaraMotor " + id + " [vitezaMax=" + vitezaMax + ", pret=" + pret + ", nrRoti=" + nrRoti
+                + ", greutate="
+                + greutate + ", anFabricatie=" + anFabricatie + ", nrPedale=" + nrPedale + ", acceleratie="
+                + acceleratie
+                + "]";
     }
 }
