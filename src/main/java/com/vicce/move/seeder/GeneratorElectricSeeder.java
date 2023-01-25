@@ -26,7 +26,7 @@ public class GeneratorElectricSeeder {
   private static final int MAX_VITEZA = 300;
   private static final int MIN_VITEZA = 100;
   private static final int MAX_PRET = 10000;
-  private static final int MAX_PRET = 10000;
+  private static final int MIN_PRET = 100;
   private static final int MIN_CAPACITATEMOTOR= 1500;
   private static final int MAX_CAPACITATEMOTOR= 5500;
   private static final int MIN_AUTONOMIE= 350;
@@ -88,7 +88,7 @@ public static ArrayList<VehiculMElectric> seed(int nr) {
           String marca = manufacturers[random.nextInt(manufacturers.length)];
           String model = models[random.nextInt(models.length)];
 
-          VehiculMElectric vme = new VehiculMElectric();
+          VehiculMElectric vme = new VehiculMElectric(pret, pret, nrUsi, nrUsi, nrUsi, nrUsi, nrUsi, kmReali, nrUsi, nrUsi, kmReali, nrUsi, nrUsi, nrUsi);
           vehicule.add(vme);
 
         }
