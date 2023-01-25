@@ -34,7 +34,7 @@ public class AddVehiculController {
 
     @FXML
     private void showData() throws IOException {
-        App.setRoot("primary");
+        App.setRoot("primaryMBenzina");
     }
 
     @FXML
@@ -46,7 +46,7 @@ public class AddVehiculController {
             numarVehicule = 0;
         }
 
-        if (VehiculMElectric.addVehicle(numarVehicule))
+        if (VehiculMBenzinaSeeder.addVehicle(numarVehicule))
             labelStatus.setText("Vehicule adaugate cu succes!");
         else
             labelStatus.setText("Nu s-au putut adauga vehiculele!");

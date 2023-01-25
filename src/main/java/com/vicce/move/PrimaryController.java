@@ -100,9 +100,9 @@ public class PrimaryController {
             vitezaMax = 0;
         }
 
-        tableView.getColumns().setAll(VehiculMMotorina.getTableColumns());
+        tableView.getColumns().setAll(VehiculMBenzina.getTableColumns());
 
-        mobilitateList.addAll(GeneratorElectricSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
+        mobilitateList.addAll(VehiculMBenzinaSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
 
         tableView.setItems(mobilitateList);
 
@@ -110,7 +110,7 @@ public class PrimaryController {
 
     @FXML
     private void addData() throws IOException {
-        App.setRoot("addVehiculeMMotorina");
+        App.setRoot("addVehiculeMBenzina");
     }
 
     @FXML
@@ -122,12 +122,14 @@ public class PrimaryController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            GeneratorElectricSeeder.resetData();
-            App.setRoot("addVehiculeMMotorina");
+            VehiculMBenzinaSeeder.resetData();
+            App.setRoot("addVehiculeMBenzina");
         }
     }
 
+    @FXML
+    private void switchToSecondary() throws IOException {
+        App.setRoot("addVehiculeMBenzina");
+    }
 }
 
-
-    
