@@ -1,6 +1,7 @@
 package com.vicce.move;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Vector;
 
 public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aici pentru set si get
@@ -22,7 +23,7 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   };
   protected ArrayList<Electric> electrics;
 
-  public VehiculMElectric() {
+  public VehiculMElectric(float vitezaMax, float pret, int capacitateMotor2, String marca, String model, String tip, String proprietar, int autonomie2, double greutate2, double kmReali2, int anFabricatie2, long id) {
     super();
     this.capacitateMotor = 10;
     this.autonomie = 400;
@@ -152,6 +153,26 @@ for (VehiculMElectric vehicul : vehicule) {
 
   public static boolean addVehicle(int numarVehicule) {
     return false;
+  }
+
+  public Collection<?> getId() {
+    return null;
+  }
+
+  public Collection<?> getMarca() {
+    return null;
+  }
+
+  public Collection<?> getModel() {
+    return null;
+  }
+
+  public Collection<?> getTip() {
+    return null;
+  }
+
+  public Collection<?> getProprietar() {
+    return null;
   }
 }
 
