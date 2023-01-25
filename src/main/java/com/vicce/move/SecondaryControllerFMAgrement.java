@@ -10,7 +10,7 @@ import java.util.function.UnaryOperator;
 
 import com.vicce.move.seeder.VehiculFMAgrementSeeder;
 
-public class SecondaryController {
+public class SecondaryControllerFMAgrement {
 
     @FXML
     private TextField textFieldAddVehicule;

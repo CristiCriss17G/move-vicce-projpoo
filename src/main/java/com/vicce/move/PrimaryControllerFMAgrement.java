@@ -16,7 +16,7 @@ import javafx.util.converter.FloatStringConverter;
 
 import com.vicce.move.seeder.VehiculFMAgrementSeeder;
 
-public class PrimaryController {
+public class PrimaryControllerFMAgrement {
 
     @FXML
     private TableView<Mobilitate> tableView;
