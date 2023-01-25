@@ -37,8 +37,14 @@ public class VehiculMBenzinaSeeder {
     private static final int MAX_CAPACITATE=3500;
     private static final double MIN_CONSUM=3.4;
     private static final double MAX_CONSUM=12.5;
-    static private String[] modele = new String[]{"VW ","Audi","Ford","BMW ","Hyundai Elantra","Citroen","Skoda"};
-    static private String[] marci = new String[]{"Golf 5","A3","Focus","Seria 3","Elantra"," C3","Superb"};
+
+    //static private String[] modele = new String[]{"VW ","Audi","Ford","BMW ","Hyundai Elantra","Citroen","Skoda"};
+    //static private String[] marci = new String[]{"Golf 5","A3","Focus","Seria 3","Elantra"," C3","Superb"};
+
+    private static final String[] manufacturers = { "VW", "Audi", "Ford", "BMW", "Hyundai", "Citroen",
+            "Skoda", "Mercedes-Benz", "Renault","Dacia", "Opel", "Toyota"};
+
+    private static final String[] models = { "Golf 5","A3","Focus","Seria 3","Elantra"," C3","Superb", "C","Clio", "Logan", "Astra", "Corolla"};
 
     private static final String[] types = { "Road", "Mountain", "Hybrid", "Touring", "Fixed Gear", "BMX", "Cruiser" };
 
@@ -82,8 +88,8 @@ public class VehiculMBenzinaSeeder {
             int caiPutere = random.nextInt(MAX_CAI - MIN_CAI) + MIN_CAI;
             int capacitateMotor=random.nextInt(MAX_CAPACITATE - MIN_CAPACITATE) + MIN_CAI;
             double consumUrban=random.nextDouble(MAX_CONSUM - MIN_CONSUM) + MIN_CONSUM;
-            String marca=marci[random.nextInt(marci.length)];
-            String model=modele[random.nextInt(modele.length)];
+            String marca = manufacturers[random.nextInt(manufacturers.length)];
+            String model = models[random.nextInt(models.length)];
             
 
             masina=new VehiculMBenzina(vitezaMax,pret,marca,model,tip,proprietar,nrRoti,nrLocuri,caiPutere,capacitateMotor,anFabricatie,consumUrban);
@@ -101,11 +107,11 @@ public class VehiculMBenzinaSeeder {
     }
 
     public static JSONArray JSONseed(ArrayList<VehiculMBenzina> vehicule) {
-        return JSONseed(vehicule, "vehicule.test.json");
+        return JSONseed(vehicule, fileName);
     }
 
     public static JSONArray JSONseed(boolean canBeNull, ArrayList<VehiculMBenzina> vehicule) {
-        return JSONseed(canBeNull, vehicule, "vehicule.test.json");
+        return JSONseed(canBeNull, vehicule, fileName);
     }
 
     public static JSONArray JSONseed(ArrayList<VehiculMBenzina> vehicule, String path) {
