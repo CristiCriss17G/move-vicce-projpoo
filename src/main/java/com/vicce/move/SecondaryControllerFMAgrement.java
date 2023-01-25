@@ -8,9 +8,10 @@ import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
 import java.util.function.UnaryOperator;
 
-import com.vicce.move.seeder.*;
+import com.vicce.move.seeder.VehiculFMAgrementSeeder;
 
-public class AddVehiculController {
+public class SecondaryControllerFMAgrement {
+
     @FXML
     private TextField textFieldAddVehicule;
 
@@ -34,7 +35,8 @@ public class AddVehiculController {
 
     @FXML
     private void showData() throws IOException {
-        App.setRoot("primary");
+        App.setRoot("primaryFMAgrement");
+        
     }
 
     @FXML
@@ -46,9 +48,10 @@ public class AddVehiculController {
             numarVehicule = 0;
         }
 
-        if (VehiculMElectric.addVehicle(numarVehicule))
+        if (VehiculFMAgrementSeeder.addVehicle(numarVehicule))
             labelStatus.setText("Vehicule adaugate cu succes!");
         else
             labelStatus.setText("Nu s-au putut adauga vehiculele!");
     }
+
 }

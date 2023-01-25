@@ -1,5 +1,10 @@
 package com.vicce.move;
 
+import java.util.ArrayList;
+
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 public class VehiculFaraMotor extends Mobilitate {
     protected int nrRoti;
     protected double greutate;
@@ -28,6 +33,38 @@ public class VehiculFaraMotor extends Mobilitate {
     public VehiculFaraMotor(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
             int acceleratie) {
         super(vitezaMax, pret);
+        this.nrRoti = nrRoti;
+        this.greutate = greutate;
+        this.anFabricatie = anFabricatie;
+        this.nrPedale = nrPedale;
+        this.acceleratie = acceleratie;
+    }
+
+    public VehiculFaraMotor(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
+            int acceleratie, long id) {
+        super(vitezaMax, pret, id);
+        this.nrRoti = nrRoti;
+        this.greutate = greutate;
+        this.anFabricatie = anFabricatie;
+        this.nrPedale = nrPedale;
+        this.acceleratie = acceleratie;
+    }
+
+    // adaugat macara, model, tip, proprietar
+    public VehiculFaraMotor(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int nrRoti, double greutate, int anFabricatie, int nrPedale, int acceleratie) {
+        super(vitezaMax, pret, marca, model, tip, proprietar);
+        this.nrRoti = nrRoti;
+        this.greutate = greutate;
+        this.anFabricatie = anFabricatie;
+        this.nrPedale = nrPedale;
+        this.acceleratie = acceleratie;
+    }
+
+    // adaugat macara, model, tip, proprietar, id
+    public VehiculFaraMotor(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int nrRoti, double greutate, int anFabricatie, int nrPedale, int acceleratie, long id) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, id);
         this.nrRoti = nrRoti;
         this.greutate = greutate;
         this.anFabricatie = anFabricatie;
@@ -82,12 +119,45 @@ public class VehiculFaraMotor extends Mobilitate {
 
     @Override
     public void afisare() {
-        System.out.println("Vehicul cu motor cu viteza maxima " + vitezaMax + " si pretul " + pret);
+        System.out.println("Vehicul fara motor " + id + " cu viteza maxima " + vitezaMax + " si pretul " + pret
+                + " are " + nrRoti
+                + " roti, greutatea " + greutate + " kg, a fost fabricat in anul " + anFabricatie + ", are " + nrPedale
+                + " pedale si accelereaza in " + acceleratie + " secunde.");
+    }
+
+    // adugat penntru generare tabel, sunt campurile clasei + campurile din clasa
+    // parinte, de implementat in clasa copil
+    public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
+        ArrayList<TableColumn<Mobilitate, ?>> columns = Mobilitate.getTableColumns();
+
+        TableColumn<Mobilitate, Integer> nrRotiColumn = new TableColumn<>("Nr roti");
+        nrRotiColumn.setCellValueFactory(new PropertyValueFactory<>("nrRoti"));
+        columns.add(nrRotiColumn);
+
+        TableColumn<Mobilitate, Double> greutateColumn = new TableColumn<>("Greutate");
+        greutateColumn.setCellValueFactory(new PropertyValueFactory<>("greutate"));
+        columns.add(greutateColumn);
+
+        TableColumn<Mobilitate, Integer> anFabricatieColumn = new TableColumn<>("An fabricatie");
+        anFabricatieColumn.setCellValueFactory(new PropertyValueFactory<>("anFabricatie"));
+        columns.add(anFabricatieColumn);
+
+        TableColumn<Mobilitate, Integer> nrPedaleColumn = new TableColumn<>("Nr pedale");
+        nrPedaleColumn.setCellValueFactory(new PropertyValueFactory<>("nrPedale"));
+        columns.add(nrPedaleColumn);
+
+        TableColumn<Mobilitate, Integer> acceleratieColumn = new TableColumn<>("Acceleratie");
+        acceleratieColumn.setCellValueFactory(new PropertyValueFactory<>("acceleratie"));
+        columns.add(acceleratieColumn);
+        return columns;
     }
 
     @Override
     public String toString() {
-        return "VehiculCuMotor [nrPedale=" + nrPedale + ", nrRoti=" + nrRoti + ", pret=" + pret + ", vitezaMax="
-                + vitezaMax + "]";
+        return "VehiculFaraMotor " + id + " [vitezaMax=" + vitezaMax + ", pret=" + pret + ", nrRoti=" + nrRoti
+                + ", greutate="
+                + greutate + ", anFabricatie=" + anFabricatie + ", nrPedale=" + nrPedale + ", acceleratie="
+                + acceleratie
+                + "]";
     }
 }

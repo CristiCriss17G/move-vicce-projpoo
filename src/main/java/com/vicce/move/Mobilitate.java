@@ -13,16 +13,16 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         idPool = 1;
     }
 
-    protected final long id; 
+    protected final long id;
     protected float vitezaMax;
     protected float pret;
-    protected String marca = ""; 
-    protected String model = "";
-    protected String tip = "";
-    protected String proprietar = "";
+    protected String marca = ""; // adaugat + getter + setter
+    protected String model = "";// adaugat + getter + setter
+    protected String tip = "";// adaugat + getter + setter
+    protected String proprietar = "";// adaugat + getter + setter
 
     public Mobilitate() {
-        this.id=idPool++;
+        this.id = idPool++;
         this.vitezaMax = 0;
         this.pret = 0;
         this.marca = "";
@@ -32,7 +32,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
     }
 
     public Mobilitate(Mobilitate a) {
-        this.id=a.id;
+        this.id = a.id;
         this.vitezaMax = a.vitezaMax;
         this.pret = a.pret;
         this.marca = a.marca;
@@ -42,7 +42,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
     }
 
     public Mobilitate(float vitezaMax, float pret) {
-        this.id=idPool++;
+        this.id = idPool++;
         this.vitezaMax = vitezaMax;
         this.pret = pret;
         this.marca = "";
@@ -51,9 +51,8 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.proprietar = this.marca;
     }
 
-
-    public Mobilitate(float vitezaMax, float pret, long id) { // initilizare cu id
-        this.id = id;
+    public Mobilitate(float vitezaMax, float pret, long id) {
+        this.id = idPool++;
         this.vitezaMax = vitezaMax;
         this.pret = pret;
         this.marca = "";
@@ -86,7 +85,6 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
             idPool = id + 1;
     }
 
-
     public final long getId() {
         return this.id;
     }
@@ -114,6 +112,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
     public void setMarca(String marca) {
         this.marca = marca;
     }
+
     public String getModel() {
         return this.model;
     }
@@ -187,7 +186,9 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
 
         return columns;
     }
+
     public abstract float raportVitezaPret();
+
     public abstract void afisare();
 
     @Override
