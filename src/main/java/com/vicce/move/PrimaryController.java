@@ -102,7 +102,7 @@ public class PrimaryController {
 
         tableView.getColumns().setAll(VehiculMMotorina.getTableColumns());
 
-        mobilitateList.addAll(VehiculMMotorinaSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
+        mobilitateList.addAll(GeneratorElectricSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
 
         tableView.setItems(mobilitateList);
 
@@ -122,9 +122,12 @@ public class PrimaryController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            VehiculMMotorinaSeeder.resetData();
+            GeneratorElectricSeeder.resetData();
             App.setRoot("addVehiculeMMotorina");
         }
     }
 
 }
+
+
+    

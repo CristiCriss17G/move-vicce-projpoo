@@ -46,7 +46,7 @@ public class AddVehiculController {
             numarVehicule = 0;
         }
 
-        if (VehiculFMSportSeeder.addVehicle(numarVehicule))
+        if (VehiculMElectric.addVehicle(numarVehicule))
             labelStatus.setText("Vehicule adaugate cu succes!");
         else
             labelStatus.setText("Nu s-au putut adauga vehiculele!");

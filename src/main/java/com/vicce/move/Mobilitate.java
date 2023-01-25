@@ -9,9 +9,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable {
     private static long idPool = 1;
 
-    /**
-     * Temporary for testing purposes
-     */
     public final static void resetIdPool() {
         idPool = 1;
     }
@@ -63,7 +60,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.tip = "";
         this.proprietar = this.marca;
         if (idPool <= id)
-        idPool = id + 1;
+            idPool = id + 1;
     }
 
     public Mobilitate(float vitezaMax, float pret, String marca, String model, String tip, String proprietar) {
@@ -91,7 +88,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
     public final long getId() {
         return this.id;
     }
-    
+
     public float getVitezaMax() {
         return this.vitezaMax;
     }

@@ -8,7 +8,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
 import java.util.function.UnaryOperator;
 
-import com.vicce.move.seeder.VehiculMMotorinaSeeder;
+import com.vicce.move.seeder.GeneratorElectricSeeder;
 
 public class SecondaryController {
 
@@ -47,7 +47,7 @@ public class SecondaryController {
             numarVehicule = 0;
         }
 
-        if (VehiculMMotorinaSeeder.addVehicle(numarVehicule))
+        if (GeneratorElectricSeeder.addVehicle(numarVehicule))
             labelStatus.setText("Vehicule adaugate cu succes!");
         else
             labelStatus.setText("Nu s-au putut adauga vehiculele!");
