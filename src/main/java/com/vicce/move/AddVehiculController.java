@@ -12,44 +12,44 @@ import com.vicce.move.seeder.*;
 
 
 public class AddVehiculController {
-  @FXML
-  private TextField textFieldAddVehicule;
+    @FXML
+    private TextField textFieldAddVehicule;
 
-  @FXML
-  private Label labelStatus;
+    @FXML
+    private Label labelStatus;
 
-  public void initialize() {
-      UnaryOperator<TextFormatter.Change> intFilter = change -> {
-          String newText = change.getControlNewText();
-          if (newText.matches("([0-9]{1,4})?")) {
-              return change;
-          }
-          return null;
-      };
+public void initialize() {
+    UnaryOperator<TextFormatter.Change> intFilter = change -> {
+        String newText = change.getControlNewText();
+        if (newText.matches("([0-9]{1,4})?")) {
+            return change;
+        }
+        return null;
+    };
 
-      TextFormatter<Integer> addVehiculFormatter = new TextFormatter<>(new IntegerStringConverter(), 0, intFilter);
-      textFieldAddVehicule.setTextFormatter(addVehiculFormatter);
-      textFieldAddVehicule.setPromptText("Numarul de vehicule de adaugat");
+    TextFormatter<Integer> addVehiculFormatter = new TextFormatter<>(new IntegerStringConverter(), 0, intFilter);
+    textFieldAddVehicule.setTextFormatter(addVehiculFormatter);
+    textFieldAddVehicule.setPromptText("Numarul de vehicule de adaugat");
 
-  }
+}
 
-  @FXML
-  private void showData() throws IOException {
-      App.setRoot("primary");
-  }
+@FXML
+private void showData() throws IOException {
+    App.setRoot("primary");
+}
 
-  @FXML
-  private void addData() {
-      int numarVehicule;
-      try {
-          numarVehicule = Integer.parseInt(textFieldAddVehicule.getText());
-      } catch (NumberFormatException e) {
-          numarVehicule = 0;
-      }
+@FXML
+private void addData() {
+    int numarVehicule;
+    try {
+        numarVehicule = Integer.parseInt(textFieldAddVehicule.getText());
+    } catch (NumberFormatException e) {
+        numarVehicule = 0;
+    }
 
-      if (VehiculMElectric.addVehicle(numarVehicule))
-          labelStatus.setText("Vehicule adaugate cu succes!");
-      else
-          labelStatus.setText("Nu s-au putut adauga vehiculele!");
-  }
+    if (VehiculMElectric.addVehicle(numarVehicule))
+        labelStatus.setText("Vehicule adaugate cu succes!");
+    else
+        labelStatus.setText("Nu s-au putut adauga vehiculele!");
+}
 }
