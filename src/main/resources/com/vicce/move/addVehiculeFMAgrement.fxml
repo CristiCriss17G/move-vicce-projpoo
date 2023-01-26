@@ -8,7 +8,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 
-<GridPane fx:id="gridPane" fx:controller="com.vicce.move.SecondaryControllerFMAgrement"
+<GridPane fx:id="gridPane" fx:controller="com.vicce.move.AddVehiculController"
     xmlns="http://javafx.com/javafx/8.0.171"
     xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" styleClass="grid-pane">
     <rowConstraints>
@@ -28,6 +28,9 @@
     <children>
         <Button fx:id="button1" text="Mergi inapoi" onAction="#showData" GridPane.rowIndex="0" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
         <Button fx:id="button2" text="Add data" onAction="#addData" GridPane.rowIndex="5" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER"/>
+        <Button fx:id="buttonImport" text="Import data" onAction="#importData" GridPane.rowIndex="1" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER"/>
+        <TextField fx:id="textFieldFilePath" GridPane.rowIndex="2" GridPane.columnIndex="1" alignment="CENTER_LEFT" GridPane.halignment="CENTER" GridPane.columnSpan="1"/>
+        <Button fx:id="buttonChooseFile" text="Choose file" onAction="#chooseFile" GridPane.rowIndex="2" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER"/>
         <Label fx:id="labelStatus" text="" GridPane.rowIndex="1" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER" GridPane.columnSpan="3"/>
         <Label fx:id="label1" text="Numar vehicule [ Minim 1 ]" GridPane.rowIndex="4" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
         <TextField fx:id="textFieldAddVehicule" GridPane.rowIndex="4" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER" GridPane.columnSpan="2"/>
