@@ -19,7 +19,7 @@ import org.json.JSONArray;
 
 public class GeneratorElectricSeeder {
   private static Random random = new Random();
-  private static final String fileName = "vehicule.test.json";
+  private static final String fileName = "vehiculeMEletrice.test.json";
   private static final int MAX = 100;
   private static final int MIN = 1;
   private static final int MAX_VITEZA = 300;
