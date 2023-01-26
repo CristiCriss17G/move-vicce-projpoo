@@ -153,15 +153,16 @@ public class AddVehiculController {
                         an = Integer.parseInt(lineArray[10]);
                         nrPedale = Integer.parseInt(lineArray[11]);
                         acceleratie = Integer.parseInt(lineArray[12]);
+                        VehiculFMAgrement.TipTeren tipTerenAg = VehiculFMAgrement.TipTeren.valueOf(lineArray[13]);
+                        VehiculFMAgrement.CategVarsta categVarsta = VehiculFMAgrement.CategVarsta
+                                .valueOf(lineArray[14]);
                         // trim [ ] from the string
-                        String[] echipamentProc = lineArray[13].substring(1, lineArray[13].length() - 1).split(", ");
+                        String[] echipamentProc = lineArray[15].substring(1, lineArray[15].length() - 1).split(", ");
                         ArrayList<VehiculFMAgrement.EchipamentProtectie> echipamentProtectie = new ArrayList<>();
                         for (String echipament : echipamentProc) {
                             echipamentProtectie.add(VehiculFMAgrement.EchipamentProtectie.valueOf(echipament));
                         }
-                        VehiculFMAgrement.TipTeren tipTerenAg = VehiculFMAgrement.TipTeren.valueOf(lineArray[14]);
-                        VehiculFMAgrement.CategVarsta categVarsta = VehiculFMAgrement.CategVarsta
-                                .valueOf(lineArray[15]);
+
                         mobilitate = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
                                 greutate, an, nrPedale, acceleratie, tipTerenAg, echipamentProtectie, categVarsta, id);
                         break;
