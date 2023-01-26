@@ -129,6 +129,7 @@ public class AddVehiculController {
                     Seeder.addVehicule(mobilitate);
             }
             bufferedReader.close();
+            App.setRoot("primaryFMAgrement");
         } catch (FileNotFoundException ex) {
             System.out.println("Unable to open file '" + filePath + "'");
         } catch (IOException ex) {
