@@ -301,6 +301,19 @@ public class VehiculFMAgrementSeeder {
         return JSONseed(vehicule);
     }
 
+    public static JSONArray addVehicule(VehiculFMAgrement vfm) {
+        ArrayList<VehiculFMAgrement> vehiculeOld;
+        try {
+            vehiculeOld = JSONReadSeed(fileName);
+        } catch (IllegalArgumentException e) {
+            vehiculeOld = new ArrayList<VehiculFMAgrement>();
+        }
+        ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
+        vehicule.addAll(vehiculeOld);
+        vehicule.add(vfm);
+        return JSONseed(vehicule);
+    }
+
     /**
      * adaugat pt resetarea fisierului
      * Va fi stearsa la urmatoarea versiune

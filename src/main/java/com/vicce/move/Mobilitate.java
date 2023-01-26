@@ -51,7 +51,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.proprietar = this.marca;
     }
 
-    public Mobilitate(float vitezaMax, float pret, long id) { 
+    public Mobilitate(float vitezaMax, float pret, long id) {
         this.id = id;
         this.vitezaMax = vitezaMax;
         this.pret = pret;
@@ -73,7 +73,6 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.proprietar = proprietar;
     }
 
-    
     public Mobilitate(float vitezaMax, float pret, String marca, String model, String tip, String proprietar, long id) {
         this.id = id;
         this.vitezaMax = vitezaMax;

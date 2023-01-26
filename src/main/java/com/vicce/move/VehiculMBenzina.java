@@ -10,88 +10,89 @@ public class VehiculMBenzina extends VehiculCuMotor {
     protected int anFabricatie;
     protected double consumUrban;
 
-
-    public VehiculMBenzina(){
+    public VehiculMBenzina() {
         super();
-        caiPutere=100;
-        capacitateMotor=1600;
-        anFabricatie=2000;
-        consumUrban=5.6;
+        caiPutere = 100;
+        capacitateMotor = 1600;
+        anFabricatie = 2000;
+        consumUrban = 5.6;
     }
 
-    public VehiculMBenzina(float vitezaMax, float pret, int nrRoti, int nrLocuri,int putere,int capacitate,int an, double consum){
-        super(vitezaMax,pret,nrRoti,nrLocuri);
-        this.caiPutere=putere;
-        this.capacitateMotor=capacitate;
-        this.anFabricatie=an;
-        this.consumUrban=consum;
+    public VehiculMBenzina(float vitezaMax, float pret, int nrRoti, int nrLocuri, int putere, int capacitate, int an,
+            double consum) {
+        super(vitezaMax, pret, nrRoti, nrLocuri);
+        this.caiPutere = putere;
+        this.capacitateMotor = capacitate;
+        this.anFabricatie = an;
+        this.consumUrban = consum;
     }
 
-    public VehiculMBenzina(float vitezaMax, float pret, int nrRoti, int nrLocuri,int putere,int capacitate,int an, double consum,long id){
-        super(vitezaMax,pret,nrRoti,nrLocuri,id);
-        this.caiPutere=putere;
-        this.capacitateMotor=capacitate;
-        this.anFabricatie=an;
-        this.consumUrban=consum;
+    public VehiculMBenzina(float vitezaMax, float pret, int nrRoti, int nrLocuri, int putere, int capacitate, int an,
+            double consum, long id) {
+        super(vitezaMax, pret, nrRoti, nrLocuri, id);
+        this.caiPutere = putere;
+        this.capacitateMotor = capacitate;
+        this.anFabricatie = an;
+        this.consumUrban = consum;
     }
 
-    public VehiculMBenzina(float vitezaMax, float pret,String marca,String model,String tip,String proprietar, int nrRoti, int nrLocuri,int putere,int capacitate,int an, double consum){
-        super(vitezaMax,pret,marca,model,tip,proprietar,nrRoti,nrLocuri);
-        this.caiPutere=putere;
-        this.capacitateMotor=capacitate;
-        this.anFabricatie=an;
-        this.consumUrban=consum;
+    public VehiculMBenzina(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int nrRoti, int nrLocuri, int putere, int capacitate, int an, double consum) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri);
+        this.caiPutere = putere;
+        this.capacitateMotor = capacitate;
+        this.anFabricatie = an;
+        this.consumUrban = consum;
     }
 
-    public VehiculMBenzina(float vitezaMax, float pret,String marca,String model,String tip,String proprietar, int nrRoti, int nrLocuri,int putere,int capacitate,int an, double consum,long id){
-        super(vitezaMax,pret,marca,model,tip,proprietar,nrRoti,nrLocuri,id);
-        this.caiPutere=putere;
-        this.capacitateMotor=capacitate;
-        this.anFabricatie=an;
-        this.consumUrban=consum;
+    public VehiculMBenzina(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int nrRoti, int nrLocuri, int putere, int capacitate, int an, double consum, long id) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri, id);
+        this.caiPutere = putere;
+        this.capacitateMotor = capacitate;
+        this.anFabricatie = an;
+        this.consumUrban = consum;
     }
 
-    public VehiculMBenzina(VehiculMBenzina m){
+    public VehiculMBenzina(VehiculMBenzina m) {
         super(m);
-        this.caiPutere=m.caiPutere;
-        this.capacitateMotor=m.capacitateMotor;
-        this.anFabricatie=m.anFabricatie;
-        this.consumUrban=m.consumUrban;
+        this.caiPutere = m.caiPutere;
+        this.capacitateMotor = m.capacitateMotor;
+        this.anFabricatie = m.anFabricatie;
+        this.consumUrban = m.consumUrban;
     }
 
-    public int getCaiPutere(){
+    public int getCaiPutere() {
         return caiPutere;
     }
 
-    public void setCaiPutere(int putere){
-        this.caiPutere=putere;
+    public void setCaiPutere(int putere) {
+        this.caiPutere = putere;
     }
 
-    public int getCapacitateMotor(){
+    public int getCapacitateMotor() {
         return capacitateMotor;
     }
 
-    public void setCapacitateMotor(int capacitate){
-        this.capacitateMotor=capacitate;
+    public void setCapacitateMotor(int capacitate) {
+        this.capacitateMotor = capacitate;
     }
 
-
-    public int getAnFabricatie(){
+    public int getAnFabricatie() {
         return anFabricatie;
     }
-    
-    public void setAnFabricatie(int an){
-        this.anFabricatie=an;
+
+    public void setAnFabricatie(int an) {
+        this.anFabricatie = an;
     }
 
-    public double getConsumUrban(){
+    public double getConsumUrban() {
         return consumUrban;
     }
-    
-    public void setConsumUrban(double consum){
-        this.consumUrban=consum;
-    }
 
+    public void setConsumUrban(double consum) {
+        this.consumUrban = consum;
+    }
 
     public static ArrayList<VehiculMBenzina> filtrareViteza(ArrayList<VehiculMBenzina> vehicule, float vitezaMaxim,
             float vitezaMinima) {
@@ -118,18 +119,18 @@ public class VehiculMBenzina extends VehiculCuMotor {
     }
 
     @Override
-    public String toString(){
-        return "Vehicul cu motor pe benzina fabricat in anul "+anFabricatie+" cu "+caiPutere+" cai putere"+" si o capacitate de "+capacitateMotor+ " si un consum urban de "+consumUrban+"l/100km";
+    public String toString() {
+        return "Vehicul cu motor pe benzina fabricat in anul " + anFabricatie + " cu " + caiPutere + " cai putere"
+                + " si o capacitate de " + capacitateMotor + " si un consum urban de " + consumUrban + "l/100km";
 
     }
-    
 
     @Override
-    public void afisare(){
-        System.out.println("Vehicul cu motor pe benzina fabricat in anul "+anFabricatie+" cu "+caiPutere+"cai putere"+" si o capacitate de "+capacitateMotor+ " si un consum urban de "+consumUrban+"l/100km");
+    public void afisare() {
+        System.out.println("Vehicul cu motor pe benzina fabricat in anul " + anFabricatie + " cu " + caiPutere
+                + "cai putere" + " si o capacitate de " + capacitateMotor + " si un consum urban de " + consumUrban
+                + "l/100km");
     }
-
-
 
     public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
         ArrayList<TableColumn<Mobilitate, ?>> columns = VehiculCuMotor.getTableColumns();
@@ -138,16 +139,13 @@ public class VehiculMBenzina extends VehiculCuMotor {
         putereColumn.setCellValueFactory(new PropertyValueFactory<>("caiPutere"));
         columns.add(putereColumn);
 
-
         TableColumn<Mobilitate, Integer> capacitateMotorColumn = new TableColumn<>("Capacitate motor");
         capacitateMotorColumn.setCellValueFactory(new PropertyValueFactory<>("capacitateMotor"));
         columns.add(capacitateMotorColumn);
 
-
         TableColumn<Mobilitate, Integer> anFabricatieColumn = new TableColumn<>("An Fabricatie");
         anFabricatieColumn.setCellValueFactory(new PropertyValueFactory<>("anFabricatie"));
         columns.add(anFabricatieColumn);
-
 
         TableColumn<Mobilitate, Double> consumUrbanColumn = new TableColumn<>("Consum urban");
         consumUrbanColumn.setCellValueFactory(new PropertyValueFactory<>("consumUrban"));
@@ -156,10 +154,4 @@ public class VehiculMBenzina extends VehiculCuMotor {
         return columns;
     }
 
-
-
-
-
-
 }
-
