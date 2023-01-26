@@ -65,45 +65,45 @@ public class PrimaryControllerFMAgrement {
 
     @FXML
     private void showData() {
-         // clear the table first
-         resetTable();
+        // clear the table first
+        resetTable();
 
-         ObservableList<Mobilitate> mobilitateList = FXCollections.observableArrayList();
- 
-         float pretMin;
-         float pretMax;
-         float vitezaMin;
-         float vitezaMax;
- 
-         try {
-             pretMin = Float.parseFloat(textFieldPretMin.getText());
-         } catch (NumberFormatException e) {
-             pretMin = 0;
-         }
- 
-         try {
-             pretMax = Float.parseFloat(textFieldPretMax.getText());
-         } catch (NumberFormatException e) {
-             pretMax = 0;
-         }
- 
-         try {
-             vitezaMin = Float.parseFloat(textFieldVitezaMin.getText());
-         } catch (NumberFormatException e) {
-             vitezaMin = 0;
-         }
- 
-         try {
-             vitezaMax = Float.parseFloat(textFieldVitezaMax.getText());
-         } catch (NumberFormatException e) {
-             vitezaMax = 0;
-         }
- 
-         tableView.getColumns().setAll(VehiculFMAgrement.getTableColumns());
- 
-         mobilitateList.addAll(VehiculFMAgrementSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
- 
-         tableView.setItems(mobilitateList);
+        ObservableList<Mobilitate> mobilitateList = FXCollections.observableArrayList();
+
+        float pretMin;
+        float pretMax;
+        float vitezaMin;
+        float vitezaMax;
+
+        try {
+            pretMin = Float.parseFloat(textFieldPretMin.getText());
+        } catch (NumberFormatException e) {
+            pretMin = 0;
+        }
+
+        try {
+            pretMax = Float.parseFloat(textFieldPretMax.getText());
+        } catch (NumberFormatException e) {
+            pretMax = 0;
+        }
+
+        try {
+            vitezaMin = Float.parseFloat(textFieldVitezaMin.getText());
+        } catch (NumberFormatException e) {
+            vitezaMin = 0;
+        }
+
+        try {
+            vitezaMax = Float.parseFloat(textFieldVitezaMax.getText());
+        } catch (NumberFormatException e) {
+            vitezaMax = 0;
+        }
+
+        tableView.getColumns().setAll(VehiculFMAgrement.getTableColumns());
+
+        mobilitateList.addAll(VehiculFMAgrementSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
+
+        tableView.setItems(mobilitateList);
     }
 
     @FXML
@@ -118,6 +118,17 @@ public class PrimaryControllerFMAgrement {
             VehiculFMAgrementSeeder.resetData();
             App.setRoot("addVehiculeFMAgrement");
         }
+    }
+
+    @FXML
+    private void reverseNames() {
+        ObservableList<Mobilitate> mobilitateList = FXCollections.observableArrayList();
+        for (Mobilitate mobilitate : tableView.getItems()) {
+            mobilitate.setProprietar(new StringBuilder(mobilitate.getProprietar()).reverse().toString());
+            mobilitateList.add(mobilitate);
+        }
+        tableView.getItems().clear();
+        tableView.setItems(mobilitateList);
     }
 
     @FXML
