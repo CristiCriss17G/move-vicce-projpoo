@@ -26,6 +26,23 @@ public class GeneratorElectricSeeder {
   private static final int MIN_VITEZA = 100;
   private static final int MAX_PRET = 10000;
   private static final int MIN_PRET = 100;
+  private static final String[] manufacturers = { "Mazda", "Porche", "Fiat", "Bentley", "Hammer", "Renault",
+      "Dodge", "Toyota", "VW", "Dacia", "Koenigsegg", "Lada" };
+
+  private static final String[] models = { "CX-7", "Tycan", "Punto", "Bentayga", "H2", " Talisman", "Charger", "Supra",
+      "Lupo", "Logan", "One1", "Granta" };
+
+  private static final String[] types = { "Road", "Mountain", "Hybrid", "Touring", "Fixed Gear", "BMX", "Cruiser" };
+
+  private static final String[] proprietari = { "Andrea Ortiz", "Kadence Carney", "Hunter Heath", "Elianna Diaz",
+      "Marina Barajas", "Ayanna Daniel", "Skylar Jensen", "Laura Hudson", "Oswaldo Rosario", "Marvin Clayton",
+      "Nora Avila", "Tony Yang", "Jesus Beck", "Cayden Hurst", "Brayden Young", "Esteban Larsen",
+      "Scarlett Horne", "Logan Estes", "Kyra Berger", "Charlize Wang", "Kael Gomez", "Vivian Levy",
+      "Isabella Grant", "Spencer Hooper", "Danica Kane", "Emelia Hernandez", "Armani Hammond", "Raquel Burke",
+      "Ruth Christian", "Prince Kim", "Ellis Wright", "Penelope Bean", "Raul Waller", "Kaylynn Hayden",
+      "Sean Crawford", "Kaya Roth", "Ally Cross", "Sage King", "Payten Bentley", "Gianni Woodward",
+      "Yandel Marshall", "Kailey Kramer", "Dax Bolton", "Makenna Parks", "Dangelo Vang", "Sandra Schmidt",
+      "Jon Carson", "Haiden Newton", "Rachel Stanton", "Jaylon Cobb" };
   private static final int MIN_CAPACITATEMOTOR = 1500;
   private static final int MAX_CAPACITATEMOTOR = 5500;
   private static final int MIN_AUTONOMIE = 350;
@@ -46,24 +63,11 @@ public class GeneratorElectricSeeder {
   private static final int MAX_CUPLU = 800;
   private static final int MIN_NRUSI = 2;
   private static final int MAX_NRUSI = 5;
-
-  private static final String[] manufacturers = { "Mazda", "Porche", "Fiat", "Bentley", "Hammer", "Renault",
-      "Dodge", "Toyota", "VW", "Dacia", "Koenigsegg", "Lada" };
-
-  private static final String[] models = { "CX-7", "Tycan", "Punto", "Bentayga", "H2", " Talisman", "Charger", "Supra",
-      "Lupo", "Logan", "One1", "Granta" };
-
-  private static final String[] types = { "Road", "Mountain", "Hybrid", "Touring", "Fixed Gear", "BMX", "Cruiser" };
-
-  private static final String[] proprietari = { "Andrea Ortiz", "Kadence Carney", "Hunter Heath", "Elianna Diaz",
-      "Marina Barajas", "Ayanna Daniel", "Skylar Jensen", "Laura Hudson", "Oswaldo Rosario", "Marvin Clayton",
-      "Nora Avila", "Tony Yang", "Jesus Beck", "Cayden Hurst", "Brayden Young", "Esteban Larsen",
-      "Scarlett Horne", "Logan Estes", "Kyra Berger", "Charlize Wang", "Kael Gomez", "Vivian Levy",
-      "Isabella Grant", "Spencer Hooper", "Danica Kane", "Emelia Hernandez", "Armani Hammond", "Raquel Burke",
-      "Ruth Christian", "Prince Kim", "Ellis Wright", "Penelope Bean", "Raul Waller", "Kaylynn Hayden",
-      "Sean Crawford", "Kaya Roth", "Ally Cross", "Sage King", "Payten Bentley", "Gianni Woodward",
-      "Yandel Marshall", "Kailey Kramer", "Dax Bolton", "Makenna Parks", "Dangelo Vang", "Sandra Schmidt",
-      "Jon Carson", "Haiden Newton", "Rachel Stanton", "Jaylon Cobb" };
+  private static final int MIN_NRROTI = 2;
+  private static final int MAX_NRROTI = 6;
+  private static final int MIN_NRLOCURI = 2;
+  private static final int MAX_NRLOCURI = 5;
+  private static final VehiculMElectric.Electric[] electrics = VehiculMElectric.Electric.values();
 
   public static ArrayList<VehiculMElectric> seed(int nr) {
     if (nr > MAX || nr < MIN) {
@@ -71,23 +75,29 @@ public class GeneratorElectricSeeder {
     }
     ArrayList<VehiculMElectric> vehicule = new ArrayList<VehiculMElectric>();
     for (int i = 0; i < nr; i++) {
-      float vitezaMax = random.nextFloat() * (MAX_VITEZA - MIN_VITEZA) + MIN_VITEZA;
-      float pret = random.nextFloat() * (MAX_PRET - MIN_PRET) + MIN_PRET;
-      int capacitateMotor = random.nextInt() * (MAX_CAPACITATEMOTOR - MIN_CAPACITATEMOTOR) + MIN_CAPACITATEMOTOR;
-      int autonomie = random.nextInt() * (MAX_AUTONOMIE - MIN_AUTONOMIE) + MIN_AUTONOMIE;
-      double greutate = random.nextDouble() * (MAX_GREUTATE - MIN_GREUTATE) + MIN_GREUTATE;
-      double kmReali = random.nextDouble() * (MAX_KMREALI - MIN_KMREALI) + MIN_KMREALI;
-      int anFabricatie = random.nextInt() * (MAX_ANFABRICATIE - MIN_ANFABRICATIE) + MIN_ANFABRICATIE;
-      int nrScaune = random.nextInt() * (MAX_NRSCAUNE - MIN_NRSCAUNE) + MIN_NRSCAUNE;
-      int litriPortbagaj = random.nextInt() * (MAX_LITRIPORTBAGAJ - MIN_LITRIPORTBAGAJ) + MIN_LITRIPORTBAGAJ;
-      int nrPedale = random.nextInt() * (MAX_NRPEDALE - MIN_NRPEDALE) + MIN_NRPEDALE;
-      int cuplu = random.nextInt() * (MAX_CUPLU - MIN_CUPLU) + MIN_CUPLU;
-      int nrUsi = random.nextInt() * (MAX_NRUSI - MIN_NRUSI) + MIN_NRUSI;
+      float vitezaMax = random.nextFloat(MAX_VITEZA - MIN_VITEZA) + MIN_VITEZA;
+      float pret = random.nextFloat(MAX_PRET - MIN_PRET) + MIN_PRET;
       String marca = manufacturers[random.nextInt(manufacturers.length)];
       String model = models[random.nextInt(models.length)];
+      String tip = types[random.nextInt(types.length)];
+      String proprietar = proprietari[random.nextInt(proprietari.length)];
+      int capacitateMotor = random.nextInt(MAX_CAPACITATEMOTOR - MIN_CAPACITATEMOTOR) + MIN_CAPACITATEMOTOR;
+      int autonomie = random.nextInt(MAX_AUTONOMIE - MIN_AUTONOMIE) + MIN_AUTONOMIE;
+      double greutate = random.nextDouble(MAX_GREUTATE - MIN_GREUTATE) + MIN_GREUTATE;
+      double kmReali = random.nextDouble(MAX_KMREALI - MIN_KMREALI) + MIN_KMREALI;
+      int anFabricatie = random.nextInt(MAX_ANFABRICATIE - MIN_ANFABRICATIE) + MIN_ANFABRICATIE;
+      int nrScaune = random.nextInt(MAX_NRSCAUNE - MIN_NRSCAUNE) + MIN_NRSCAUNE;
+      int litriPortbagaj = random.nextInt(MAX_LITRIPORTBAGAJ - MIN_LITRIPORTBAGAJ) + MIN_LITRIPORTBAGAJ;
+      int nrPedale = random.nextInt(MAX_NRPEDALE - MIN_NRPEDALE) + MIN_NRPEDALE;
+      int cuplu = random.nextInt(MAX_CUPLU - MIN_CUPLU) + MIN_CUPLU;
+      int nrUsi = random.nextInt(MAX_NRUSI - MIN_NRUSI) + MIN_NRUSI;
+      int nrRoti = random.nextInt(MAX_NRROTI - MIN_NRROTI) + MIN_NRROTI;
+      int nrLocuri = random.nextInt(MAX_NRLOCURI - MIN_NRLOCURI) + MIN_NRLOCURI;
+      VehiculMElectric.Electric electric = electrics[random.nextInt(electrics.length)];
 
-      VehiculMElectric vme = new VehiculMElectric(pret, pret, nrUsi, nrUsi, nrUsi, nrUsi, nrUsi, kmReali, nrUsi, nrUsi,
-          kmReali, nrUsi, nrUsi, nrUsi);
+      VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri,
+          nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj,
+          kmReali, anFabricatie, nrPedale, cuplu, electric);
       vehicule.add(vme);
 
     }
@@ -136,6 +146,14 @@ public class GeneratorElectricSeeder {
       vehicul.put("greutate", vme.getGreutate());
       vehicul.put("kmReali", vme.getKmReali());
       vehicul.put("anFabricatie", vme.getAnFabricatie());
+      vehicul.put("nrScaune", vme.getNrScaune());
+      vehicul.put("litriPortbagaj", vme.getLitriPortbagaj());
+      vehicul.put("nrPedale", vme.getNrPedale());
+      vehicul.put("cuplu", vme.getCuplu());
+      vehicul.put("nrUsi", vme.getNrUsi());
+      vehicul.put("nrRoti", vme.getNrRoti());
+      vehicul.put("nrLocuri", vme.getNrLocuri());
+      vehicul.put("electric", vme.getElectric());
       vehiculeJSON.put(vehicul);
     }
 
@@ -147,6 +165,7 @@ public class GeneratorElectricSeeder {
     } catch (IOException e) {
       e.printStackTrace();
     }
+
     return vehiculeJSON;
   }
 
@@ -170,9 +189,18 @@ public class GeneratorElectricSeeder {
       double greutate = vehicul.getDouble("greutate");
       double kmReali = vehicul.getDouble("kmReali");
       int anFabricatie = vehicul.getInt("anFabricatie");
+      int nrScaune = vehicul.getInt("nrScaune");
+      int litriPortbagaj = vehicul.getInt("litriPortbagaj");
+      int nrPedale = vehicul.getInt("nrPedale");
+      int cuplu = vehicul.getInt("cuplu");
+      int nrUsi = vehicul.getInt("nrUsi");
+      int nrRoti = vehicul.getInt("nrRoti");
+      int nrLocuri = vehicul.getInt("nrLocuri");
+      VehiculMElectric.Electric electric = VehiculMElectric.Electric.valueOf(vehicul.getString("electric"));
 
-      VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, capacitateMotor, marca, model, tip, proprietar,
-          autonomie, greutate, kmReali, anFabricatie, id);
+      VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri,
+          nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj, kmReali, anFabricatie, nrPedale, cuplu,
+          electric, id);
       vehicule.add(vme);
     }
     return vehicule;
@@ -202,9 +230,18 @@ public class GeneratorElectricSeeder {
         double greutate = vehicul.getDouble("greutate");
         double kmReali = vehicul.getDouble("kmReali");
         int anFabricatie = vehicul.getInt("anFabricatie");
+        int nrScaune = vehicul.getInt("nrScaune");
+        int litriPortbagaj = vehicul.getInt("litriPortbagaj");
+        int nrPedale = vehicul.getInt("nrPedale");
+        int cuplu = vehicul.getInt("cuplu");
+        int nrUsi = vehicul.getInt("nrUsi");
+        int nrRoti = vehicul.getInt("nrRoti");
+        int nrLocuri = vehicul.getInt("nrLocuri");
+        VehiculMElectric.Electric electric = VehiculMElectric.Electric.valueOf(vehicul.getString("electric"));
 
-        VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, capacitateMotor, marca, model, tip, proprietar,
-            autonomie, greutate, kmReali, anFabricatie, id);
+        VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri,
+            nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj, kmReali, anFabricatie, nrPedale,
+            cuplu, electric, id);
         vehicule.add(vme);
       }
     } catch (NoSuchFileException e) {
@@ -214,18 +251,9 @@ public class GeneratorElectricSeeder {
       // e.printStackTrace();
       throw new IllegalArgumentException("Fisierul nu poate fi citit; eroare de I/O: " + e.getMessage());
     }
+
     return vehicule;
   }
-
-  // catch (NoSuchFileException e) {
-  // // e.printStackTrace();
-  // throw new IllegalArgumentException("Fisierul nu exista; eroare de I/O: " +
-  // e.getMessage());
-  // } catch (IOException e) {
-  // // e.printStackTrace();
-  // throw new IllegalArgumentException("Fisierul nu poate fi citit; eroare de
-  // I/O: " + e.getMessage());
-  // }
 
   public static ArrayList<VehiculMElectric> getVehicule() {
     ArrayList<VehiculMElectric> vehicule;

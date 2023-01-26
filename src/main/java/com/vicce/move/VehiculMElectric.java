@@ -13,7 +13,6 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   protected double greutate;
   protected double kmReali;
   protected int anFabricatie;
-
   protected int nrScaune;
   protected int litriPortbagaj;
   protected int nrPedale;
@@ -25,20 +24,25 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     fastCharge, pilotAutomat, display, alcantara, range, suportPahare, incalzireScaune, trapa, automana, hybrid
   };
 
-  protected ArrayList<Electric> electrics;
+  protected Electric electrics;
 
-  public VehiculMElectric(float vitezaMax, float pret, int capacitateMotor2, String marca, String model, String tip,
-      String proprietar, int autonomie2, double greutate2, double kmReali2, int anFabricatie2, long id) {
+  public VehiculMElectric() {
     super();
-    this.capacitateMotor = 10;
-    this.autonomie = 400;
-    this.greutate = 1500.99d;
-    this.kmReali = 20000.99d;
-    this.anFabricatie = 2019;
+    this.capacitateMotor = 0;
+    this.autonomie = 0;
+    this.greutate = 0;
+    this.kmReali = 0;
+    this.anFabricatie = 0;
+    this.nrScaune = 0;
+    this.litriPortbagaj = 0;
+    this.nrPedale = 0;
+    this.cuplu = 0;
+    this.nrUsi = 0;
+    this.electrics = Electric.range;
   }
 
-  public VehiculMElectric(VehiculMElectric a) { // tre sa vad ce are aici
-    System.out.println("Constructor de copiere!");
+  public VehiculMElectric(VehiculMElectric a) {
+    super(a);
     this.nrUsi = a.nrUsi;
     this.capacitateMotor = a.capacitateMotor;
     this.autonomie = a.autonomie;
@@ -49,14 +53,14 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     this.anFabricatie = a.anFabricatie;
     this.nrPedale = a.nrPedale;
     this.cuplu = a.cuplu;
-
+    this.electrics = a.electrics;
   }
 
   public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
       int autonomie, double greutate, int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
-      int nrPedale, int cuplu) {
-    super(vitezaMax, pret, nrRoti, nrLocuri);
+      int nrPedale, int cuplu, Electric electrics) {
 
+    super(vitezaMax, pret, nrRoti, nrLocuri);
     this.nrUsi = nrUsi;
     this.capacitateMotor = capacitateMotor; //
     this.autonomie = autonomie;//
@@ -67,30 +71,63 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     this.anFabricatie = anFabricatie;//
     this.nrPedale = nrPedale;
     this.cuplu = cuplu;
+    this.electrics = Electric.range;
   }
 
-  public static ArrayList<VehiculMElectric> filtrareViteza(ArrayList<VehiculMElectric> vehicule, float vitezaMaxim,
-      float vitezaMinima) {
-    ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
-    for (VehiculMElectric vehicul : vehicule) {
-      if ((vitezaMaxim == 0 || vehicul.getVitezaMax() <= vitezaMaxim)
-          && (vitezaMinima == 0 || vehicul.getVitezaMax() >= vitezaMinima)) {
-        vehiculeFiltrate.add(vehicul);
-      }
-    }
-    return vehiculeFiltrate;
+  public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
+      int autonomie, double greutate, int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
+      int nrPedale, int cuplu, Electric electrics, long id) {
+
+    super(vitezaMax, pret, nrRoti, nrLocuri, id);
+    this.nrUsi = nrUsi;
+    this.capacitateMotor = capacitateMotor; //
+    this.autonomie = autonomie;//
+    this.greutate = greutate;//
+    this.nrScaune = nrScaune;
+    this.litriPortbagaj = litriPortbagaj;
+    this.kmReali = kmReali;//
+    this.anFabricatie = anFabricatie;//
+    this.nrPedale = nrPedale;
+    this.cuplu = cuplu;
+    this.electrics = Electric.range;
   }
 
-  public static ArrayList<VehiculMElectric> filtrarePret(ArrayList<VehiculMElectric> vehicule, float pretMaxim,
-      float pretMinim) {
-    ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
-    for (VehiculMElectric vehicul : vehicule) {
-      if ((pretMaxim == 0 || vehicul.getPret() <= pretMaxim)
-          && (pretMinim == 0 || vehicul.getPret() >= pretMinim)) {
-        vehiculeFiltrate.add(vehicul);
-      }
-    }
-    return vehiculeFiltrate;
+  public VehiculMElectric(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+      int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
+      int autonomie, double greutate, int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
+      int nrPedale, int cuplu, Electric electrics) {
+
+    super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri);
+    this.nrUsi = nrUsi;
+    this.capacitateMotor = capacitateMotor; //
+    this.autonomie = autonomie;//
+    this.greutate = greutate;//
+    this.nrScaune = nrScaune;
+    this.litriPortbagaj = litriPortbagaj;
+    this.kmReali = kmReali;//
+    this.anFabricatie = anFabricatie;//
+    this.nrPedale = nrPedale;
+    this.cuplu = cuplu;
+    this.electrics = Electric.range;
+  }
+
+  public VehiculMElectric(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+      int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
+      int autonomie, double greutate, int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
+      int nrPedale, int cuplu, Electric electrics, long id) {
+
+    super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri, id);
+    this.nrUsi = nrUsi;
+    this.capacitateMotor = capacitateMotor; //
+    this.autonomie = autonomie;//
+    this.greutate = greutate;//
+    this.nrScaune = nrScaune;
+    this.litriPortbagaj = litriPortbagaj;
+    this.kmReali = kmReali;//
+    this.anFabricatie = anFabricatie;//
+    this.nrPedale = nrPedale;
+    this.cuplu = cuplu;
+    this.electrics = Electric.range;
   }
 
   public int getCapacitateMotor() {
@@ -133,24 +170,94 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     this.anFabricatie = anFabricatie;
   }
 
-  // cred ca tre sa mai adaug ceva
+  public int getNrPedale() {
+    return this.nrPedale;
+  }
 
-  @Override
-  public void afisare() {
-    System.out.println("Acest vehicul are un nr de usi:" + nrUsi + " cu o capacitate cilindirca de " + capacitateMotor
-        + " cu o autonomie de " + autonomie + " si cu o greutate de " + greutate + " si are un numar de scaune:"
-        + nrScaune + " portbagajul este de:" + litriPortbagaj +
-        " numarul de km reali este:" + kmReali + " din anul de fabricatie:" + anFabricatie + " cu un numar de pedale = "
-        + nrPedale + " si in final cu un cuplu de : " + cuplu);
+  public void setNrPedale(int nrPedale) {
+    this.nrPedale = nrPedale;
+  }
+
+  public int getCuplu() {
+    return this.cuplu;
+  }
+
+  public void setCuplu(int cuplu) {
+    this.cuplu = cuplu;
+  }
+
+  public Electric getElectric() {
+    return this.electrics;
+  }
+
+  public void setElectric(Electric electrics) {
+    this.electrics = electrics;
+  }
+
+  public int getNrUsi() {
+    return this.nrUsi;
+  }
+
+  public void setNrUsi(int nrUsi) {
+    this.nrUsi = nrUsi;
+  }
+
+  public int getNrScaune() {
+    return this.nrScaune;
+  }
+
+  public void setNrScaune(int nrScaune) {
+    this.nrScaune = nrScaune;
+  }
+
+  public int getLitriPortbagaj() {
+    return this.litriPortbagaj;
+  }
+
+  public void setLitriPortbagaj(int litriPortbagaj) {
+    this.litriPortbagaj = litriPortbagaj;
+  }
+
+
+  public static ArrayList<VehiculMElectric> filtrareViteza(ArrayList<VehiculMElectric> vehicule, float vitezaMaxim,
+      float vitezaMinima) {
+    ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
+    for (VehiculMElectric vehicul : vehicule) {
+      if ((vitezaMaxim == 0 || vehicul.getVitezaMax() <= vitezaMaxim)
+          && (vitezaMinima == 0 || vehicul.getVitezaMax() >= vitezaMinima)) {
+        vehiculeFiltrate.add(vehicul);
+      }
+    }
+    return vehiculeFiltrate;
+  }
+
+  public static ArrayList<VehiculMElectric> filtrarePret(ArrayList<VehiculMElectric> vehicule, float pretMaxim,
+      float pretMinim) {
+    ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
+    for (VehiculMElectric vehicul : vehicule) {
+      if ((pretMaxim == 0 || vehicul.getPret() <= pretMaxim)
+          && (pretMinim == 0 || vehicul.getPret() >= pretMinim)) {
+        vehiculeFiltrate.add(vehicul);
+      }
+    }
+    return vehiculeFiltrate;
   }
 
   @Override
-  public String toString() {
-    return "Vehicul cu motor electric: numarul de usi= " + nrUsi + " capacitateMotor= " + capacitateMotor
-        + " autonomie= " + autonomie +
-        " greutate= " + greutate + " numarScaune= " + nrScaune + " portBagaj= " + litriPortbagaj + " nrKmReali= "
-        + kmReali + " anFabricatie= " + anFabricatie +
-        " numarPedale= " + nrPedale + " cuplu= " + cuplu + ".";
+  public void afisare() {
+      super.afisare();
+      System.out.println("Capacitate Motor: " + this.capacitateMotor);
+      System.out.println("Autonomie: " + this.autonomie);
+      System.out.println("Greutate: " + this.greutate);
+      System.out.println("Nr Scaune: " + this.nrScaune);
+      System.out.println("Nr Usi: " + this.nrUsi);
+      System.out.println("Nr Pedale: " + this.nrPedale);
+      System.out.println("Cuplu: " + this.cuplu);
+      System.out.println("Electric: " + this.electrics);
+      System.out.println("Litri Portbagaj: " + this.litriPortbagaj);
+      System.out.println("Km Reali: " + this.kmReali);
+      System.out.println("An Fabricatie: " + this.anFabricatie);
+      System.out.println("Electrics: " + this.electrics);
   }
 
   public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
@@ -199,30 +306,12 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     return tableColumns;
   }
 
-  // public static void resetIdPool() {
-  // }
-
-  public static boolean addVehicle(int numarVehicule) {
-    return false;
+  @Override
+  public String toString() {
+    return "Vehicul cu motor electric: numarul de usi= " + nrUsi + " capacitateMotor= " + capacitateMotor
+        + " autonomie= " + autonomie +
+        " greutate= " + greutate + " numarScaune= " + nrScaune + " portBagaj= " + litriPortbagaj + " nrKmReali= "
+        + kmReali + " anFabricatie= " + anFabricatie +
+        " numarPedale= " + nrPedale + " cuplu= " + cuplu + ".";
   }
-
-  // public Collection<?> getId() {
-  // return null;
-  // }
-
-  // public Collection<?> getMarca() {
-  // return null;
-  // }
-
-  // public Collection<?> getModel() {
-  // return null;
-  // }
-
-  // public Collection<?> getTip() {
-  // return null;
-  // }
-
-  // public Collection<?> getProprietar() {
-  // return null;
-  // }
 }
