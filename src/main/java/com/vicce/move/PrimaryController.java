@@ -70,6 +70,9 @@ public class PrimaryController {
         // tipVehiculeList.add("Toate");
         tipVehiculeList.add("VehiculFMSport");
         tipVehiculeList.add("VehiculMMotorina");
+        tipVehiculeList.add("VehiculMBenzina");
+        tipVehiculeList.add("VehiculMElectric");
+        tipVehiculeList.add("VehiculFMAgrement");
         comboBoxTipVehicule.setItems(tipVehiculeList);
         comboBoxTipVehicule.getSelectionModel().selectFirst();
     }
@@ -126,6 +129,15 @@ public class PrimaryController {
             case "VehiculMMotorina":
                 tableView.getColumns().setAll(VehiculMMotorina.getTableColumns());
                 break;
+            case "VehiculMBenzina":
+                tableView.getColumns().setAll(VehiculMBenzina.getTableColumns());
+                break;
+            case "VehiculMElectric":
+                tableView.getColumns().setAll(VehiculMElectric.getTableColumns());
+                break;
+            case "VehiculFMAgrement":
+                tableView.getColumns().setAll(VehiculFMAgrement.getTableColumns());
+                break;
         }
 
         mobilitateList
@@ -156,8 +168,6 @@ public class PrimaryController {
 
     @FXML
     private void switchToSecondary() throws IOException {
-        App.setRoot("addVehiculeMBenzina");
+        App.setRoot("addVehicule");
     }
 }
-
-

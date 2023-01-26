@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Vector;
 
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aici pentru set si get
   protected int capacitateMotor;
   protected int autonomie;
@@ -16,14 +19,16 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   protected int nrPedale;
   protected int cuplu;
   protected int nrUsi;
-  
-  //aici am adaugat
-  public static enum Electric{
-    fastCharge,pilotAutomat,display,alcantara,range,suportPahare,incalzireScaune,trapa,automana,hybrid
+
+  // aici am adaugat
+  public static enum Electric {
+    fastCharge, pilotAutomat, display, alcantara, range, suportPahare, incalzireScaune, trapa, automana, hybrid
   };
+
   protected ArrayList<Electric> electrics;
 
-  public VehiculMElectric(float vitezaMax, float pret, int capacitateMotor2, String marca, String model, String tip, String proprietar, int autonomie2, double greutate2, double kmReali2, int anFabricatie2, long id) {
+  public VehiculMElectric(float vitezaMax, float pret, int capacitateMotor2, String marca, String model, String tip,
+      String proprietar, int autonomie2, double greutate2, double kmReali2, int anFabricatie2, long id) {
     super();
     this.capacitateMotor = 10;
     this.autonomie = 400;
@@ -48,7 +53,7 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   }
 
   public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
-      int autonomie, double greutate,int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
+      int autonomie, double greutate, int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
       int nrPedale, int cuplu) {
     super(vitezaMax, pret, nrRoti, nrLocuri);
 
@@ -65,31 +70,29 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   }
 
   public static ArrayList<VehiculMElectric> filtrareViteza(ArrayList<VehiculMElectric> vehicule, float vitezaMaxim,
-            float vitezaMinima) {
-        ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
-        for (VehiculMElectric vehicul : vehicule) {
-            if ((vitezaMaxim == 0 || vehicul.getVitezaMax() <= vitezaMaxim)
-                    && (vitezaMinima == 0 || vehicul.getVitezaMax() >= vitezaMinima)) {
-                vehiculeFiltrate.add(vehicul);
-            }
-        }
-        return vehiculeFiltrate;
-    }
-  
-
-    public static ArrayList<VehiculMElectric> filtrarePret(ArrayList<VehiculMElectric> vehicule, float pretMaxim,
-    float pretMinim) {
-ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
-for (VehiculMElectric vehicul : vehicule) {
-    if ((pretMaxim == 0 || vehicul.getPret() <= pretMaxim)
-            && (pretMinim == 0 || vehicul.getPret() >= pretMinim)) {
+      float vitezaMinima) {
+    ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
+    for (VehiculMElectric vehicul : vehicule) {
+      if ((vitezaMaxim == 0 || vehicul.getVitezaMax() <= vitezaMaxim)
+          && (vitezaMinima == 0 || vehicul.getVitezaMax() >= vitezaMinima)) {
         vehiculeFiltrate.add(vehicul);
+      }
     }
+    return vehiculeFiltrate;
   }
-  return vehiculeFiltrate;  
-}
 
-    
+  public static ArrayList<VehiculMElectric> filtrarePret(ArrayList<VehiculMElectric> vehicule, float pretMaxim,
+      float pretMinim) {
+    ArrayList<VehiculMElectric> vehiculeFiltrate = new ArrayList<VehiculMElectric>();
+    for (VehiculMElectric vehicul : vehicule) {
+      if ((pretMaxim == 0 || vehicul.getPret() <= pretMaxim)
+          && (pretMinim == 0 || vehicul.getPret() >= pretMinim)) {
+        vehiculeFiltrate.add(vehicul);
+      }
+    }
+    return vehiculeFiltrate;
+  }
+
   public int getCapacitateMotor() {
     return this.capacitateMotor;
   }
@@ -142,10 +145,58 @@ for (VehiculMElectric vehicul : vehicule) {
   }
 
   @Override
-  public String toString(){
-    return "Vehicul cu motor electric: numarul de usi= "+nrUsi+" capacitateMotor= "+capacitateMotor+" autonomie= "+autonomie+
-    " greutate= "+greutate+" numarScaune= "+nrScaune+" portBagaj= "+litriPortbagaj+" nrKmReali= "+kmReali+" anFabricatie= "+anFabricatie+
-    " numarPedale= "+nrPedale+" cuplu= "+cuplu+".";
+  public String toString() {
+    return "Vehicul cu motor electric: numarul de usi= " + nrUsi + " capacitateMotor= " + capacitateMotor
+        + " autonomie= " + autonomie +
+        " greutate= " + greutate + " numarScaune= " + nrScaune + " portBagaj= " + litriPortbagaj + " nrKmReali= "
+        + kmReali + " anFabricatie= " + anFabricatie +
+        " numarPedale= " + nrPedale + " cuplu= " + cuplu + ".";
+  }
+
+  public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
+    ArrayList<TableColumn<Mobilitate, ?>> tableColumns = VehiculCuMotor.getTableColumns();
+
+    TableColumn<Mobilitate, Integer> capacitateMotorColumn = new TableColumn<>("Capacitate Motor");
+    capacitateMotorColumn.setCellValueFactory(new PropertyValueFactory<>("capacitateMotor"));
+    tableColumns.add(capacitateMotorColumn);
+
+    TableColumn<Mobilitate, Integer> autonomieColumn = new TableColumn<>("Autonomie");
+    autonomieColumn.setCellValueFactory(new PropertyValueFactory<>("autonomie"));
+    tableColumns.add(autonomieColumn);
+
+    TableColumn<Mobilitate, Double> greutateColumn = new TableColumn<>("Greutate");
+    greutateColumn.setCellValueFactory(new PropertyValueFactory<>("greutate"));
+    tableColumns.add(greutateColumn);
+
+    TableColumn<Mobilitate, Integer> kmRealiColumn = new TableColumn<>("KM  Reali");
+    kmRealiColumn.setCellValueFactory(new PropertyValueFactory<>("kmReali"));
+    tableColumns.add(kmRealiColumn);
+
+    TableColumn<Mobilitate, Integer> anFabricatieColumn = new TableColumn<>("An Fabricatie");
+    anFabricatieColumn.setCellValueFactory(new PropertyValueFactory<>("anFabricatie"));
+    tableColumns.add(anFabricatieColumn);
+
+    TableColumn<Mobilitate, Integer> nrScauneColumn = new TableColumn<>("Numar Scaune");
+    nrScauneColumn.setCellValueFactory(new PropertyValueFactory<>("nrScaune"));
+    tableColumns.add(nrScauneColumn);
+
+    TableColumn<Mobilitate, Integer> litriPortbagajColumn = new TableColumn<>("Litri Portbagaj");
+    litriPortbagajColumn.setCellValueFactory(new PropertyValueFactory<>("litriPortbagaj"));
+    tableColumns.add(litriPortbagajColumn);
+
+    TableColumn<Mobilitate, Integer> nrPedaleColumn = new TableColumn<>("Numar Pedale");
+    nrPedaleColumn.setCellValueFactory(new PropertyValueFactory<>("nrPedale"));
+    tableColumns.add(nrPedaleColumn);
+
+    TableColumn<Mobilitate, Integer> cupluColumn = new TableColumn<>("Cuplu");
+    cupluColumn.setCellValueFactory(new PropertyValueFactory<>("cuplu"));
+    tableColumns.add(cupluColumn);
+
+    TableColumn<Mobilitate, Integer> nrUsiColumn = new TableColumn<>("Numar Usi");
+    nrUsiColumn.setCellValueFactory(new PropertyValueFactory<>("nrUsi"));
+    tableColumns.add(nrUsiColumn);
+
+    return tableColumns;
   }
 
   // public static void resetIdPool() {
@@ -156,23 +207,22 @@ for (VehiculMElectric vehicul : vehicule) {
   }
 
   // public Collection<?> getId() {
-  //   return null;
+  // return null;
   // }
 
   // public Collection<?> getMarca() {
-  //   return null;
+  // return null;
   // }
 
   // public Collection<?> getModel() {
-  //   return null;
+  // return null;
   // }
 
   // public Collection<?> getTip() {
-  //   return null;
+  // return null;
   // }
 
   // public Collection<?> getProprietar() {
-  //   return null;
+  // return null;
   // }
 }
-

@@ -60,16 +60,19 @@ public class AddVehiculController {
 
     private void initializeComboBox() {
         ObservableList<String> tipVehiculeList = FXCollections.observableArrayList();
-        tipVehiculeList.add("Toate");
+        // tipVehiculeList.add("Toate");
         tipVehiculeList.add("VehiculFMSport");
         tipVehiculeList.add("VehiculMMotorina");
+        tipVehiculeList.add("VehiculMBenzina");
+        tipVehiculeList.add("VehiculMElectric");
+        tipVehiculeList.add("VehiculFMAgrement");
         comboBoxTipVehicule.setItems(tipVehiculeList);
         comboBoxTipVehicule.getSelectionModel().selectFirst();
     }
 
     @FXML
     private void showData() throws IOException {
-        App.setRoot("primaryMBenzina");
+        App.setRoot("primary");
     }
 
     @FXML
