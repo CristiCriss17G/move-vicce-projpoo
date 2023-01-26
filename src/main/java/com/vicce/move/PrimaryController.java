@@ -152,6 +152,17 @@ public class PrimaryController {
     }
 
     @FXML
+    private void reverseNames() {
+        ObservableList<Mobilitate> mobilitateList = FXCollections.observableArrayList();
+        for (Mobilitate mobilitate : tableView.getItems()) {
+            mobilitate.setProprietar(new StringBuilder(mobilitate.getProprietar()).reverse().toString());
+            mobilitateList.add(mobilitate);
+        }
+        tableView.getItems().clear();
+        tableView.setItems(mobilitateList);
+    }
+
+    @FXML
     private void addData() throws IOException {
         App.setRoot("addVehicule");
     }
