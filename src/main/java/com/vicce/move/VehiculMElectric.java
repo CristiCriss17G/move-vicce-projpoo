@@ -69,7 +69,7 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     this.anFabricatie = anFabricatie;//
     this.nrPedale = nrPedale;
     this.cuplu = cuplu;
-    this.electrics = Electric.range;
+    this.electrics = electrics;
   }
 
   public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
@@ -87,7 +87,7 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     this.anFabricatie = anFabricatie;//
     this.nrPedale = nrPedale;
     this.cuplu = cuplu;
-    this.electrics = Electric.range;
+    this.electrics = electrics;
   }
 
   public VehiculMElectric(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
@@ -106,7 +106,7 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     this.anFabricatie = anFabricatie;//
     this.nrPedale = nrPedale;
     this.cuplu = cuplu;
-    this.electrics = Electric.range;
+    this.electrics = electrics;
   }
 
   public VehiculMElectric(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
@@ -125,7 +125,7 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     this.anFabricatie = anFabricatie;//
     this.nrPedale = nrPedale;
     this.cuplu = cuplu;
-    this.electrics = Electric.range;
+    this.electrics = electrics;
   }
 
   public int getCapacitateMotor() {
@@ -216,6 +216,13 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     this.litriPortbagaj = litriPortbagaj;
   }
 
+  public Electric getElectrics() {
+    return this.electrics;
+  }
+
+  public void setElectrics(Electric electrics) {
+    this.electrics = electrics;
+  }
 
   public static ArrayList<VehiculMElectric> filtrareViteza(ArrayList<VehiculMElectric> vehicule, float vitezaMaxim,
       float vitezaMinima) {
@@ -243,19 +250,19 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
 
   @Override
   public void afisare() {
-      super.afisare();
-      System.out.println("Capacitate Motor: " + this.capacitateMotor);
-      System.out.println("Autonomie: " + this.autonomie);
-      System.out.println("Greutate: " + this.greutate);
-      System.out.println("Nr Scaune: " + this.nrScaune);
-      System.out.println("Nr Usi: " + this.nrUsi);
-      System.out.println("Nr Pedale: " + this.nrPedale);
-      System.out.println("Cuplu: " + this.cuplu);
-      System.out.println("Electric: " + this.electrics);
-      System.out.println("Litri Portbagaj: " + this.litriPortbagaj);
-      System.out.println("Km Reali: " + this.kmReali);
-      System.out.println("An Fabricatie: " + this.anFabricatie);
-      System.out.println("Electrics: " + this.electrics);
+    super.afisare();
+    System.out.println("Capacitate Motor: " + this.capacitateMotor);
+    System.out.println("Autonomie: " + this.autonomie);
+    System.out.println("Greutate: " + this.greutate);
+    System.out.println("Nr Scaune: " + this.nrScaune);
+    System.out.println("Nr Usi: " + this.nrUsi);
+    System.out.println("Nr Pedale: " + this.nrPedale);
+    System.out.println("Cuplu: " + this.cuplu);
+    System.out.println("Electric: " + this.electrics);
+    System.out.println("Litri Portbagaj: " + this.litriPortbagaj);
+    System.out.println("Km Reali: " + this.kmReali);
+    System.out.println("An Fabricatie: " + this.anFabricatie);
+    System.out.println("Electrics: " + this.electrics);
   }
 
   public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
@@ -300,6 +307,10 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     TableColumn<Mobilitate, Integer> nrUsiColumn = new TableColumn<>("Numar Usi");
     nrUsiColumn.setCellValueFactory(new PropertyValueFactory<>("nrUsi"));
     tableColumns.add(nrUsiColumn);
+
+    TableColumn<Mobilitate, Electric> electricsColumn = new TableColumn<>("Electrics");
+    electricsColumn.setCellValueFactory(new PropertyValueFactory<>("electrics"));
+    tableColumns.add(electricsColumn);
 
     return tableColumns;
   }

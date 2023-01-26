@@ -200,29 +200,29 @@ public class PrimaryController {
                         // break;
                         case "VehiculFMSport":
                             fileWriter.append("VehiculFMSport");
-                            fileWriter.append("\\/");
+                            fileWriter.append(";");
                             break;
                         case "VehiculMMotorina":
                             fileWriter.append("VehiculMMotorina");
-                            fileWriter.append("\\/");
+                            fileWriter.append(";");
                             break;
                         case "VehiculMBenzina":
                             fileWriter.append("VehiculMBenzina");
-                            fileWriter.append("\\/");
+                            fileWriter.append(";");
                             break;
                         case "VehiculMElectric":
                             fileWriter.append("VehiculMElectric");
-                            fileWriter.append("\\/");
+                            fileWriter.append(";");
                             break;
                         case "VehiculFMAgrement":
                             fileWriter.append("VehiculFMAgrement");
-                            fileWriter.append("\\/");
+                            fileWriter.append(";");
                             break;
                     }
                     for (TableColumn<Mobilitate, ?> column : tableView.getColumns()) {
 
                         fileWriter.append(column.getCellObservableValue(mobilitate).getValue().toString());
-                        fileWriter.append("\\/");
+                        fileWriter.append(";");
                     }
                     fileWriter.append("\n");
                 }

@@ -114,7 +114,7 @@ public class AddVehiculController {
                 // split line by \/ and based on the first element of the array as the class
                 // name, call the appropriate constructor
                 // and add the object to the list
-                String[] lineArray = line.split("\\/");
+                String[] lineArray = line.split(";");
                 Mobilitate mobilitate = null;
                 switch (lineArray[0]) {
                     case "VehiculFMSport":
@@ -164,6 +164,66 @@ public class AddVehiculController {
                                 .valueOf(lineArray[15]);
                         mobilitate = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
                                 greutate, an, nrPedale, acceleratie, tipTerenAg, echipamentProtectie, categVarsta, id);
+                        break;
+                    case "VehiculMMotorina":
+                        id = Long.parseLong(lineArray[1]);
+                        vitezaMax = Float.parseFloat(lineArray[2]);
+                        pret = Float.parseFloat(lineArray[3]);
+                        marca = lineArray[4];
+                        model = lineArray[5];
+                        tip = lineArray[6];
+                        proprietar = lineArray[7];
+                        nrRoti = Integer.parseInt(lineArray[8]);
+                        int nrLocuri = Integer.parseInt(lineArray[9]);
+                        int nrCilindri = Integer.parseInt(lineArray[10]);
+                        an = Integer.parseInt(lineArray[11]);
+                        int putere = Integer.parseInt(lineArray[12]);
+                        int cuplu = Integer.parseInt(lineArray[13]);
+
+                        mobilitate = new VehiculMMotorina(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+                                nrLocuri, nrCilindri, an, putere, cuplu, id);
+                        break;
+                    case "VehiculMBenzina":
+                        id = Long.parseLong(lineArray[1]);
+                        vitezaMax = Float.parseFloat(lineArray[2]);
+                        pret = Float.parseFloat(lineArray[3]);
+                        marca = lineArray[4];
+                        model = lineArray[5];
+                        tip = lineArray[6];
+                        proprietar = lineArray[7];
+                        nrRoti = Integer.parseInt(lineArray[8]);
+                        nrLocuri = Integer.parseInt(lineArray[9]);
+                        int caiPutere = Integer.parseInt(lineArray[10]);
+                        int capacitateMotor = Integer.parseInt(lineArray[11]);
+                        an = Integer.parseInt(lineArray[12]);
+                        double consumUrban = Double.parseDouble(lineArray[13]);
+                        mobilitate = new VehiculMBenzina(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+                                nrLocuri, caiPutere, capacitateMotor, an, consumUrban, id);
+                        break;
+                    case "VehiculMElectric":
+                        id = Long.parseLong(lineArray[1]);
+                        vitezaMax = Float.parseFloat(lineArray[2]);
+                        pret = Float.parseFloat(lineArray[3]);
+                        marca = lineArray[4];
+                        model = lineArray[5];
+                        tip = lineArray[6];
+                        proprietar = lineArray[7];
+                        nrRoti = Integer.parseInt(lineArray[8]);
+                        nrLocuri = Integer.parseInt(lineArray[9]);
+                        capacitateMotor = Integer.parseInt(lineArray[10]);
+                        int autonomie = Integer.parseInt(lineArray[11]);
+                        greutate = Double.parseDouble(lineArray[12]);
+                        double kmReali = Double.parseDouble(lineArray[13]);
+                        an = Integer.parseInt(lineArray[14]);
+                        int nrScaune = Integer.parseInt(lineArray[15]);
+                        int litriPortbagaj = Integer.parseInt(lineArray[16]);
+                        nrPedale = Integer.parseInt(lineArray[17]);
+                        cuplu = Integer.parseInt(lineArray[18]);
+                        int nrUsi = Integer.parseInt(lineArray[19]);
+                        VehiculMElectric.Electric motor = VehiculMElectric.Electric.valueOf(lineArray[20]);
+                        mobilitate = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+                                nrLocuri, nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj,
+                                kmReali, an, nrPedale, cuplu, motor, id);
                         break;
                     default:
                         System.out.println("Invalid class name");

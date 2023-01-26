@@ -29,7 +29,7 @@ public class GeneratorElectricSeeder {
   private static final String[] manufacturers = { "Mazda", "Porche", "Fiat", "Bentley", "Hammer", "Renault",
       "Dodge", "Toyota", "VW", "Dacia", "Koenigsegg", "Lada" };
 
-  private static final String[] models = { "CX-7", "Tycan", "Punto", "Bentayga", "H2", " Talisman", "Charger", "Supra",
+  private static final String[] models = { "CX-7", "Tycan", "Punto", "Bentayga", "H2", "Talisman", "Charger", "Supra",
       "Lupo", "Logan", "One1", "Granta" };
 
   private static final String[] types = { "Road", "Mountain", "Hybrid", "Touring", "Fixed Gear", "BMX", "Cruiser" };
@@ -118,7 +118,7 @@ public class GeneratorElectricSeeder {
   }
 
   public static JSONArray JSONseed(boolean canBeNull, ArrayList<VehiculMElectric> vehicule) {
-    return JSONseed(vehicule, fileName);
+    return JSONseed(canBeNull, vehicule, fileName);
   }
 
   public static JSONArray JSONseed(ArrayList<VehiculMElectric> vehicule, String path) {
@@ -201,6 +201,9 @@ public class GeneratorElectricSeeder {
       VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri,
           nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj, kmReali, anFabricatie, nrPedale, cuplu,
           electric, id);
+      // System.out.println("vehicul electriuc");
+      // System.out.println(id);
+      // System.out.println(electric);
       vehicule.add(vme);
     }
     return vehicule;
