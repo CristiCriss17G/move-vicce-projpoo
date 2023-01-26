@@ -26,7 +26,7 @@
     </columnConstraints>
     <children>
         <Button fx:id="button1" text="Mergi inapoi" onAction="#showData" GridPane.rowIndex="0" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
-        <Button fx:id="button2" text="Add data" onAction="#addData" GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER"/>
+        <!-- <Button fx:id="button2" text="Add data" onAction="#addData" GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER"/> -->
         <ComboBox fx:id="comboBoxTipVehicule" GridPane.rowIndex="1" GridPane.columnIndex="0" promptText ="Alege tipul de vehicul" GridPane.halignment="CENTER"/>
         <Button fx:id="buttonImport" text="Import data" onAction="#importData" GridPane.rowIndex="1" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER"/>
         <TextField fx:id="textFieldFilePath" GridPane.rowIndex="2" GridPane.columnIndex="1" alignment="CENTER_LEFT" GridPane.halignment="CENTER" GridPane.columnSpan="1"/>

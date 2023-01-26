@@ -1,8 +1,6 @@
 package com.vicce.move;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Vector;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;

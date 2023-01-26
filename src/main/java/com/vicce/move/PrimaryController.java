@@ -1,5 +1,7 @@
 package com.vicce.move;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.function.UnaryOperator;
@@ -10,9 +12,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.stage.FileChooser;
 import javafx.util.converter.FloatStringConverter;
 
 import com.vicce.move.seeder.*;
@@ -169,5 +173,64 @@ public class PrimaryController {
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("addVehicule");
+    }
+
+    @FXML
+    private void exportData() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save TXT");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT", "*.txt"));
+            File file = fileChooser.showSaveDialog(null);
+            if (file != null) {
+                FileWriter fileWriter = new FileWriter(file);
+
+                // for (TableColumn<Mobilitate, ?> column : tableView.getColumns()) {
+                // fileWriter.append(column.getText());
+                // fileWriter.append(",");
+                // }
+                // fileWriter.append("\n");
+                for (Mobilitate mobilitate : tableView.getItems()) {
+                    switch (comboBoxTipVehicule.getValue()) {
+                        // case "Toate":
+                        // fileWriter.append("VehiculFMSport");
+                        // fileWriter.append(",");
+                        // fileWriter.append("VehiculMMotorina");
+                        // fileWriter.append(",");
+                        // break;
+                        case "VehiculFMSport":
+                            fileWriter.append("VehiculFMSport");
+                            fileWriter.append("\\/");
+                            break;
+                        case "VehiculMMotorina":
+                            fileWriter.append("VehiculMMotorina");
+                            fileWriter.append("\\/");
+                            break;
+                        case "VehiculMBenzina":
+                            fileWriter.append("VehiculMBenzina");
+                            fileWriter.append("\\/");
+                            break;
+                        case "VehiculMElectric":
+                            fileWriter.append("VehiculMElectric");
+                            fileWriter.append("\\/");
+                            break;
+                        case "VehiculFMAgrement":
+                            fileWriter.append("VehiculFMAgrement");
+                            fileWriter.append("\\/");
+                            break;
+                    }
+                    for (TableColumn<Mobilitate, ?> column : tableView.getColumns()) {
+
+                        fileWriter.append(column.getCellObservableValue(mobilitate).getValue().toString());
+                        fileWriter.append("\\/");
+                    }
+                    fileWriter.append("\n");
+                }
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
 }

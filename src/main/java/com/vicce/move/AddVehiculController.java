@@ -132,13 +132,38 @@ public class AddVehiculController {
                         int acceleratie = Integer.parseInt(lineArray[12]);
                         VehiculFMSport.TipTeren tipTeren = VehiculFMSport.TipTeren.valueOf(lineArray[13]);
                         // trim [ ] from the string
-                        String[] echipamenteArray = lineArray[14].substring(1, lineArray[14].length() - 1).split(",");
+                        String[] echipamenteArray = lineArray[14].substring(1, lineArray[14].length() - 1).split(", ");
                         ArrayList<VehiculFMSport.EchipamentProtectie> echipamente = new ArrayList<>();
                         for (String echipament : echipamenteArray) {
                             echipamente.add(VehiculFMSport.EchipamentProtectie.valueOf(echipament));
                         }
                         mobilitate = new VehiculFMSport(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
                                 greutate, an, nrPedale, acceleratie, tipTeren, echipamente, id);
+                        break;
+                    case "VehiculFMAgrement":
+                        id = Long.parseLong(lineArray[1]);
+                        vitezaMax = Float.parseFloat(lineArray[2]);
+                        pret = Float.parseFloat(lineArray[3]);
+                        marca = lineArray[4];
+                        model = lineArray[5];
+                        tip = lineArray[6];
+                        proprietar = lineArray[7];
+                        nrRoti = Integer.parseInt(lineArray[8]);
+                        greutate = Double.parseDouble(lineArray[9]);
+                        an = Integer.parseInt(lineArray[10]);
+                        nrPedale = Integer.parseInt(lineArray[11]);
+                        acceleratie = Integer.parseInt(lineArray[12]);
+                        // trim [ ] from the string
+                        String[] echipamentProc = lineArray[13].substring(1, lineArray[13].length() - 1).split(", ");
+                        ArrayList<VehiculFMAgrement.EchipamentProtectie> echipamentProtectie = new ArrayList<>();
+                        for (String echipament : echipamentProc) {
+                            echipamentProtectie.add(VehiculFMAgrement.EchipamentProtectie.valueOf(echipament));
+                        }
+                        VehiculFMAgrement.TipTeren tipTerenAg = VehiculFMAgrement.TipTeren.valueOf(lineArray[14]);
+                        VehiculFMAgrement.CategVarsta categVarsta = VehiculFMAgrement.CategVarsta
+                                .valueOf(lineArray[15]);
+                        mobilitate = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+                                greutate, an, nrPedale, acceleratie, tipTerenAg, echipamentProtectie, categVarsta, id);
                         break;
                     default:
                         System.out.println("Invalid class name");
