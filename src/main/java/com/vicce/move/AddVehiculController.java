@@ -1,7 +1,6 @@
 package com.vicce.move;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,6 +8,7 @@ import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -72,7 +72,7 @@ public class AddVehiculController {
 
     @FXML
     private void showData() throws IOException {
-        App.setRoot("primary");
+        Move.setRoot("primary");
     }
 
     @FXML
@@ -94,9 +94,13 @@ public class AddVehiculController {
     private void chooseFile() {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
-        FileChooser.ExtensionFilter extFilterJSON = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
-        FileChooser.ExtensionFilter extFilterCSV = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
-        fileChooser.getExtensionFilters().addAll(extFilterTXT, extFilterJSON, extFilterCSV);
+        // FileChooser.ExtensionFilter extFilterJSON = new
+        // FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
+        // FileChooser.ExtensionFilter extFilterCSV = new
+        // FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
+        // fileChooser.getExtensionFilters().addAll(extFilterTXT, extFilterJSON,
+        // extFilterCSV);
+        fileChooser.getExtensionFilters().addAll(extFilterTXT);
         fileChooser.setTitle("Open Resource File");
         filePath = fileChooser.showOpenDialog(null).getAbsolutePath();
         textFieldFilePath.setText(filePath);
@@ -104,6 +108,14 @@ public class AddVehiculController {
 
     @FXML
     private void importData() {
+        if (filePath == null || filePath.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Nu ati selectat un fisier!");
+            alert.setContentText("Va rugam selectati un fisier!");
+            alert.showAndWait();
+            return;
+        }
         try {
             // open file and print contents
             FileReader fileReader = new FileReader(filePath);
@@ -179,10 +191,10 @@ public class AddVehiculController {
                         int nrCilindri = Integer.parseInt(lineArray[10]);
                         an = Integer.parseInt(lineArray[11]);
                         int putere = Integer.parseInt(lineArray[12]);
-                        int cuplu = Integer.parseInt(lineArray[13]);
+                        float cupluMot = Float.parseFloat(lineArray[13]);
 
                         mobilitate = new VehiculMMotorina(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
-                                nrLocuri, nrCilindri, an, putere, cuplu, id);
+                                nrLocuri, nrCilindri, an, putere, cupluMot, id);
                         break;
                     case "VehiculMBenzina":
                         id = Long.parseLong(lineArray[1]);
@@ -219,7 +231,7 @@ public class AddVehiculController {
                         int nrScaune = Integer.parseInt(lineArray[15]);
                         int litriPortbagaj = Integer.parseInt(lineArray[16]);
                         nrPedale = Integer.parseInt(lineArray[17]);
-                        cuplu = Integer.parseInt(lineArray[18]);
+                        int cuplu = Integer.parseInt(lineArray[18]);
                         int nrUsi = Integer.parseInt(lineArray[19]);
                         VehiculMElectric.Electric motor = VehiculMElectric.Electric.valueOf(lineArray[20]);
                         mobilitate = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
@@ -233,10 +245,25 @@ public class AddVehiculController {
                     Seeder.addVehicule(mobilitate);
             }
             bufferedReader.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText("File '" + filePath + "' was successfully imported");
+            alert.setContentText("The file was imported successfully");
+            alert.showAndWait();
         } catch (FileNotFoundException ex) {
             System.out.println("Unable to open file '" + filePath + "'");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Unable to open file '" + filePath + "'");
+            alert.setContentText("Please check if the file exists and is not corrupted");
+            alert.showAndWait();
         } catch (IOException ex) {
             System.out.println("Error reading file '" + filePath + "'");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error reading file '" + filePath + "'");
+            alert.setContentText("Please check if the file exists and is not corrupted");
+            alert.showAndWait();
         }
     }
 }

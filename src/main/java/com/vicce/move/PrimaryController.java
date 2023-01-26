@@ -164,7 +164,7 @@ public class PrimaryController {
 
     @FXML
     private void addData() throws IOException {
-        App.setRoot("addVehicule");
+        Move.setRoot("addVehicule");
     }
 
     @FXML
@@ -177,13 +177,13 @@ public class PrimaryController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             Seeder.resetVehicule(comboBoxTipVehicule.getValue());
-            App.setRoot("addVehicule");
+            Move.setRoot("addVehicule");
         }
     }
 
     @FXML
     private void switchToSecondary() throws IOException {
-        App.setRoot("addVehicule");
+        Move.setRoot("addVehicule");
     }
 
     @FXML

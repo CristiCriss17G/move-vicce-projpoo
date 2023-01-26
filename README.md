@@ -16,6 +16,10 @@ Acesta este bună pentru magazine de inchiriat de biciclete, role, etc. mai ales
 
 Funcțiile de import și export date permit actualizarea rapidă a stocului și lucrul offline.
 
+---
+
+Datele utilizate sunt fictive, iar aplicația nu are scop comercial.
+
 ## Instalare
 
 Pentru a rula aplicația, este necesară instalarea Maven și a Java JDK 19.
