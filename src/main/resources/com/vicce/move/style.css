@@ -1,5 +1,41 @@
-/* .grid-pane {
-  -fx-grid-lines-visible: true;
-  -fx-border-color: blue;
-  -fx-border-width: 2px;
-} */
+.grid-pane
+{
+  -fx-background-color: #1b1b1b;
+  -fx-padding: 10px;
+  -fx-hgap: 10px;
+  -fx-vgap: 10px;
+}
+
+
+.button-style
+{
+  -fx-background-color: #3a3b3b;
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-font-family: "Arial";
+  -fx-border-radius: 10px;
+}
+
+.button-style:hover
+{
+  -fx-background-color: #313131;
+  -fx-text-fill: #fff;
+}
+
+.input-style
+{
+  -fx-font-size: 12px;
+  -fx-text-fill: #ffffff;
+  -fx-font-family: "Arial";
+  -fx-border-radius: 5px;
+}
+
+.textfield-style
+{
+  -fx-background-color: #fff;
+  -fx-text-fill: #000;
+  -fx-font-size: 12px;
+  -fx-font-family: "Arial";
+  -fx-border-radius: 5px;
+}

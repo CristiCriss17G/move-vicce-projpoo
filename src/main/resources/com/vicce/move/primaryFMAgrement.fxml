@@ -27,18 +27,18 @@
       <ColumnConstraints hgrow="SOMETIMES" minWidth="30"/>
    </columnConstraints>
    <children>
-      <Button fx:id="primaryButton" text="Go to AddData Panel" onAction="#switchToSecondary"/>
-      <Button fx:id="button2" text="Stergere date tabel" onAction="#resetData" GridPane.rowIndex="5" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER"/>
-      <Button fx:id="button3" text="Refresh date tabel" onAction="#showData" GridPane.rowIndex="5" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
+      <Button fx:id="primaryButton" text="Go to AddData Panel" onAction="#switchToSecondary" styleClass="button-style"/>
+      <Button fx:id="button2" text="Stergere date tabel" onAction="#resetData" GridPane.rowIndex="5" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER" styleClass="button-style"/>
+      <Button fx:id="button3" text="Refresh date tabel" onAction="#showData" GridPane.rowIndex="5" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER" styleClass="button-style"/>
+      <Button fx:id="ButonInversareProprietar" GridPane.rowIndex="5" GridPane.columnIndex="1" text="Inversare Nume Proprietar" alignment="CENTER" GridPane.halignment="CENTER" onAction="#reverseNames" styleClass="button-style"/>
 
-      <Label fx:id="label1" text="Filtrare pret [ MIN - MAX ]" GridPane.rowIndex="1" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
-      <TextField fx:id="textFieldPretMin" GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER"/>
-      <TextField fx:id="textFieldPretMax" GridPane.rowIndex="1" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER"/>
-      <Label fx:id="label2" text="Filtrare viteaza [ MIN - MAX ]" GridPane.rowIndex="2" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
-      <TextField fx:id="textFieldVitezaMin" GridPane.rowIndex="2" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER"/>
-      <TextField fx:id="textFieldVitezaMax" GridPane.rowIndex="2" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER"/>
-      <Button fx:id="ButonInversareProprietar" GridPane.rowIndex="3" GridPane.columnIndex="1" text="Inversare Nume Proprietar" onAction="#reverseNames"/>
-      <TableView fx:id="tableView" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="3" minHeight="50" GridPane.halignment="CENTER"/>
+      <Label fx:id="label1" text="Filtrare pret [ MIN - MAX ]" GridPane.rowIndex="1" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER" styleClass="input-style"/>
+      <TextField fx:id="textFieldPretMin" GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER" styleClass="textfield-style"/>
+      <TextField fx:id="textFieldPretMax" GridPane.rowIndex="1" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER" styleClass="textfield-style"/>
+      <Label fx:id="label2" text="Filtrare viteaza [ MIN - MAX ]" GridPane.rowIndex="2" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER" styleClass="input-style"/>
+      <TextField fx:id="textFieldVitezaMin" GridPane.rowIndex="2" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER" styleClass="textfield-style"/>
+      <TextField fx:id="textFieldVitezaMax" GridPane.rowIndex="2" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER" styleClass="textfield-style"/>
+      <TableView fx:id="tableView" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="3" minHeight="50" GridPane.halignment="CENTER" styleClass="table-style"/>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

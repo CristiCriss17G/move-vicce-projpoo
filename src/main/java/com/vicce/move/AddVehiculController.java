@@ -82,6 +82,10 @@ public class AddVehiculController {
 
     @FXML
     private void importData() {
+        if(filePath == null || filePath.isEmpty()) {
+            labelStatus.setText("Nu ati selectat un fisier!");
+            return;
+        }
         try {
             // open file and print contents
             FileReader fileReader = new FileReader(filePath);
