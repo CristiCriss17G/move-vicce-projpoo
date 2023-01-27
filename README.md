@@ -1,11 +1,32 @@
-## Descrierea proiectului
+## Descriere generala
+Acest proiect a fost realizat în cadrul cursului de Programare Orientată Obiect, din cadrul Facultatii de Automatică, Calculatoare, Inginerie Electrică și Electronică din cadrul Universității Dunarea de Jos, anul 2022-2023, semestrul 1.
 
-    Acest proiect este o aplicatie ce are ca scop gestionarea unei baze de date cu automobile.
+Scopul acestui proiect este de a realiza o aplicație care să permită gestionarea unei baze de date cu automobile. Acestea fiind de 2 feluri: cu motor si fara motor, care la randul lor pot sa fie cu motorina, benzina si electrice , respectiv sportive sau de agrement. 
 
-Acestea sunt de 2 feluri: cu motor si fara motor. Fiecare tip are la randul sau subtipuri, in cazul vehiculelor cu motor avem cele cu benzina, motorina si electrice, respectiv in cazul celor fara motor, de agrement si sport.
+Am decis sa implementez vehicule fara motor de agrement, mai exact biciclete, care pot fi de tipul: mountain bike, city bike, road bike, electric bike, etc. Scopul aplicatiei mele este acela de a putea vizualiza mai usor datele specifice despre acestea, precum si de a putea adauga noi biciclete in baza de date sau daca se doreste chiar stergerea lor.
+De asemenea este implementata functia de a importa date dintr-un fisier .txt.
 
-    Eu am ales sa implementez vehiculele fara motor de agrement.
+Am creat un seeder ce este apelat in interfata pentru a ne oferii date aleatorii pentru a putea testa aplicatia. Aceste date nu sunt create cu scopul de a fi utilizate in cadrul unei aplicatii reale. De aceea a fost implementata si functia de a putea sterge toate datele si a le importa din nou cu date exacte, precise si corecte.
 
-In interfata creata avem pagina din care putem adauga in tabela vehicule cu date generate aleatoriu dintr-un seeder. Aceste date pot fi filtrate dupa viteza si pret, aceasta fiind ideea principala a aplicatiei. In plus, putem sa stergem vehiculele din tabela si sa readaugam altele. Proiectul nu are scop comercial si este doar un proiect de testare deoarece datele sunt adaugate aleatoriu si nu sunt concludente in privinta unui vehicul.
-In plus am implementat adaugarea unui fisier pentru a putea adauga un set de date deja existent.
-Acesta se poate importa sub forma unui .json sau text. De asemenea tabelul poate sa fie exportat pentru a putea fi folosit in alte proiecte.
+Un scop secundar al proiectului este acela putea vedea unde se regaseste raportul cel mai bun dintre pret si viteza pentru biciclete. Din acest motiv in pagina principala a interfetei grafice am implementat 2 filtre, fiecare avand 2 inputuri: minim si maxim. Aici putem filtra atat dupa un minim, dupa un maxim sau dupa valoarea dintre cele 2 in cazul in care se doreste acest lucru. Odata ce am introdus valorile dorite, apasam butonul de refresh al tabelului si se va afisa tabelul cu datele filtrate.
+
+## Interfata grafica
+Interfata a fost creata cu ajutorul JavaFX si este compusa din 2 taburi: 
+ - pagina principala: in care putem vizualiza tabelul, putem filtra atat dupa viteza cat si dupa pret, putem sterge toate datele din tabel, putem da refresh la tabel si putem inversa numele din coloana "proprietari".
+ - pagina de adaugare: in care putem adauga noi biciclete in tabel si putem importa date dintr-un fisier .txt
+Fiecare fisier .fxml are asociat un controller ce se ocupa de logica din spatele elementelor din interfata. In aceste controller am implementat functiile necesare pentru a putea face functionalitatea dorita. 
+Pentru interfata grafica am folosit si un style.css pentru a stiliza fiecare element din paginile .fxml. Am ales sa folosesc un style.css pentru a putea modifica mai usor stilul aplicatiei. Am ales ca tema: dark mode pentru a putea fi mai usor de utilizat in timpul noptii si pentru a nu obosii ochii la utilizarea mai indelungata a aplicatiei.
+
+## Fișiere
+- `src/main/java/`: conține fișierele sursă Java cu codul aplicației cat si seederul pentru a genera date aleatorii
+- `src/main/resources/`: conține fișierele ce tin de partea de interfata grafica a aplicatiei (fisiere .fxml, .css)
+
+
+## Instalare
+Pentru a rula aplicația, este necesară instalarea Maven și a Java JDK 19.
+
+## Rulare
+Pentru a rula aplicația, se rulează comanda Play din VS Code.
+
+## Pentru mai multe detalii
+Pentru mai multe detalii despre proiect: gorobtovvladandrei@gmail.com

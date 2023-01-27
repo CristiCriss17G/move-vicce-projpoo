@@ -26,7 +26,7 @@ public class AppTest {
         assertTrue(vfma4.getAnFabricatie() == 2010);
         assertTrue(vfma4.getNrPedale() == 2);
         assertTrue(vfma4.getAcceleratie() == 10);
-        assertEquals(vfma4.getTipTeren(), VehiculFMAgrement.TipTeren.gheata);
+        assertEquals(vfma4.getTipTeren(), VehiculFMAgrement.TipTeren.pamant);
         assertTrue(vfma4.getEchipamentProtectie().size() == 0);
     }
 
@@ -43,7 +43,7 @@ public class AppTest {
         assertTrue(vfma.getAnFabricatie() == 2010);
         assertTrue(vfma.getNrPedale() == 2);
         assertTrue(vfma.getAcceleratie() == 10);
-        assertEquals(vfma.getTipTeren(), VehiculFMAgrement.TipTeren.gheata);
+        assertEquals(vfma.getTipTeren(), VehiculFMAgrement.TipTeren.pamant);
         assertTrue(vfma.getEchipamentProtectie().size() == 0);
     }
 

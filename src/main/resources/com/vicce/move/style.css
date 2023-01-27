@@ -1,6 +1,6 @@
 .grid-pane
 {
-  -fx-background-color: #1b1b1b;
+  -fx-background-color: #292929;
   -fx-padding: 10px;
   -fx-hgap: 10px;
   -fx-vgap: 10px;
@@ -38,4 +38,59 @@
   -fx-font-size: 12px;
   -fx-font-family: "Arial";
   -fx-border-radius: 5px;
+}
+
+.table-view
+{
+  -fx-background-color: transparent;
+  -fx-background-radius: 10px;
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 12px;
+  -fx-font-family: "Arial";
+  -fx-border-radius: 10px;
+  -fx-text-alignment: center;
+}
+
+.table-view .table-cell{
+  -fx-background-color: rgba(44, 44, 44, 0.856);
+  -fx-border-color: transparent;
+  -fx-padding: 2 0 2 10px;
+  -fx-text-background-color: rgb(0, 0, 0);
+  -fx-text-alignment: center;
+  -fx-text-fill: #ffffff;
+}
+
+.table-row-cell
+{
+  -fx-text-alignment: center;
+}
+
+.table-row-cell:hover {
+  -fx-background-color: #fdfdfd9f;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-padding: 2;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+  -fx-background-color:  linear-gradient(to bottom, #bdc0c085, #6868687c);
+}
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+  -fx-background-color:  linear-gradient(to right, #bdc0c085, #6868687c);
+}
+
+.table-view .corner {
+  -fx-background-color: transparent;
+  -fx-background-radius: 10px;
 }

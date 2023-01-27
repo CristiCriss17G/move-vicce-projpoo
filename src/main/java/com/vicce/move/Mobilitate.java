@@ -167,7 +167,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         // pretCol.setMinWidth(100);
         columns.add(pretCol);
 
-        TableColumn<Mobilitate, String> marcaCol = new TableColumn<>("Marca");
+        TableColumn<Mobilitate, String> marcaCol = new TableColumn<>("Producator");
         marcaCol.setCellValueFactory(new PropertyValueFactory<>("marca"));
         // marcaCol.setMinWidth(100);
         columns.add(marcaCol);
@@ -177,12 +177,12 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         // modelCol.setMinWidth(100);
         columns.add(modelCol);
 
-        TableColumn<Mobilitate, String> tipCol = new TableColumn<>("Tip");
-        tipCol.setCellValueFactory(new PropertyValueFactory<>("tip"));
-        // tipCol.setMinWidth(100);
-        columns.add(tipCol);
+        // TableColumn<Mobilitate, String> tipCol = new TableColumn<>("Tip");
+        // tipCol.setCellValueFactory(new PropertyValueFactory<>("tip"));
+        // // tipCol.setMinWidth(100);
+        // columns.add(tipCol);
 
-        TableColumn<Mobilitate, String> proprietarCol = new TableColumn<>("Proprietar");
+        TableColumn<Mobilitate, String> proprietarCol = new TableColumn<>("Nume proprietar");
         proprietarCol.setCellValueFactory(new PropertyValueFactory<>("proprietar"));
         // proprietarCol.setMinWidth(100);
         columns.add(proprietarCol);

@@ -56,6 +56,7 @@ public class AddVehiculController {
     @FXML
     private void addData() {
         int numarVehicule;
+        
         try {
             numarVehicule = Integer.parseInt(textFieldAddVehicule.getText());
         } catch (NumberFormatException e) {
