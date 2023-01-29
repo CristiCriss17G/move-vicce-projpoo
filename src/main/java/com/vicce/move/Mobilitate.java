@@ -20,6 +20,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
     protected String model = "";// adaugat + getter + setter
     protected String tip = "";// adaugat + getter + setter
     protected String proprietar = "";// adaugat + getter + setter
+    protected int stock = 0;// adaugat + getter + setter
 
     public Mobilitate() {
         this.id = idPool++;
@@ -29,6 +30,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.model = "";
         this.tip = "";
         this.proprietar = this.marca;
+        this.stock = 0;
     }
 
     public Mobilitate(Mobilitate a) {
@@ -39,31 +41,34 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.model = a.model;
         this.tip = a.tip;
         this.proprietar = a.proprietar;
+        this.stock = a.stock;
     }
 
-    public Mobilitate(float vitezaMax, float pret) {
-        this.id = idPool++;
-        this.vitezaMax = vitezaMax;
-        this.pret = pret;
-        this.marca = "";
-        this.model = "";
-        this.tip = "";
-        this.proprietar = this.marca;
-    }
+    // public Mobilitate(float vitezaMax, float pret) {
+    // this.id = idPool++;
+    // this.vitezaMax = vitezaMax;
+    // this.pret = pret;
+    // this.marca = "";
+    // this.model = "";
+    // this.tip = "";
+    // this.proprietar = this.marca;
+    // this.stock = 0;
+    // }
 
-    public Mobilitate(float vitezaMax, float pret, long id) {
-        this.id = id;
-        this.vitezaMax = vitezaMax;
-        this.pret = pret;
-        this.marca = "";
-        this.model = "";
-        this.tip = "";
-        this.proprietar = this.marca;
-        if (idPool <= id)
-            idPool = id + 1;
-    }
+    // public Mobilitate(float vitezaMax, float pret, long id) {
+    // this.id = id;
+    // this.vitezaMax = vitezaMax;
+    // this.pret = pret;
+    // this.marca = "";
+    // this.model = "";
+    // this.tip = "";
+    // this.proprietar = this.marca;
+    // if (idPool <= id)
+    // idPool = id + 1;
+    // }
 
-    public Mobilitate(float vitezaMax, float pret, String marca, String model, String tip, String proprietar) {
+    public Mobilitate(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int stock) {
         this.id = idPool++;
         this.vitezaMax = vitezaMax;
         this.pret = pret;
@@ -71,9 +76,11 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.model = model;
         this.tip = tip;
         this.proprietar = proprietar;
+        this.stock = stock;
     }
 
-    public Mobilitate(float vitezaMax, float pret, String marca, String model, String tip, String proprietar, long id) {
+    public Mobilitate(float vitezaMax, float pret, String marca, String model, String tip, String proprietar, int stock,
+            long id) {
         this.id = id;
         this.vitezaMax = vitezaMax;
         this.pret = pret;
@@ -81,6 +88,7 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.model = model;
         this.tip = tip;
         this.proprietar = proprietar;
+        this.stock = stock;
         if (idPool <= id)
             idPool = id + 1;
     }
@@ -137,11 +145,19 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         this.proprietar = proprietar;
     }
 
+    public int getStock() {
+        return this.stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     @Override
     public int compareTo(Mobilitate o) {
-        if (this.raportVitezaPret() > o.raportVitezaPret())
+        if (this.getRaportVitezaPret() > o.getRaportVitezaPret())
             return 1;
-        if (this.raportVitezaPret() < o.raportVitezaPret())
+        if (this.getRaportVitezaPret() < o.getRaportVitezaPret())
             return -1;
         return 0;
     }
@@ -164,6 +180,11 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         // pretCol.setMinWidth(100);
         columns.add(pretCol);
 
+        TableColumn<Mobilitate, Float> raportCol = new TableColumn<>("Raport pret viteza");
+        raportCol.setCellValueFactory(new PropertyValueFactory<>("raportVitezaPret"));
+        // raportCol.setMinWidth(100);
+        columns.add(raportCol);
+
         TableColumn<Mobilitate, String> marcaCol = new TableColumn<>("Marca");
         marcaCol.setCellValueFactory(new PropertyValueFactory<>("marca"));
         // marcaCol.setMinWidth(100);
@@ -179,15 +200,21 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         // tipCol.setMinWidth(100);
         columns.add(tipCol);
 
-        TableColumn<Mobilitate, String> proprietarCol = new TableColumn<>("Proprietar");
-        proprietarCol.setCellValueFactory(new PropertyValueFactory<>("proprietar"));
-        // proprietarCol.setMinWidth(100);
-        columns.add(proprietarCol);
+        // TableColumn<Mobilitate, String> proprietarCol = new
+        // TableColumn<>("Proprietar");
+        // proprietarCol.setCellValueFactory(new PropertyValueFactory<>("proprietar"));
+        // // proprietarCol.setMinWidth(100);
+        // columns.add(proprietarCol);
+
+        TableColumn<Mobilitate, Integer> stockCol = new TableColumn<>("Stock");
+        stockCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        // stockCol.setMinWidth(100);
+        columns.add(stockCol);
 
         return columns;
     }
 
-    public abstract float raportVitezaPret();
+    public abstract float getRaportVitezaPret();
 
     public abstract void afisare();
 

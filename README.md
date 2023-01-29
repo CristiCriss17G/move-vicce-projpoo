@@ -20,6 +20,14 @@ Funcțiile de import și export date permit actualizarea rapidă a stocului și 
 
 Datele utilizate sunt fictive, iar aplicația nu are scop comercial.
 
+## Utilizare
+
+Datele pot fi adaugate in panou `AddData` prin generare aleatoare sau prin importarea unui fisier text.
+
+În panoul principal se pot vedea datele după apăsarea butonului `Refresh data tabel`, actiune necesara și în urmă unei filtrari de pret sau vitează.
+
+Butonul `Export` exporta datele din tabel într-un fișier text compatibil cu importul.
+
 ## Instalare
 
 Pentru a rula aplicația, este necesară instalarea Maven și a Java JDK 19.

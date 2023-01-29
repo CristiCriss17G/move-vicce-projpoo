@@ -3,6 +3,7 @@ package com.vicce.move;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.function.UnaryOperator;
 
@@ -41,6 +42,11 @@ public class PrimaryController {
     @FXML
     private ComboBox<String> comboBoxTipVehicule;
 
+    @FXML
+    private TextField textFieldSearch;
+
+    private ArrayList<Mobilitate> mobilitateListFull;
+
     public void initialize() {
         UnaryOperator<TextFormatter.Change> floatFilter = change -> {
             String newText = change.getControlNewText();
@@ -67,6 +73,11 @@ public class PrimaryController {
 
         // showData();
 
+        // function to be triggered when the textFieldSearch is changed
+        textFieldSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            searchTable(newValue);
+        });
+
     }
 
     private void initializeComboBox() {
@@ -86,12 +97,25 @@ public class PrimaryController {
         tableView.getColumns().clear();
     }
 
+    private void searchTable(String text) {
+        ObservableList<Mobilitate> mobilitateListSearch = FXCollections.observableArrayList();
+        for (Mobilitate mobilitate : mobilitateListFull) {
+            if (mobilitate.getMarca().toLowerCase().contains(text.toLowerCase())
+                    || mobilitate.getModel().toLowerCase().contains(text.toLowerCase())
+                    || mobilitate.getTip().toLowerCase().contains(text.toLowerCase()) || text.isEmpty()) {
+                mobilitateListSearch.add(mobilitate);
+            }
+        }
+        tableView.getItems().setAll(mobilitateListSearch);
+    }
+
     @FXML
     private void showData() {
         // clear the table first
         resetTable();
 
         ObservableList<Mobilitate> mobilitateList = FXCollections.observableArrayList();
+        mobilitateListFull = new ArrayList<Mobilitate>();
 
         float pretMin;
         float pretMax;
@@ -146,21 +170,24 @@ public class PrimaryController {
 
         mobilitateList
                 .addAll(Seeder.getVehicule(comboBoxTipVehicule.getValue(), pretMin, pretMax, vitezaMin, vitezaMax));
+        mobilitateListFull.addAll(mobilitateList);
 
         tableView.setItems(mobilitateList);
 
     }
 
-    @FXML
-    private void reverseNames() {
-        ObservableList<Mobilitate> mobilitateList = FXCollections.observableArrayList();
-        for (Mobilitate mobilitate : tableView.getItems()) {
-            mobilitate.setProprietar(new StringBuilder(mobilitate.getProprietar()).reverse().toString());
-            mobilitateList.add(mobilitate);
-        }
-        tableView.getItems().clear();
-        tableView.setItems(mobilitateList);
-    }
+    // @FXML
+    // private void reverseNames() {
+    // ObservableList<Mobilitate> mobilitateListReverse =
+    // FXCollections.observableArrayList();
+    // for (Mobilitate mobilitate : tableView.getItems()) {
+    // mobilitate.setProprietar(new
+    // StringBuilder(mobilitate.getProprietar()).reverse().toString());
+    // mobilitateListReverse.add(mobilitate);
+    // }
+    // tableView.getItems().clear();
+    // tableView.setItems(mobilitateListReverse);
+    // }
 
     @FXML
     private void addData() throws IOException {
@@ -231,6 +258,10 @@ public class PrimaryController {
                             break;
                     }
                     for (TableColumn<Mobilitate, ?> column : tableView.getColumns()) {
+                        // if column is Raport pret viteza then skip it
+                        if (column.getText().equals("Raport pret viteza")) {
+                            continue;
+                        }
 
                         fileWriter.append(column.getCellObservableValue(mobilitate).getValue().toString());
                         fileWriter.append(";");

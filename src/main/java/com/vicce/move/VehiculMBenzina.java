@@ -18,27 +18,30 @@ public class VehiculMBenzina extends VehiculCuMotor {
         consumUrban = 5.6;
     }
 
-    public VehiculMBenzina(float vitezaMax, float pret, int nrRoti, int nrLocuri, int putere, int capacitate, int an,
-            double consum) {
-        super(vitezaMax, pret, nrRoti, nrLocuri);
-        this.caiPutere = putere;
-        this.capacitateMotor = capacitate;
-        this.anFabricatie = an;
-        this.consumUrban = consum;
-    }
+    // public VehiculMBenzina(float vitezaMax, float pret, int nrRoti, int nrLocuri,
+    // int putere, int capacitate, int an,
+    // double consum) {
+    // super(vitezaMax, pret, nrRoti, nrLocuri);
+    // this.caiPutere = putere;
+    // this.capacitateMotor = capacitate;
+    // this.anFabricatie = an;
+    // this.consumUrban = consum;
+    // }
 
-    public VehiculMBenzina(float vitezaMax, float pret, int nrRoti, int nrLocuri, int putere, int capacitate, int an,
-            double consum, long id) {
-        super(vitezaMax, pret, nrRoti, nrLocuri, id);
-        this.caiPutere = putere;
-        this.capacitateMotor = capacitate;
-        this.anFabricatie = an;
-        this.consumUrban = consum;
-    }
+    // public VehiculMBenzina(float vitezaMax, float pret, int nrRoti, int nrLocuri,
+    // int putere, int capacitate, int an,
+    // double consum, long id) {
+    // super(vitezaMax, pret, nrRoti, nrLocuri, id);
+    // this.caiPutere = putere;
+    // this.capacitateMotor = capacitate;
+    // this.anFabricatie = an;
+    // this.consumUrban = consum;
+    // }
 
     public VehiculMBenzina(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int stock,
             int nrRoti, int nrLocuri, int putere, int capacitate, int an, double consum) {
-        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri);
+        super(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti, nrLocuri);
         this.caiPutere = putere;
         this.capacitateMotor = capacitate;
         this.anFabricatie = an;
@@ -46,8 +49,9 @@ public class VehiculMBenzina extends VehiculCuMotor {
     }
 
     public VehiculMBenzina(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int stock,
             int nrRoti, int nrLocuri, int putere, int capacitate, int an, double consum, long id) {
-        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri, id);
+        super(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti, nrLocuri, id);
         this.caiPutere = putere;
         this.capacitateMotor = capacitate;
         this.anFabricatie = an;

@@ -34,9 +34,47 @@ public class VehiculFMSport extends VehiculFaraMotor {
         this.echipamentProtectie = a.echipamentProtectie;
     }
 
-    public VehiculFMSport(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
+    // public VehiculFMSport(float vitezaMax, float pret, int nrRoti, double
+    // greutate, int anFabricatie, int nrPedale,
+    // int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie>
+    // echipamentProtectie) {
+    // super(vitezaMax, pret, nrRoti, greutate, anFabricatie, nrPedale,
+    // acceleratie);
+    // this.tipTeren = tipTeren;
+    // this.echipamentProtectie = echipamentProtectie == null ||
+    // echipamentProtectie.size() == 0
+    // ? new ArrayList<EchipamentProtectie>() {
+    // {
+    // add(EchipamentProtectie.nimic);
+    // }
+    // }
+    // : echipamentProtectie;
+    // }
+
+    // public VehiculFMSport(float vitezaMax, float pret, int nrRoti, double
+    // greutate, int anFabricatie, int nrPedale,
+    // int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie>
+    // echipamentProtectie, long id) {
+    // super(vitezaMax, pret, nrRoti, greutate, anFabricatie, nrPedale, acceleratie,
+    // id);
+    // this.tipTeren = tipTeren;
+    // this.echipamentProtectie = echipamentProtectie == null ||
+    // echipamentProtectie.size() == 0
+    // ? new ArrayList<EchipamentProtectie>() {
+    // {
+    // add(EchipamentProtectie.nimic);
+    // }
+    // }
+    // : echipamentProtectie;
+    // }
+
+    public VehiculFMSport(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int stock,
+            int nrRoti, double greutate,
+            int anFabricatie, int nrPedale,
             int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie> echipamentProtectie) {
-        super(vitezaMax, pret, nrRoti, greutate, anFabricatie, nrPedale, acceleratie);
+        super(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti, greutate, anFabricatie, nrPedale,
+                acceleratie);
         this.tipTeren = tipTeren;
         this.echipamentProtectie = echipamentProtectie == null || echipamentProtectie.size() == 0
                 ? new ArrayList<EchipamentProtectie>() {
@@ -48,38 +86,12 @@ public class VehiculFMSport extends VehiculFaraMotor {
     }
 
     public VehiculFMSport(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
-            int nrRoti, double greutate,
-            int anFabricatie, int nrPedale,
-            int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie> echipamentProtectie) {
-        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, greutate, anFabricatie, nrPedale, acceleratie);
-        this.tipTeren = tipTeren;
-        this.echipamentProtectie = echipamentProtectie == null || echipamentProtectie.size() == 0
-                ? new ArrayList<EchipamentProtectie>() {
-                    {
-                        add(EchipamentProtectie.nimic);
-                    }
-                }
-                : echipamentProtectie;
-    }
-
-    public VehiculFMSport(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
-            int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie> echipamentProtectie, long id) {
-        super(vitezaMax, pret, nrRoti, greutate, anFabricatie, nrPedale, acceleratie, id);
-        this.tipTeren = tipTeren;
-        this.echipamentProtectie = echipamentProtectie == null || echipamentProtectie.size() == 0
-                ? new ArrayList<EchipamentProtectie>() {
-                    {
-                        add(EchipamentProtectie.nimic);
-                    }
-                }
-                : echipamentProtectie;
-    }
-
-    public VehiculFMSport(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int stock,
             int nrRoti, double greutate,
             int anFabricatie, int nrPedale,
             int acceleratie, TipTeren tipTeren, ArrayList<EchipamentProtectie> echipamentProtectie, long id) {
-        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, greutate, anFabricatie, nrPedale, acceleratie,
+        super(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti, greutate, anFabricatie, nrPedale,
+                acceleratie,
                 id);
         this.tipTeren = tipTeren;
         this.echipamentProtectie = echipamentProtectie == null || echipamentProtectie.size() == 0

@@ -80,63 +80,69 @@ public class Seeder {
     }
 
     public static boolean addVehicule(String tipVehicul, int nr) {
-        return switch (tipVehicul) {
-            case "Toate" -> {
+        boolean result = false;
+        switch (tipVehicul) {
+            case "Toate":
                 VehiculFMSportSeeder.addVehicule(nr);
                 VehiculMMotorinaSeeder.addVehicule(nr);
                 VehiculFMAgrementSeeder.addVehicule(nr);
                 VehiculMBenzinaSeeder.addVehicule(nr);
                 GeneratorElectricSeeder.addVehicule(nr);
-                yield true;
-            }
-            case "VehiculFMSport" -> {
+                result = true;
+                break;
+            case "VehiculFMSport":
                 VehiculFMSportSeeder.addVehicule(nr);
-                yield true;
-            }
-            case "VehiculMMotorina" -> {
+                result = true;
+                break;
+            case "VehiculMMotorina":
                 VehiculMMotorinaSeeder.addVehicule(nr);
-                yield true;
-            }
-            case "VehiculFMAgrement" -> {
+                result = true;
+                break;
+            case "VehiculFMAgrement":
                 VehiculFMAgrementSeeder.addVehicule(nr);
-                yield true;
-            }
-            case "VehiculMBenzina" -> {
+                result = true;
+                break;
+            case "VehiculMBenzina":
                 VehiculMBenzinaSeeder.addVehicule(nr);
-                yield true;
-            }
-            case "VehiculMElectric" -> {
+                result = true;
+                break;
+            case "VehiculMElectric":
                 GeneratorElectricSeeder.addVehicule(nr);
-                yield true;
-            }
-            default -> false;
-        };
+                result = true;
+                break;
+            default:
+                result = false;
+        }
+        return result;
     }
 
     public static boolean addVehicule(Mobilitate vehicul) {
-        return switch (vehicul.getClass().getSimpleName()) {
-            case "VehiculFMSport" -> {
+        boolean result = false;
+        switch (vehicul.getClass().getSimpleName()) {
+            case "VehiculFMSport":
                 VehiculFMSportSeeder.addVehicule((VehiculFMSport) vehicul);
-                yield true;
-            }
-            case "VehiculMMotorina" -> {
+                result = true;
+                break;
+            case "VehiculMMotorina":
                 VehiculMMotorinaSeeder.addVehicule((VehiculMMotorina) vehicul);
-                yield true;
-            }
-            case "VehiculFMAgrement" -> {
+                result = true;
+                break;
+            case "VehiculFMAgrement":
                 VehiculFMAgrementSeeder.addVehicule((VehiculFMAgrement) vehicul);
-                yield true;
-            }
-            case "VehiculMBenzina" -> {
+                result = true;
+                break;
+            case "VehiculMBenzina":
                 VehiculMBenzinaSeeder.addVehicule((VehiculMBenzina) vehicul);
-                yield true;
-            }
-            case "VehiculMElectric" -> {
+                result = true;
+                break;
+            case "VehiculMElectric":
                 GeneratorElectricSeeder.addVehicule((VehiculMElectric) vehicul);
-                yield true;
-            }
-            default -> false;
-        };
+                result = true;
+                break;
+            default:
+                result = false;
+        }
+        return result;
     }
 
     public static boolean addVehicule(ArrayList<Mobilitate> vehicule) {

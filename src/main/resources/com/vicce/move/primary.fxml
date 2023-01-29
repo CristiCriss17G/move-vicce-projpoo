@@ -19,6 +19,7 @@
       <RowConstraints minHeight="20" vgrow="SOMETIMES" />
       <RowConstraints minHeight="20" vgrow="SOMETIMES" />
       <RowConstraints minHeight="20" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="20" vgrow="SOMETIMES" />
    </rowConstraints>
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="30"/>
@@ -27,7 +28,7 @@
    </columnConstraints>
    <children>
       <Button fx:id="button1" text="Go to AddData Panel" onAction="#addData" GridPane.rowIndex="0" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
-      <Button fx:id="button2" text="Reverse Names" onAction="#reverseNames" GridPane.rowIndex="0" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER"/>
+      <!-- <Button fx:id="button2" text="Reverse Names" onAction="#reverseNames" GridPane.rowIndex="0" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER"/> -->
       <Button fx:id="button3" text="Export" onAction="#exportData" GridPane.rowIndex="0" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER"/>
       <Label fx:id="label1" text="Filtrare pret [ MIN - MAX ]" GridPane.rowIndex="1" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
       <TextField fx:id="textFieldPretMin" GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER"/>
@@ -35,10 +36,12 @@
       <Label fx:id="label2" text="Filtrare viteaza [ MIN - MAX ]" GridPane.rowIndex="2" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
       <TextField fx:id="textFieldVitezaMin" GridPane.rowIndex="2" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER"/>
       <TextField fx:id="textFieldVitezaMax" GridPane.rowIndex="2" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER"/>
-      <TableView fx:id="tableView" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="3" minHeight="50" GridPane.halignment="CENTER"/>
-      <Button fx:id="button4" text="Refresh date tabel" onAction="#showData" GridPane.rowIndex="4" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
-      <ComboBox fx:id="comboBoxTipVehicule" GridPane.rowIndex="4" GridPane.columnIndex="1" promptText ="Alege tipul de vehicul" GridPane.halignment="CENTER"/>
-      <Button fx:id="button5" text="Stergere date tabel" onAction="#resetData" GridPane.rowIndex="4" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER"/>
+      <Label fx:id="label2" text="Cautare" GridPane.rowIndex="3" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
+      <TextField fx:id="textFieldSearch" GridPane.rowIndex="3" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER" GridPane.columnSpan="2"/>
+      <TableView fx:id="tableView" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="3" minHeight="50" GridPane.halignment="CENTER"/>
+      <Button fx:id="button4" text="Refresh date tabel" onAction="#showData" GridPane.rowIndex="5" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
+      <ComboBox fx:id="comboBoxTipVehicule" GridPane.rowIndex="5" GridPane.columnIndex="1" promptText ="Alege tipul de vehicul" GridPane.halignment="CENTER"/>
+      <Button fx:id="button5" text="Stergere date tabel" onAction="#resetData" GridPane.rowIndex="5" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER"/>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

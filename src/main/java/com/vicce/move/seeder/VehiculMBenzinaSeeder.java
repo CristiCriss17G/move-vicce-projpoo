@@ -25,6 +25,8 @@ public class VehiculMBenzinaSeeder {
     private static final int MIN_VITEZA = 100;
     private static final int MAX_PRET = 10000;
     private static final int MIN_PRET = 500;
+    private static final int MIN_STOCK = 0;
+    private static final int MAX_STOCK = 20;
     private static final int MAX_AN = 2020;
     private static final int MIN_AN = 1990;
     private static final int MAX_NRROTI = 8;
@@ -69,21 +71,11 @@ public class VehiculMBenzinaSeeder {
         ArrayList<VehiculMBenzina> vehicule = new ArrayList<VehiculMBenzina>();
 
         for (int i = 0; i < nr; i++) {
-            // int vitezaMax=new Random().nextInt(130,350);
-            // int pret=new Random().nextInt(4000,90000);
-            // int nrRoti=new Random().nextInt(4,6);
-            // int nrLocuri=new Random().nextInt(2,7);
-            // int caiPutere=new Random().nextInt(70,500);
-            // int capacitateMotor=new Random().nextInt(1200,3000);
-            // String marca = marci[new Random().nextInt(marci.length)];
-            // String model = modele[new Random().nextInt(modele.length)];
-            // int anFabricatie=new Random().nextInt(1995,2022);
-            // double consumUrban=new Random().nextInt(5,14);
-
-            float vitezaMax = random.nextFloat() * (MAX_VITEZA - MIN_VITEZA) + MIN_VITEZA;
-            float pret = random.nextFloat() * (MAX_PRET - MIN_PRET) + MIN_PRET;
+            float vitezaMax = random.nextFloat(MAX_VITEZA - MIN_VITEZA) + MIN_VITEZA;
+            float pret = random.nextFloat(MAX_PRET - MIN_PRET) + MIN_PRET;
             String tip = types[random.nextInt(types.length)];
             String proprietar = proprietari[random.nextInt(proprietari.length)];
+            int stock = random.nextInt(MAX_STOCK - MIN_STOCK) + MIN_STOCK;
             int anFabricatie = random.nextInt(MAX_AN - MIN_AN) + MIN_AN;
             int nrRoti = random.nextInt(MAX_NRROTI - MIN_NRROTI) + MIN_NRROTI;
             int nrLocuri = random.nextInt(MAX_NRLOCURI - MIN_NRLOCURI) + MIN_NRLOCURI;
@@ -93,7 +85,7 @@ public class VehiculMBenzinaSeeder {
             String marca = manufacturers[random.nextInt(manufacturers.length)];
             String model = models[random.nextInt(models.length)];
 
-            VehiculMBenzina masina = new VehiculMBenzina(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+            VehiculMBenzina masina = new VehiculMBenzina(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti,
                     nrLocuri, caiPutere, capacitateMotor, anFabricatie, consumUrban);
             vehicule.add(masina);
         }
@@ -143,6 +135,7 @@ public class VehiculMBenzinaSeeder {
             vehicul.put("marca", vmb.getMarca());
             vehicul.put("tip", vmb.getTip());
             vehicul.put("proprietar", vmb.getProprietar());
+            vehicul.put("stock", vmb.getStock());
             vehiculeJSON.put(vehicul);
         }
         try {
@@ -164,22 +157,23 @@ public class VehiculMBenzinaSeeder {
         ArrayList<VehiculMBenzina> vehicule = new ArrayList<VehiculMBenzina>();
         for (int i = 0; i < vehiculeJSON.length(); i++) {
             JSONObject vehicul = vehiculeJSON.getJSONObject(i);
-            long id = vehicul.getLong("id");
-            float vitezaMax = (float) vehicul.getDouble("vitezaMax");
-            float pret = (float) vehicul.getDouble("pret");
-            int anFabricatie = vehicul.getInt("anFabricatie");
-            int nrRoti = vehicul.getInt("nrRoti");
-            int nrLocuri = vehicul.getInt("nrLocuri");
-            int caiPutere = vehicul.getInt("caiPutere");
-            int capacitateMotor = vehicul.getInt("capacitateMotor");
-            double consumUrban = vehicul.getDouble("consumUrban");
-            String model = vehicul.getString("model");
-            String marca = vehicul.getString("marca");
-            String tip = vehicul.getString("tip");
-            String proprietar = vehicul.getString("proprietar");
+            long id = vehicul.optLong("id");
+            float vitezaMax = vehicul.optFloat("vitezaMax");
+            float pret = vehicul.optFloat("pret");
+            int anFabricatie = vehicul.optInt("anFabricatie");
+            int nrRoti = vehicul.optInt("nrRoti");
+            int nrLocuri = vehicul.optInt("nrLocuri");
+            int caiPutere = vehicul.optInt("caiPutere");
+            int capacitateMotor = vehicul.optInt("capacitateMotor");
+            double consumUrban = vehicul.optDouble("consumUrban");
+            String model = vehicul.optString("model");
+            String marca = vehicul.optString("marca");
+            String tip = vehicul.optString("tip");
+            String proprietar = vehicul.optString("proprietar");
+            int stock = vehicul.optInt("stock");
 
-            VehiculMBenzina vmb = new VehiculMBenzina(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri,
-                    caiPutere, capacitateMotor, anFabricatie, consumUrban, id);
+            VehiculMBenzina vmb = new VehiculMBenzina(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti,
+                    nrLocuri, caiPutere, capacitateMotor, anFabricatie, consumUrban, id);
             vehicule.add(vmb);
         }
         return vehicule;
@@ -195,26 +189,7 @@ public class VehiculMBenzinaSeeder {
             String content = scanner.useDelimiter("\\A").next();
             scanner.close();
             JSONArray vehiculeJSON = new JSONArray(content);
-            for (int i = 0; i < vehiculeJSON.length(); i++) {
-                JSONObject vehicul = vehiculeJSON.getJSONObject(i);
-                long id = vehicul.getLong("id");
-                float vitezaMax = (float) vehicul.getDouble("vitezaMax");
-                float pret = (float) vehicul.getDouble("pret");
-                int anFabricatie = vehicul.getInt("anFabricatie");
-                int nrRoti = vehicul.getInt("nrRoti");
-                int nrLocuri = vehicul.getInt("nrLocuri");
-                int caiPutere = vehicul.getInt("caiPutere");
-                int capacitateMotor = vehicul.getInt("capacitateMotor");
-                double consumUrban = vehicul.getDouble("consumUrban");
-                String model = vehicul.getString("model");
-                String marca = vehicul.getString("marca");
-                String tip = vehicul.getString("tip");
-                String proprietar = vehicul.getString("proprietar");
-
-                VehiculMBenzina vmb = new VehiculMBenzina(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
-                        nrLocuri, caiPutere, capacitateMotor, anFabricatie, consumUrban, id);
-                vehicule.add(vmb);
-            }
+            vehicule = JSONReadSeed(vehiculeJSON);
         } catch (NoSuchFileException e) {
             // e.printStackTrace();
             throw new IllegalArgumentException("Fisierul nu exista; eroare de I/O: " + e.getMessage());

@@ -39,6 +39,8 @@ public class VehiculFMAgrementSeeder {
             "Sean Crawford", "Kaya Roth", "Ally Cross", "Sage King", "Payten Bentley", "Gianni Woodward",
             "Yandel Marshall", "Kailey Kramer", "Dax Bolton", "Makenna Parks", "Dangelo Vang", "Sandra Schmidt",
             "Jon Carson", "Haiden Newton", "Rachel Stanton", "Jaylon Cobb" };
+    private static final int MIN_STOCK = 0;
+    private static final int MAX_STOCK = 20;
     private static final int MAX_AN = 2020;
     private static final int MIN_AN = 1990;
     private static final int MAX_NRROTI = 8;
@@ -66,6 +68,7 @@ public class VehiculFMAgrementSeeder {
             String model = models[random.nextInt(models.length)];
             String tip = types[random.nextInt(types.length)];
             String proprietar = proprietari[random.nextInt(proprietari.length)];
+            int stock = random.nextInt(MAX_STOCK - MIN_STOCK) + MIN_STOCK;
             int nrRoti = random.nextInt(MAX_NRROTI - MIN_NRROTI) + MIN_NRROTI;
             float greutate = random.nextFloat() * (MAX_GREUTATE - MIN_GREUTATE) + MIN_GREUTATE;
             int an = random.nextInt(MAX_AN - MIN_AN) + MIN_AN;
@@ -78,9 +81,8 @@ public class VehiculFMAgrementSeeder {
             for (int j = 0; j < nrEchipamente; j++) {
                 echipamente.add(echipamenteProtectie[random.nextInt(echipamenteProtectie.length)]);
             }
-            VehiculFMAgrement vfma = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
-                    greutate, an, nrPedale, acceleratie, tipTeren,
-                    echipamente, categVarsta);
+            VehiculFMAgrement vfma = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, stock,
+                    nrRoti, greutate, an, nrPedale, acceleratie, tipTeren, echipamente, categVarsta);
             vehicule.add(vfma);
         }
         return vehicule;
@@ -123,6 +125,7 @@ public class VehiculFMAgrementSeeder {
             vehicul.put("model", vfma.getModel());
             vehicul.put("tip", vfma.getTip());
             vehicul.put("proprietar", vfma.getProprietar());
+            vehicul.put("stock", vfma.getStock());
             vehicul.put("nrRoti", vfma.getNrRoti());
             vehicul.put("greutate", vfma.getGreutate());
             vehicul.put("an", vfma.getAnFabricatie());
@@ -153,30 +156,29 @@ public class VehiculFMAgrementSeeder {
         ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
         for (int i = 0; i < vehiculeJSON.length(); i++) {
             JSONObject vehicul = vehiculeJSON.getJSONObject(i);
-            long id = vehicul.getLong("id");
-            float vitezaMax = vehicul.getFloat("vitezaMax");
-            float pret = vehicul.getFloat("pret");
-            String marca = vehicul.getString("marca");
-            String model = vehicul.getString("model");
-            String tip = vehicul.getString("tip");
-            String proprietar = vehicul.getString("proprietar");
-            int nrRoti = vehicul.getInt("nrRoti");
-            float greutate = vehicul.getFloat("greutate");
-            int an = vehicul.getInt("an");
-            int nrPedale = vehicul.getInt("nrPedale");
-            int acceleratie = vehicul.getInt("acceleratie");
-            VehiculFMAgrement.TipTeren tipTeren = VehiculFMAgrement.TipTeren.valueOf(vehicul.getString("tipTeren"));
+            long id = vehicul.optLong("id");
+            float vitezaMax = vehicul.optFloat("vitezaMax");
+            float pret = vehicul.optFloat("pret");
+            String marca = vehicul.optString("marca");
+            String model = vehicul.optString("model");
+            String tip = vehicul.optString("tip");
+            String proprietar = vehicul.optString("proprietar");
+            int stock = vehicul.optInt("stock");
+            int nrRoti = vehicul.optInt("nrRoti");
+            float greutate = vehicul.optFloat("greutate");
+            int an = vehicul.optInt("an");
+            int nrPedale = vehicul.optInt("nrPedale");
+            int acceleratie = vehicul.optInt("acceleratie");
+            VehiculFMAgrement.TipTeren tipTeren = VehiculFMAgrement.TipTeren.valueOf(vehicul.optString("tipTeren"));
             VehiculFMAgrement.CategVarsta categVarsta = VehiculFMAgrement.CategVarsta
-                    .valueOf(vehicul.getString("categVarsta"));
+                    .valueOf(vehicul.optString("categVarsta"));
             ArrayList<VehiculFMAgrement.EchipamentProtectie> echipamente = new ArrayList<VehiculFMAgrement.EchipamentProtectie>();
-            JSONArray echipamenteJSON = vehicul.getJSONArray("echipamente");
+            JSONArray echipamenteJSON = vehicul.optJSONArray("echipamente");
             for (int j = 0; j < echipamenteJSON.length(); j++) {
-                echipamente.add(VehiculFMAgrement.EchipamentProtectie.valueOf(echipamenteJSON.getString(j)));
+                echipamente.add(VehiculFMAgrement.EchipamentProtectie.valueOf(echipamenteJSON.optString(j)));
             }
-            VehiculFMAgrement vfma = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
-                    greutate, an, nrPedale, acceleratie,
-                    tipTeren,
-                    echipamente, categVarsta, id);
+            VehiculFMAgrement vfma = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, stock,
+                    nrRoti, greutate, an, nrPedale, acceleratie, tipTeren, echipamente, categVarsta, id);
             vehicule.add(vfma);
         }
         return vehicule;
@@ -198,35 +200,7 @@ public class VehiculFMAgrementSeeder {
             String content = scanner.useDelimiter("\\A").next();
             scanner.close();
             JSONArray vehiculeJSON = new JSONArray(content);
-            for (int i = 0; i < vehiculeJSON.length(); i++) {
-                JSONObject vehicul = vehiculeJSON.getJSONObject(i);
-                long id = vehicul.getLong("id");
-                float vitezaMax = (float) vehicul.getDouble("vitezaMax");
-                float pret = (float) vehicul.getDouble("pret");
-                String marca = vehicul.getString("marca");
-                String model = vehicul.getString("model");
-                String tip = vehicul.getString("tip");
-                String proprietar = vehicul.getString("proprietar");
-                int nrRoti = vehicul.getInt("nrRoti");
-                float greutate = (float) vehicul.getDouble("greutate");
-                int an = vehicul.getInt("an");
-                int nrPedale = vehicul.getInt("nrPedale");
-                int acceleratie = vehicul.getInt("acceleratie");
-                VehiculFMAgrement.TipTeren tipTeren = VehiculFMAgrement.TipTeren.valueOf(vehicul.getString("tipTeren"));
-                VehiculFMAgrement.CategVarsta categVarsta = VehiculFMAgrement.CategVarsta
-                        .valueOf(vehicul.getString("categVarsta"));
-                JSONArray echipamenteJSON = vehicul.getJSONArray("echipamente");
-                ArrayList<VehiculFMAgrement.EchipamentProtectie> echipamente = new ArrayList<VehiculFMAgrement.EchipamentProtectie>();
-                for (int j = 0; j < echipamenteJSON.length(); j++) {
-                    echipamente.add(VehiculFMAgrement.EchipamentProtectie.valueOf(echipamenteJSON.getString(j)));
-                }
-                VehiculFMAgrement vfma = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
-                        greutate, an, nrPedale,
-                        acceleratie,
-                        tipTeren, echipamente,
-                        categVarsta, id);
-                vehicule.add(vfma);
-            }
+            vehicule = JSONReadSeed(vehiculeJSON);
         } catch (NoSuchFileException e) {
             // e.printStackTrace();
             throw new IllegalArgumentException("Fisierul nu exista; eroare de I/O: " + e.getMessage());

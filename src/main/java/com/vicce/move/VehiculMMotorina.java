@@ -27,28 +27,31 @@ public class VehiculMMotorina extends VehiculCuMotor {
         this.cuplu = x.cuplu;
     }
 
-    public VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri,
-            int numarCilindri, int anFabricatie, int putere, float cuplu) {
-        super(vitezaMax, pret, nrRoti, nrLocuri);
-        this.numarCilindri = numarCilindri;
-        this.anFabricatie = anFabricatie;
-        this.putere = putere;
-        this.cuplu = cuplu;
-    }
+    // public VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int
+    // nrLocuri,
+    // int numarCilindri, int anFabricatie, int putere, float cuplu) {
+    // super(vitezaMax, pret, nrRoti, nrLocuri);
+    // this.numarCilindri = numarCilindri;
+    // this.anFabricatie = anFabricatie;
+    // this.putere = putere;
+    // this.cuplu = cuplu;
+    // }
 
-    public VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int nrLocuri,
-            int numarCilindri, int anFabricatie, int putere, float cuplu, long id) {
-        super(vitezaMax, pret, nrRoti, nrLocuri, id);
-        this.numarCilindri = numarCilindri;
-        this.anFabricatie = anFabricatie;
-        this.putere = putere;
-        this.cuplu = cuplu;
-    }
+    // public VehiculMMotorina(float vitezaMax, float pret, int nrRoti, int
+    // nrLocuri,
+    // int numarCilindri, int anFabricatie, int putere, float cuplu, long id) {
+    // super(vitezaMax, pret, nrRoti, nrLocuri, id);
+    // this.numarCilindri = numarCilindri;
+    // this.anFabricatie = anFabricatie;
+    // this.putere = putere;
+    // this.cuplu = cuplu;
+    // }
 
     public VehiculMMotorina(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int stock,
             int nrRoti, int nrLocuri, int numarCilindri,
             int anFabricatie, int putere, float cuplu) {
-        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri);
+        super(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti, nrLocuri);
         this.numarCilindri = numarCilindri;
         this.anFabricatie = anFabricatie;
         this.putere = putere;
@@ -56,9 +59,10 @@ public class VehiculMMotorina extends VehiculCuMotor {
     }
 
     public VehiculMMotorina(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+            int stock,
             int nrRoti, int nrLocuri, int numarCilindri,
             int anFabricatie, int putere, float cuplu, long id) {
-        super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri, id);
+        super(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti, nrLocuri, id);
         this.numarCilindri = numarCilindri;
         this.anFabricatie = anFabricatie;
         this.putere = putere;

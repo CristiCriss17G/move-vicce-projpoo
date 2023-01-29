@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class VehiculCuMotor extends Mobilitate {
+public abstract class VehiculCuMotor extends Mobilitate {
     protected int nrRoti;
     protected int nrLocuri;
 
@@ -22,31 +22,33 @@ public class VehiculCuMotor extends Mobilitate {
 
     }
 
-    public VehiculCuMotor(float vitezaMax, float pret, int nrRoti, int nrLocuri) {
-        super(vitezaMax, pret);
-        this.nrRoti = nrRoti;
-        this.nrLocuri = nrLocuri;
-    }
+    // public VehiculCuMotor(float vitezaMax, float pret, int nrRoti, int nrLocuri)
+    // {
+    // super(vitezaMax, pret);
+    // this.nrRoti = nrRoti;
+    // this.nrLocuri = nrLocuri;
+    // }
 
     // adaugat id
-    public VehiculCuMotor(float vitezaMax, float pret, int nrRoti, int nrLocuri, long id) {
-        super(vitezaMax, pret, id);
-        this.nrRoti = nrRoti;
-        this.nrLocuri = nrLocuri;
-    }
+    // public VehiculCuMotor(float vitezaMax, float pret, int nrRoti, int nrLocuri,
+    // long id) {
+    // super(vitezaMax, pret, id);
+    // this.nrRoti = nrRoti;
+    // this.nrLocuri = nrLocuri;
+    // }
 
     // adaugat marca, model, tip, proprietar
     public VehiculCuMotor(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
-            int nrRoti, int nrLocuri) {
-        super(vitezaMax, pret, marca, model, tip, proprietar);
+            int stock, int nrRoti, int nrLocuri) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, stock);
         this.nrRoti = nrRoti;
         this.nrLocuri = nrLocuri;
     }
 
     // adaugat id, marca, model, tip, proprietar
     public VehiculCuMotor(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
-            int nrRoti, int nrLocuri, long id) {
-        super(vitezaMax, pret, marca, model, tip, proprietar, id);
+            int nrRoti, int nrLocuri, int stock, long id) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, stock, id);
         this.nrRoti = nrRoti;
         this.nrLocuri = nrLocuri;
     }
@@ -84,7 +86,7 @@ public class VehiculCuMotor extends Mobilitate {
     }
 
     @Override
-    public float raportVitezaPret() {
+    public float getRaportVitezaPret() {
         return vitezaMax / pret;
     }
 

@@ -54,29 +54,53 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
     this.electrics = a.electrics;
   }
 
-  public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
+  // public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int
+  // nrLocuri, int nrUsi, int capacitateMotor,
+  // int autonomie, double greutate, int nrScaune, int litriPortbagaj, double
+  // kmReali, int anFabricatie,
+  // int nrPedale, int cuplu, Electric electrics) {
+
+  // super(vitezaMax, pret, nrRoti, nrLocuri);
+  // this.nrUsi = nrUsi;
+  // this.capacitateMotor = capacitateMotor; //
+  // this.autonomie = autonomie;//
+  // this.greutate = greutate;//
+  // this.nrScaune = nrScaune;
+  // this.litriPortbagaj = litriPortbagaj;
+  // this.kmReali = kmReali;//
+  // this.anFabricatie = anFabricatie;//
+  // this.nrPedale = nrPedale;
+  // this.cuplu = cuplu;
+  // this.electrics = electrics;
+  // }
+
+  // public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int
+  // nrLocuri, int nrUsi, int capacitateMotor,
+  // int autonomie, double greutate, int nrScaune, int litriPortbagaj, double
+  // kmReali, int anFabricatie,
+  // int nrPedale, int cuplu, Electric electrics, long id) {
+
+  // super(vitezaMax, pret, nrRoti, nrLocuri, id);
+  // this.nrUsi = nrUsi;
+  // this.capacitateMotor = capacitateMotor; //
+  // this.autonomie = autonomie;//
+  // this.greutate = greutate;//
+  // this.nrScaune = nrScaune;
+  // this.litriPortbagaj = litriPortbagaj;
+  // this.kmReali = kmReali;//
+  // this.anFabricatie = anFabricatie;//
+  // this.nrPedale = nrPedale;
+  // this.cuplu = cuplu;
+  // this.electrics = electrics;
+  // }
+
+  public VehiculMElectric(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+      int stock,
+      int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
       int autonomie, double greutate, int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
       int nrPedale, int cuplu, Electric electrics) {
 
-    super(vitezaMax, pret, nrRoti, nrLocuri);
-    this.nrUsi = nrUsi;
-    this.capacitateMotor = capacitateMotor; //
-    this.autonomie = autonomie;//
-    this.greutate = greutate;//
-    this.nrScaune = nrScaune;
-    this.litriPortbagaj = litriPortbagaj;
-    this.kmReali = kmReali;//
-    this.anFabricatie = anFabricatie;//
-    this.nrPedale = nrPedale;
-    this.cuplu = cuplu;
-    this.electrics = electrics;
-  }
-
-  public VehiculMElectric(float vitezaMax, float pret, int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
-      int autonomie, double greutate, int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
-      int nrPedale, int cuplu, Electric electrics, long id) {
-
-    super(vitezaMax, pret, nrRoti, nrLocuri, id);
+    super(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti, nrLocuri);
     this.nrUsi = nrUsi;
     this.capacitateMotor = capacitateMotor; //
     this.autonomie = autonomie;//
@@ -91,30 +115,12 @@ public class VehiculMElectric extends VehiculCuMotor { // folosesc doar 5 de aic
   }
 
   public VehiculMElectric(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
-      int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
-      int autonomie, double greutate, int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
-      int nrPedale, int cuplu, Electric electrics) {
-
-    super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri);
-    this.nrUsi = nrUsi;
-    this.capacitateMotor = capacitateMotor; //
-    this.autonomie = autonomie;//
-    this.greutate = greutate;//
-    this.nrScaune = nrScaune;
-    this.litriPortbagaj = litriPortbagaj;
-    this.kmReali = kmReali;//
-    this.anFabricatie = anFabricatie;//
-    this.nrPedale = nrPedale;
-    this.cuplu = cuplu;
-    this.electrics = electrics;
-  }
-
-  public VehiculMElectric(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
+      int stock,
       int nrRoti, int nrLocuri, int nrUsi, int capacitateMotor,
       int autonomie, double greutate, int nrScaune, int litriPortbagaj, double kmReali, int anFabricatie,
       int nrPedale, int cuplu, Electric electrics, long id) {
 
-    super(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri, id);
+    super(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti, nrLocuri, id);
     this.nrUsi = nrUsi;
     this.capacitateMotor = capacitateMotor; //
     this.autonomie = autonomie;//

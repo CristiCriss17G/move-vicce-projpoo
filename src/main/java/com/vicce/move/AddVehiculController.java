@@ -136,7 +136,8 @@ public class AddVehiculController {
                         String marca = lineArray[4];
                         String model = lineArray[5];
                         String tip = lineArray[6];
-                        String proprietar = lineArray[7];
+                        String proprietar = "";
+                        int stock = Integer.parseInt(lineArray[7]);
                         int nrRoti = Integer.parseInt(lineArray[8]);
                         double greutate = Double.parseDouble(lineArray[9]);
                         int an = Integer.parseInt(lineArray[10]);
@@ -149,7 +150,7 @@ public class AddVehiculController {
                         for (String echipament : echipamenteArray) {
                             echipamente.add(VehiculFMSport.EchipamentProtectie.valueOf(echipament));
                         }
-                        mobilitate = new VehiculFMSport(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+                        mobilitate = new VehiculFMSport(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti,
                                 greutate, an, nrPedale, acceleratie, tipTeren, echipamente, id);
                         break;
                     case "VehiculFMAgrement":
@@ -159,7 +160,8 @@ public class AddVehiculController {
                         marca = lineArray[4];
                         model = lineArray[5];
                         tip = lineArray[6];
-                        proprietar = lineArray[7];
+                        proprietar = "";
+                        stock = Integer.parseInt(lineArray[7]);
                         nrRoti = Integer.parseInt(lineArray[8]);
                         greutate = Double.parseDouble(lineArray[9]);
                         an = Integer.parseInt(lineArray[10]);
@@ -175,8 +177,9 @@ public class AddVehiculController {
                             echipamentProtectie.add(VehiculFMAgrement.EchipamentProtectie.valueOf(echipament));
                         }
 
-                        mobilitate = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
-                                greutate, an, nrPedale, acceleratie, tipTerenAg, echipamentProtectie, categVarsta, id);
+                        mobilitate = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, stock,
+                                nrRoti, greutate, an, nrPedale, acceleratie, tipTerenAg, echipamentProtectie,
+                                categVarsta, id);
                         break;
                     case "VehiculMMotorina":
                         id = Long.parseLong(lineArray[1]);
@@ -185,7 +188,8 @@ public class AddVehiculController {
                         marca = lineArray[4];
                         model = lineArray[5];
                         tip = lineArray[6];
-                        proprietar = lineArray[7];
+                        proprietar = "";
+                        stock = Integer.parseInt(lineArray[7]);
                         nrRoti = Integer.parseInt(lineArray[8]);
                         int nrLocuri = Integer.parseInt(lineArray[9]);
                         int nrCilindri = Integer.parseInt(lineArray[10]);
@@ -193,7 +197,7 @@ public class AddVehiculController {
                         int putere = Integer.parseInt(lineArray[12]);
                         float cupluMot = Float.parseFloat(lineArray[13]);
 
-                        mobilitate = new VehiculMMotorina(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+                        mobilitate = new VehiculMMotorina(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti,
                                 nrLocuri, nrCilindri, an, putere, cupluMot, id);
                         break;
                     case "VehiculMBenzina":
@@ -203,14 +207,15 @@ public class AddVehiculController {
                         marca = lineArray[4];
                         model = lineArray[5];
                         tip = lineArray[6];
-                        proprietar = lineArray[7];
+                        proprietar = "";
+                        stock = Integer.parseInt(lineArray[7]);
                         nrRoti = Integer.parseInt(lineArray[8]);
                         nrLocuri = Integer.parseInt(lineArray[9]);
                         int caiPutere = Integer.parseInt(lineArray[10]);
                         int capacitateMotor = Integer.parseInt(lineArray[11]);
                         an = Integer.parseInt(lineArray[12]);
                         double consumUrban = Double.parseDouble(lineArray[13]);
-                        mobilitate = new VehiculMBenzina(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+                        mobilitate = new VehiculMBenzina(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti,
                                 nrLocuri, caiPutere, capacitateMotor, an, consumUrban, id);
                         break;
                     case "VehiculMElectric":
@@ -220,7 +225,8 @@ public class AddVehiculController {
                         marca = lineArray[4];
                         model = lineArray[5];
                         tip = lineArray[6];
-                        proprietar = lineArray[7];
+                        proprietar = "";
+                        stock = Integer.parseInt(lineArray[7]);
                         nrRoti = Integer.parseInt(lineArray[8]);
                         nrLocuri = Integer.parseInt(lineArray[9]);
                         capacitateMotor = Integer.parseInt(lineArray[10]);
@@ -234,7 +240,7 @@ public class AddVehiculController {
                         int cuplu = Integer.parseInt(lineArray[18]);
                         int nrUsi = Integer.parseInt(lineArray[19]);
                         VehiculMElectric.Electric motor = VehiculMElectric.Electric.valueOf(lineArray[20]);
-                        mobilitate = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, nrRoti,
+                        mobilitate = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti,
                                 nrLocuri, nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj,
                                 kmReali, an, nrPedale, cuplu, motor, id);
                         break;

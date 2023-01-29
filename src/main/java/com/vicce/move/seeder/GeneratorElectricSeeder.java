@@ -43,6 +43,8 @@ public class GeneratorElectricSeeder {
       "Sean Crawford", "Kaya Roth", "Ally Cross", "Sage King", "Payten Bentley", "Gianni Woodward",
       "Yandel Marshall", "Kailey Kramer", "Dax Bolton", "Makenna Parks", "Dangelo Vang", "Sandra Schmidt",
       "Jon Carson", "Haiden Newton", "Rachel Stanton", "Jaylon Cobb" };
+  private static final int MIN_STOCK = 0;
+  private static final int MAX_STOCK = 20;
   private static final int MIN_CAPACITATEMOTOR = 1500;
   private static final int MAX_CAPACITATEMOTOR = 5500;
   private static final int MIN_AUTONOMIE = 350;
@@ -81,6 +83,7 @@ public class GeneratorElectricSeeder {
       String model = models[random.nextInt(models.length)];
       String tip = types[random.nextInt(types.length)];
       String proprietar = proprietari[random.nextInt(proprietari.length)];
+      int stock = random.nextInt(MAX_STOCK - MIN_STOCK) + MIN_STOCK;
       int capacitateMotor = random.nextInt(MAX_CAPACITATEMOTOR - MIN_CAPACITATEMOTOR) + MIN_CAPACITATEMOTOR;
       int autonomie = random.nextInt(MAX_AUTONOMIE - MIN_AUTONOMIE) + MIN_AUTONOMIE;
       double greutate = random.nextDouble(MAX_GREUTATE - MIN_GREUTATE) + MIN_GREUTATE;
@@ -95,8 +98,8 @@ public class GeneratorElectricSeeder {
       int nrLocuri = random.nextInt(MAX_NRLOCURI - MIN_NRLOCURI) + MIN_NRLOCURI;
       VehiculMElectric.Electric electric = electrics[random.nextInt(electrics.length)];
 
-      VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri,
-          nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj,
+      VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti,
+          nrLocuri, nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj,
           kmReali, anFabricatie, nrPedale, cuplu, electric);
       vehicule.add(vme);
 
@@ -141,6 +144,7 @@ public class GeneratorElectricSeeder {
       vehicul.put("model", vme.getModel());
       vehicul.put("tip", vme.getTip());
       vehicul.put("proprietar", vme.getProprietar());
+      vehicul.put("stock", vme.getStock());
       vehicul.put("capacitateMotor", vme.getCapacitateMotor());
       vehicul.put("autonomie", vme.getAutonomie());
       vehicul.put("greutate", vme.getGreutate());
@@ -177,33 +181,31 @@ public class GeneratorElectricSeeder {
     ArrayList<VehiculMElectric> vehicule = new ArrayList<VehiculMElectric>();
     for (int i = 0; i < vehiculeJSON.length(); i++) {
       JSONObject vehicul = vehiculeJSON.getJSONObject(i);
-      long id = vehicul.getLong("id");
-      float vitezaMax = (float) vehicul.getDouble("vitezaMax");
-      float pret = (float) vehicul.getDouble("pret");
-      int capacitateMotor = vehicul.getInt("capacitateMotor");
-      String marca = vehicul.getString("marca");
-      String model = vehicul.getString("model");
-      String tip = vehicul.getString("tip");
-      String proprietar = vehicul.getString("proprietar");
-      int autonomie = vehicul.getInt("autonomie");
-      double greutate = vehicul.getDouble("greutate");
-      double kmReali = vehicul.getDouble("kmReali");
-      int anFabricatie = vehicul.getInt("anFabricatie");
-      int nrScaune = vehicul.getInt("nrScaune");
-      int litriPortbagaj = vehicul.getInt("litriPortbagaj");
-      int nrPedale = vehicul.getInt("nrPedale");
-      int cuplu = vehicul.getInt("cuplu");
-      int nrUsi = vehicul.getInt("nrUsi");
-      int nrRoti = vehicul.getInt("nrRoti");
-      int nrLocuri = vehicul.getInt("nrLocuri");
-      VehiculMElectric.Electric electric = VehiculMElectric.Electric.valueOf(vehicul.getString("electric"));
+      long id = vehicul.optLong("id");
+      float vitezaMax = (float) vehicul.optDouble("vitezaMax");
+      float pret = (float) vehicul.optDouble("pret");
+      int capacitateMotor = vehicul.optInt("capacitateMotor");
+      String marca = vehicul.optString("marca");
+      String model = vehicul.optString("model");
+      String tip = vehicul.optString("tip");
+      String proprietar = vehicul.optString("proprietar");
+      int stock = vehicul.optInt("stock");
+      int autonomie = vehicul.optInt("autonomie");
+      double greutate = vehicul.optDouble("greutate");
+      double kmReali = vehicul.optDouble("kmReali");
+      int anFabricatie = vehicul.optInt("anFabricatie");
+      int nrScaune = vehicul.optInt("nrScaune");
+      int litriPortbagaj = vehicul.optInt("litriPortbagaj");
+      int nrPedale = vehicul.optInt("nrPedale");
+      int cuplu = vehicul.optInt("cuplu");
+      int nrUsi = vehicul.optInt("nrUsi");
+      int nrRoti = vehicul.optInt("nrRoti");
+      int nrLocuri = vehicul.optInt("nrLocuri");
+      VehiculMElectric.Electric electric = VehiculMElectric.Electric.valueOf(vehicul.optString("electric"));
 
-      VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri,
-          nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj, kmReali, anFabricatie, nrPedale, cuplu,
-          electric, id);
-      // System.out.println("vehicul electriuc");
-      // System.out.println(id);
-      // System.out.println(electric);
+      VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti,
+          nrLocuri, nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj, kmReali, anFabricatie,
+          nrPedale, cuplu, electric, id);
       vehicule.add(vme);
     }
     return vehicule;
@@ -219,34 +221,7 @@ public class GeneratorElectricSeeder {
       String content = scanner.useDelimiter("\\A").next();
       scanner.close();
       JSONArray vehiculeJSON = new JSONArray(content);
-      for (int i = 0; i < vehiculeJSON.length(); i++) {
-        JSONObject vehicul = vehiculeJSON.getJSONObject(i);
-        long id = vehicul.getLong("id");
-        float vitezaMax = (float) vehicul.getDouble("vitezaMax");
-        float pret = (float) vehicul.getDouble("pret");
-        int capacitateMotor = vehicul.getInt("capacitateMotor");
-        String marca = vehicul.getString("marca");
-        String model = vehicul.getString("model");
-        String tip = vehicul.getString("tip");
-        String proprietar = vehicul.getString("proprietar");
-        int autonomie = vehicul.getInt("autonomie");
-        double greutate = vehicul.getDouble("greutate");
-        double kmReali = vehicul.getDouble("kmReali");
-        int anFabricatie = vehicul.getInt("anFabricatie");
-        int nrScaune = vehicul.getInt("nrScaune");
-        int litriPortbagaj = vehicul.getInt("litriPortbagaj");
-        int nrPedale = vehicul.getInt("nrPedale");
-        int cuplu = vehicul.getInt("cuplu");
-        int nrUsi = vehicul.getInt("nrUsi");
-        int nrRoti = vehicul.getInt("nrRoti");
-        int nrLocuri = vehicul.getInt("nrLocuri");
-        VehiculMElectric.Electric electric = VehiculMElectric.Electric.valueOf(vehicul.getString("electric"));
-
-        VehiculMElectric vme = new VehiculMElectric(vitezaMax, pret, marca, model, tip, proprietar, nrRoti, nrLocuri,
-            nrUsi, capacitateMotor, autonomie, greutate, nrScaune, litriPortbagaj, kmReali, anFabricatie, nrPedale,
-            cuplu, electric, id);
-        vehicule.add(vme);
-      }
+      vehicule = JSONReadSeed(vehiculeJSON);
     } catch (NoSuchFileException e) {
       // e.printStackTrace();
       throw new IllegalArgumentException("Fisierul nu exista; eroare de I/O: " + e.getMessage());

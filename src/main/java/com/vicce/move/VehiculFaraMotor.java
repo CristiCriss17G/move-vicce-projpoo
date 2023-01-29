@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class VehiculFaraMotor extends Mobilitate {
+public abstract class VehiculFaraMotor extends Mobilitate {
     protected int nrRoti;
     protected double greutate;
     protected int anFabricatie;
@@ -30,30 +30,32 @@ public class VehiculFaraMotor extends Mobilitate {
         this.acceleratie = a.acceleratie;
     }
 
-    public VehiculFaraMotor(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
-            int acceleratie) {
-        super(vitezaMax, pret);
-        this.nrRoti = nrRoti;
-        this.greutate = greutate;
-        this.anFabricatie = anFabricatie;
-        this.nrPedale = nrPedale;
-        this.acceleratie = acceleratie;
-    }
+    // public VehiculFaraMotor(float vitezaMax, float pret, int nrRoti, double
+    // greutate, int anFabricatie, int nrPedale,
+    // int acceleratie) {
+    // super(vitezaMax, pret);
+    // this.nrRoti = nrRoti;
+    // this.greutate = greutate;
+    // this.anFabricatie = anFabricatie;
+    // this.nrPedale = nrPedale;
+    // this.acceleratie = acceleratie;
+    // }
 
-    public VehiculFaraMotor(float vitezaMax, float pret, int nrRoti, double greutate, int anFabricatie, int nrPedale,
-            int acceleratie, long id) {
-        super(vitezaMax, pret, id);
-        this.nrRoti = nrRoti;
-        this.greutate = greutate;
-        this.anFabricatie = anFabricatie;
-        this.nrPedale = nrPedale;
-        this.acceleratie = acceleratie;
-    }
+    // public VehiculFaraMotor(float vitezaMax, float pret, int nrRoti, double
+    // greutate, int anFabricatie, int nrPedale,
+    // int acceleratie, long id) {
+    // super(vitezaMax, pret, id);
+    // this.nrRoti = nrRoti;
+    // this.greutate = greutate;
+    // this.anFabricatie = anFabricatie;
+    // this.nrPedale = nrPedale;
+    // this.acceleratie = acceleratie;
+    // }
 
     // adaugat macara, model, tip, proprietar
     public VehiculFaraMotor(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
-            int nrRoti, double greutate, int anFabricatie, int nrPedale, int acceleratie) {
-        super(vitezaMax, pret, marca, model, tip, proprietar);
+            int stock, int nrRoti, double greutate, int anFabricatie, int nrPedale, int acceleratie) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, stock);
         this.nrRoti = nrRoti;
         this.greutate = greutate;
         this.anFabricatie = anFabricatie;
@@ -63,8 +65,8 @@ public class VehiculFaraMotor extends Mobilitate {
 
     // adaugat macara, model, tip, proprietar, id
     public VehiculFaraMotor(float vitezaMax, float pret, String marca, String model, String tip, String proprietar,
-            int nrRoti, double greutate, int anFabricatie, int nrPedale, int acceleratie, long id) {
-        super(vitezaMax, pret, marca, model, tip, proprietar, id);
+            int stock, int nrRoti, double greutate, int anFabricatie, int nrPedale, int acceleratie, long id) {
+        super(vitezaMax, pret, marca, model, tip, proprietar, stock, id);
         this.nrRoti = nrRoti;
         this.greutate = greutate;
         this.anFabricatie = anFabricatie;
@@ -113,7 +115,7 @@ public class VehiculFaraMotor extends Mobilitate {
     }
 
     @Override
-    public float raportVitezaPret() {
+    public float getRaportVitezaPret() {
         return vitezaMax / pret;
     }
 
