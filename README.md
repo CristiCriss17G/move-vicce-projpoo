@@ -1,7 +1,9 @@
 ## Descriere generala
 Acest proiect a fost realizat în cadrul cursului de Programare Orientată Obiect, din cadrul Facultatii de Automatică, Calculatoare, Inginerie Electrică și Electronică din cadrul Universității Dunarea de Jos, anul 2022-2023, semestrul 1.
 
-Scopul acestui proiect este de a realiza o aplicație care să permită gestionarea unei baze de date cu automobile. Acestea fiind de 2 feluri: cu motor si fara motor, care la randul lor pot sa fie cu motorina, benzina si electrice , respectiv sportive sau de agrement. 
+Scopul acestui proiect este de a realiza o aplicație care să permită gestionarea unei baze de date cu automobile. Acestea fiind de 2 feluri: cu motor si fara motor, care la randul lor pot sa fie cu motorina, benzina si electrice , respectiv sportive sau de agrement. Consider ca procesul de vanzare a unui vehicul este unul destul de complex, de aceea am creat aceasta aplicatie pentru a putea gestiona mai usor datele despre acestea atat in cazul unui depozit cat si in cazul unui magazin, aplicatia putand fi folosita atat de catre un client cat si de catre un vanzator.
+
+Cum poate ajuta/imbunatatii aceasta aplicatie procesul de vanzare a unui vehicul va intrebati? Raspunsul este simplu: clientul vine cu niste specificatii deja cunoscute despre vehiculul pe care il doreste, iar vanzatorul poate sa isi faca o idee despre ce vehicul poate sa ii ofere clientului. De asemenea, clientul poate sa isi faca o idee despre pretul pe care il poate obtine pentru vehiculul pe care il doreste sa il cumpere. Filtrarea din tabel ajuta in acest scop, pentru a vedea raportul dintre pret si viteza pentru vehiculele de tipul dorit, cat si restul datelor despre acestea. 
 
 Am decis sa implementez vehicule fara motor de agrement, mai exact biciclete, care pot fi de tipul: mountain bike, city bike, road bike, electric bike, etc. Scopul aplicatiei mele este acela de a putea vizualiza mai usor datele specifice despre acestea, precum si de a putea adauga noi biciclete in baza de date sau daca se doreste chiar stergerea lor.
 De asemenea este implementata functia de a importa date dintr-un fisier .txt.
