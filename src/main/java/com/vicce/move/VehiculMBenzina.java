@@ -92,7 +92,6 @@ public class VehiculMBenzina extends VehiculCuMotor {
         this.consumUrban=consum;
     }
 
-
     public static ArrayList<VehiculMBenzina> filtrareViteza(ArrayList<VehiculMBenzina> vehicule, float vitezaMaxim,
             float vitezaMinima) {
         ArrayList<VehiculMBenzina> vehiculeFiltrate = new ArrayList<VehiculMBenzina>();

@@ -252,7 +252,7 @@ public class VehiculMBenzinaSeeder {
         if (pretMin > 0 || pretMax > 0)
             vehicule = VehiculMBenzina.filtrarePret(vehicule, pretMax, pretMin);
         if (vitezaMin > 0 || vitezaMax > 0)
-            vehicule = VehiculMBenzina.filtrareViteza(vehicule, vitezaMax, vitezaMin);
+            vehicule = VehiculMBenzina.filtrareViteza(vehicule, vitezaMin,vitezaMax);
         return vehicule;
     }
 

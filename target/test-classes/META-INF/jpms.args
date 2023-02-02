@@ -1,4 +1,0 @@
---patch-module
-com.vicce.move=_
---add-reads
-com.vicce.move=ALL-UNNAMED

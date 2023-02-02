@@ -88,21 +88,23 @@ public class PrimaryController {
             pretMax = 0;
         }
 
-        try {
-            vitezaMin = Float.parseFloat(textFieldVitezaMin.getText());
-        } catch (NumberFormatException e) {
-            vitezaMin = 0;
-        }
+         try {
+             vitezaMin = Float.parseFloat(textFieldVitezaMin.getText());
+         } catch (NumberFormatException e) {
+             vitezaMin = 0;
+         }
 
-        try {
-            vitezaMax = Float.parseFloat(textFieldVitezaMax.getText());
-        } catch (NumberFormatException e) {
-            vitezaMax = 0;
-        }
+         try {
+             vitezaMax = Float.parseFloat(textFieldVitezaMax.getText());
+         } catch (NumberFormatException e) {
+             vitezaMax = 0;
+         }
+
+    
 
         tableView.getColumns().setAll(VehiculMBenzina.getTableColumns());
 
-        mobilitateList.addAll(VehiculMBenzinaSeeder.getVehicule(pretMin, pretMax, vitezaMin, vitezaMax));
+        mobilitateList.addAll(VehiculMBenzinaSeeder.getVehicule(pretMin, pretMax, vitezaMin,vitezaMax));
 
         tableView.setItems(mobilitateList);
 
