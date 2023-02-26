@@ -132,11 +132,11 @@ public abstract class VehiculFaraMotor extends Mobilitate {
     public static ArrayList<TableColumn<Mobilitate, ?>> getTableColumns() {
         ArrayList<TableColumn<Mobilitate, ?>> columns = Mobilitate.getTableColumns();
 
-        TableColumn<Mobilitate, Integer> nrRotiColumn = new TableColumn<>("Nr roti");
+        TableColumn<Mobilitate, Integer> nrRotiColumn = new TableColumn<>("Nr. roti");
         nrRotiColumn.setCellValueFactory(new PropertyValueFactory<>("nrRoti"));
         columns.add(nrRotiColumn);
 
-        TableColumn<Mobilitate, Double> greutateColumn = new TableColumn<>("Greutate");
+        TableColumn<Mobilitate, Double> greutateColumn = new TableColumn<>("Greutate (kg)");
         greutateColumn.setCellValueFactory(new PropertyValueFactory<>("greutate"));
         columns.add(greutateColumn);
 
@@ -144,9 +144,9 @@ public abstract class VehiculFaraMotor extends Mobilitate {
         anFabricatieColumn.setCellValueFactory(new PropertyValueFactory<>("anFabricatie"));
         columns.add(anFabricatieColumn);
 
-        TableColumn<Mobilitate, Integer> nrPedaleColumn = new TableColumn<>("Nr pedale");
-        nrPedaleColumn.setCellValueFactory(new PropertyValueFactory<>("nrPedale"));
-        columns.add(nrPedaleColumn);
+        // TableColumn<Mobilitate, Integer> nrPedaleColumn = new TableColumn<>("Nr. pedale");
+        // nrPedaleColumn.setCellValueFactory(new PropertyValueFactory<>("nrPedale"));
+        // columns.add(nrPedaleColumn);
 
         TableColumn<Mobilitate, Integer> acceleratieColumn = new TableColumn<>("Acceleratie");
         acceleratieColumn.setCellValueFactory(new PropertyValueFactory<>("acceleratie"));

@@ -195,10 +195,10 @@ public abstract class Mobilitate implements Comparable<Mobilitate>, Serializable
         // modelCol.setMinWidth(100);
         columns.add(modelCol);
 
-        TableColumn<Mobilitate, String> tipCol = new TableColumn<>("Tip");
-        tipCol.setCellValueFactory(new PropertyValueFactory<>("tip"));
-        // tipCol.setMinWidth(100);
-        columns.add(tipCol);
+        // TableColumn<Mobilitate, String> tipCol = new TableColumn<>("Tip");
+        // tipCol.setCellValueFactory(new PropertyValueFactory<>("tip"));
+        // // tipCol.setMinWidth(100);
+        // columns.add(tipCol);
 
         // TableColumn<Mobilitate, String> proprietarCol = new
         // TableColumn<>("Proprietar");

@@ -11,7 +11,7 @@ public class VehiculFMAgrement extends VehiculFaraMotor {
     };
 
     public static enum TipTeren {
-        asfalt, pamant, zapada, gheata
+        asfalt, pamant, beton
     };
 
     public static enum CategVarsta {
@@ -177,7 +177,7 @@ public class VehiculFMAgrement extends VehiculFaraMotor {
         tipTerenColumn.setCellValueFactory(new PropertyValueFactory<>("tipTeren"));
         columns.add(tipTerenColumn);
 
-        TableColumn<Mobilitate, TipTeren> categVarstaColumn = new TableColumn<>("Categ. varsta");
+        TableColumn<Mobilitate, TipTeren> categVarstaColumn = new TableColumn<>("Categorie varsta");
         categVarstaColumn.setCellValueFactory(new PropertyValueFactory<>("categVarsta"));
         columns.add(categVarstaColumn);
 
