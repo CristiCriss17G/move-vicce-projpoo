@@ -8,18 +8,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Base class for the app with javaFX
- * Testeaza clasa VehiculFMSport
- *
- */
 public class App extends Application {
-
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primaryFMAgrement"), 960, 640);
+        scene = new Scene(loadFXML("primary"), 1080, 680);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Vehicule");
@@ -38,4 +32,5 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
+
 }
