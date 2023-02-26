@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.NoSuchFileException;
 
+import com.vicce.move.AddVehiculController;
 import com.vicce.move.VehiculFMAgrement;
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,16 +20,16 @@ public class VehiculFMAgrementSeeder {
     private static final String fileName = "vehiculeFMAgrement.test.json";
 
     private static final int MAX = 100;
-    private static final int MIN = 1;
+    private static final int MIN = 0;
     private static final int MAX_VITEZA = 300;
     private static final int MIN_VITEZA = 100;
     private static final int MAX_PRET = 10000;
     private static final int MIN_PRET = 500;
-    private static final String[] manufacturers = { "Nike", "Adidas", "Under Armour", "Puma", "Reebok", "Asics",
-            "New Balance", "Jordan", "Wilson", "Columbia", "Continental" };
+    private static final String[] manufacturers = { "ALAN", "Cilo", "Alien Bikes", "Alexander Leutner & Co.",
+            "American Classic", "Apache Bicycles", "Axle Release", "Bicycle Research", "Bike-Aid", "Bikeverywhere",
+            "Black Diamond", "Steelman Cycles", "Supercycle", "Rivendell", "Bicycle Works", "Roadmaster","Roberts Cycles","Robin Hood","Rock Lobster","RockShox", "Pegasus" };
     private static final String[] models = { "Road Bike", "Mountain Bike", "Hybrid Bike", "Touring Bike",
-            "Fixed Gear Bike", "BMX Bike", "Cruiser Bike", "Tandem Bike", "Folding Bike", "Recumbent Bike",
-            "Skateboard", "Longboard", "Inline Skates", "Roller Skates", "Scooter", "Unicycle", "Kick Scooter" };
+            "Fixed Gear Bike", "BMX Bike", "Cruiser Bike", "Tandem Bike", "Folding Bike", "Recumbent Bike", "Roller Skates", "Scooter", "Unicycle", "Kick Scooter" };
     private static final String[] types = { "Road", "Mountain", "Hybrid", "Touring", "Fixed Gear", "BMX", "Cruiser" };
     private static final String[] proprietari = { "Andrea Ortiz", "Kadence Carney", "Hunter Heath", "Elianna Diaz",
             "Marina Barajas", "Ayanna Daniel", "Skylar Jensen", "Laura Hudson", "Oswaldo Rosario", "Marvin Clayton",
@@ -41,12 +42,12 @@ public class VehiculFMAgrementSeeder {
             "Jon Carson", "Haiden Newton", "Rachel Stanton", "Jaylon Cobb" };
     private static final int MAX_AN = 2020;
     private static final int MIN_AN = 1990;
-    private static final int MAX_NRROTI = 8;
+    private static final int MAX_NRROTI = 4;
     private static final int MIN_NRROTI = 1;
-    private static final int MAX_GREUTATE = 10;
+    private static final int MAX_GREUTATE = 40;
     private static final int MIN_GREUTATE = 1;
-    private static final int MAX_NRPEDALE = 10;
-    private static final int MIN_NRPEDALE = 1;
+    private static final int MAX_NRPEDALE = 4;
+    private static final int MIN_NRPEDALE = 2;
     private static final int MAX_ACCELERATIE = 20;
     private static final int MIN_ACCELERATIE = 1;
     private static final VehiculFMAgrement.TipTeren[] tipuriTeren = VehiculFMAgrement.TipTeren.values();
@@ -108,9 +109,9 @@ public class VehiculFMAgrementSeeder {
 
     public static JSONArray JSONseed(boolean canBeNull, ArrayList<VehiculFMAgrement> vehicule, String path)
             throws IllegalArgumentException {
-        if ((vehicule == null || vehicule.size() == 0) && !canBeNull) {
-            throw new IllegalArgumentException("Lista de vehicule nu poate fi nula sau goala");
-        }
+        // if ((vehicule == null || vehicule.size() == 0) && !canBeNull) {
+        //     throw new IllegalArgumentException("Lista de vehicule nu poate fi nula sau goala");
+        // }
         JSONArray vehiculeJSON = new JSONArray();
         for (int i = 0; i < vehicule.size(); i++) {
             VehiculFMAgrement vfma = vehicule.get(i);
@@ -265,12 +266,6 @@ public class VehiculFMAgrementSeeder {
         return vehicule;
     }
 
-    /**
-     * adaugat pt adaugarea unui vehicul in fisier
-     * Va fi stearsa la urmatoarea versiune
-     * 
-     * @deprecated
-     */
     public static boolean addVehicle(int nr) {
         ArrayList<VehiculFMAgrement> vehiculeOld;
         try {

@@ -72,12 +72,13 @@ public class AddVehiculController {
 
     @FXML
     private void showData() throws IOException {
-        App.setRoot("primary");
+        App.setRoot("primaryFMAgrement");
     }
 
     @FXML
     private void addData() {
         int numarVehicule;
+
         try {
             numarVehicule = Integer.parseInt(textFieldAddVehicule.getText());
         } catch (NumberFormatException e) {
@@ -104,6 +105,10 @@ public class AddVehiculController {
 
     @FXML
     private void importData() {
+        if (filePath == null || filePath.isEmpty()) {
+            labelStatus.setText("Nu ati selectat un fisier!");
+            return;
+        }
         try {
             // open file and print contents
             FileReader fileReader = new FileReader(filePath);

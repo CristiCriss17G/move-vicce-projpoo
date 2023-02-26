@@ -17,14 +17,29 @@
         <RowConstraints minHeight="20" vgrow="SOMETIMES" />
         <RowConstraints minHeight="20" vgrow="SOMETIMES" />
         <RowConstraints minHeight="20" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="50" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="20" vgrow="SOMETIMES" />
     </rowConstraints>
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="30"/>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="30"/>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="30"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="30"/>
     </columnConstraints>
     <children>
+        <Button fx:id="button1" text="Mergi inapoi" onAction="#showData" GridPane.rowIndex="0" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER" styleClass="button-style"/>
+        <Label fx:id="Informatii" text="Important! De sters datele din tabel inainte de a importa date" GridPane.rowIndex="0" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER" styleClass="input-style"/>
+
+        <Label fx:id="labelStatus" text="" GridPane.rowIndex="2" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER" GridPane.columnSpan="3" styleClass="input-style"/>
+
+        <Label fx:id="label1" text="Importare date tabel" GridPane.rowIndex="3" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER" styleClass="input-style"/>
+        <TextField fx:id="textFieldFilePath" GridPane.rowIndex="3" GridPane.columnIndex="1" alignment="CENTER_LEFT" GridPane.halignment="CENTER" GridPane.columnSpan="1" styleClass="textfield-style"/>
+        <Button fx:id="buttonChooseFile" text="Choose file" onAction="#chooseFile" GridPane.rowIndex="3" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER" styleClass="button-style"/>
+        <Button fx:id="buttonImport" text="Import data" onAction="#importData" GridPane.rowIndex="3" GridPane.columnIndex="3" alignment="center" GridPane.halignment="CENTER" styleClass="button-style"/>
+
+        <Button fx:id="button2" text="Add data" onAction="#addData" GridPane.rowIndex="4" GridPane.columnIndex="2" alignment="center" GridPane.halignment="CENTER" styleClass="button-style"/>
+        <Label fx:id="label1" text="Numar vehicule [ Minim 1 ]" GridPane.rowIndex="4" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER" styleClass="input-style"/>
+        <TextField fx:id="textFieldAddVehicule" GridPane.rowIndex="4" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER" GridPane.columnSpan="1" styleClass="textfield-style"/>
+// diff
         <Button fx:id="button1" text="Mergi inapoi" onAction="#showData" GridPane.rowIndex="0" GridPane.columnIndex="0" alignment="center" GridPane.halignment="CENTER"/>
         <Button fx:id="button2" text="Add data" onAction="#addData" GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="center" GridPane.halignment="CENTER"/>
         <ComboBox fx:id="comboBoxTipVehicule" GridPane.rowIndex="1" GridPane.columnIndex="0" promptText ="Alege tipul de vehicul" GridPane.halignment="CENTER"/>
