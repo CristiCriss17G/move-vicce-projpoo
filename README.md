@@ -38,6 +38,30 @@ Pentru mai multe detalii despre proiect: gorobtovvladandrei@gmail.com
 
 Aplicație de indexare, afișare și filtrare a vehiculelor dintr-o bază de date.
 
+Proiectul a fost realizat în cadrul cursului de Programare Orientată Obiect, anul 2, semestrul 1, 2022-2023.
+
+Această aplicație caută să ajute utilizatorii să găsească vehiculele potrivite pentru ei, în funcție de preferințele lor. Și de asemenea le permite și managerilor de showroom-uri să țină evidența vehiculelor de pe stoc.
+
+---
+
+Clasa implemntată de mine VehiculFMSport se adresează vehiculelor fără motor de tip sport, cum ar fi bicicletele, role, skate-uri, ski-uri, etc.
+
+Acesta este bună pentru magazine de inchiriat de biciclete, role, etc. mai ales cele de pe lângă parcurile sportive sau pârtiile de schi.
+
+Funcțiile de import și export date permit actualizarea rapidă a stocului și lucrul offline.
+
+---
+
+Datele utilizate sunt fictive, iar aplicația nu are scop comercial.
+
+## Utilizare
+
+Datele pot fi adaugate in panou `AddData` prin generare aleatoare sau prin importarea unui fisier text.
+
+În panoul principal se pot vedea datele după apăsarea butonului `Refresh data tabel`, actiune necesara și în urmă unei filtrari de pret sau vitează.
+
+Butonul `Export` exporta datele din tabel într-un fișier text compatibil cu importul.
+
 ## Instalare
 
 Pentru a rula aplicația, este necesară instalarea Maven și a Java JDK 19.
