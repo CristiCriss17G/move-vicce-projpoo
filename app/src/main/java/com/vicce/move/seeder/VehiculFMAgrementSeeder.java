@@ -6,7 +6,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.NoSuchFileException;
 
-import com.vicce.move.VehiculFMSport;
+import com.vicce.move.AddVehiculController;
+import com.vicce.move.VehiculFMAgrement;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -14,21 +15,23 @@ import java.util.Scanner;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
-public class VehiculFMSportSeeder {
+public class VehiculFMAgrementSeeder {
     private static Random random = new Random();
-    private static final String fileName = "vehiculeFMSport.test.json"; // modifica numele fisierului pentru fiecare
-                                                                        // clasa
+    private static final String fileName = "vehiculeFMAgrement.test.json";
+
     private static final int MAX = 100;
-    private static final int MIN = 1;
+    private static final int MIN = 0;
     private static final int MAX_VITEZA = 300;
     private static final int MIN_VITEZA = 100;
     private static final int MAX_PRET = 10000;
     private static final int MIN_PRET = 500;
-    private static final String[] manufacturers = { "Nike", "Adidas", "Under Armour", "Puma", "Reebok", "Asics",
-            "New Balance", "Jordan", "Wilson", "Columbia" };
+    private static final String[] manufacturers = { "ALAN", "Cilo", "Alien Bikes", "Alexander Leutner & Co.",
+            "American Classic", "Apache Bicycles", "Axle Release", "Bicycle Research", "Bike-Aid", "Bikeverywhere",
+            "Black Diamond", "Steelman Cycles", "Supercycle", "Rivendell", "Bicycle Works", "Roadmaster",
+            "Roberts Cycles", "Robin Hood", "Rock Lobster", "RockShox", "Pegasus" };
     private static final String[] models = { "Road Bike", "Mountain Bike", "Hybrid Bike", "Touring Bike",
             "Fixed Gear Bike", "BMX Bike", "Cruiser Bike", "Tandem Bike", "Folding Bike", "Recumbent Bike",
-            "Skateboard", "Longboard", "Inline Skates", "Roller Skates", "Scooter", "Unicycle" };
+            "Roller Skates", "Scooter", "Unicycle", "Kick Scooter" };
     private static final String[] types = { "Road", "Mountain", "Hybrid", "Touring", "Fixed Gear", "BMX", "Cruiser" };
     private static final String[] proprietari = { "Andrea Ortiz", "Kadence Carney", "Hunter Heath", "Elianna Diaz",
             "Marina Barajas", "Ayanna Daniel", "Skylar Jensen", "Laura Hudson", "Oswaldo Rosario", "Marvin Clayton",
@@ -43,99 +46,98 @@ public class VehiculFMSportSeeder {
     private static final int MAX_STOCK = 20;
     private static final int MAX_AN = 2020;
     private static final int MIN_AN = 1990;
-    private static final int MAX_NRROTI = 8;
+    private static final int MAX_NRROTI = 4;
     private static final int MIN_NRROTI = 1;
-    private static final int MAX_GREUTATE = 10;
+    private static final int MAX_GREUTATE = 40;
     private static final int MIN_GREUTATE = 1;
-    private static final int MAX_NRPEDALE = 10;
-    private static final int MIN_NRPEDALE = 1;
+    private static final int MAX_NRPEDALE = 4;
+    private static final int MIN_NRPEDALE = 2;
     private static final int MAX_ACCELERATIE = 20;
     private static final int MIN_ACCELERATIE = 1;
-    private static final VehiculFMSport.TipTeren[] tipuriTeren = VehiculFMSport.TipTeren.values();
-    private static final VehiculFMSport.EchipamentProtectie[] echipamenteProtectie = VehiculFMSport.EchipamentProtectie
+    private static final VehiculFMAgrement.TipTeren[] tipuriTeren = VehiculFMAgrement.TipTeren.values();
+    private static final VehiculFMAgrement.CategVarsta[] categoriiVarsta = VehiculFMAgrement.CategVarsta.values();
+    private static final VehiculFMAgrement.EchipamentProtectie[] echipamenteProtectie = VehiculFMAgrement.EchipamentProtectie
             .values();
 
-    public static ArrayList<VehiculFMSport> seed(int nr) {
+    public static ArrayList<VehiculFMAgrement> seed(int nr) {
         if (nr > MAX || nr < MIN) {
             throw new IllegalArgumentException("Numarul de vehicule trebuie sa fie intre " + MIN + " si " + MAX);
         }
-        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
         for (int i = 0; i < nr; i++) {
-            float vitezaMax = random.nextFloat(MAX_VITEZA - MIN_VITEZA) + MIN_VITEZA;
-            float pret = random.nextFloat(MAX_PRET - MIN_PRET) + MIN_PRET;
+            float vitezaMax = random.nextFloat() * (MAX_VITEZA - MIN_VITEZA) + MIN_VITEZA;
+            float pret = random.nextFloat() * (MAX_PRET - MIN_PRET) + MIN_PRET;
             String marca = manufacturers[random.nextInt(manufacturers.length)];
             String model = models[random.nextInt(models.length)];
             String tip = types[random.nextInt(types.length)];
             String proprietar = proprietari[random.nextInt(proprietari.length)];
             int stock = random.nextInt(MAX_STOCK - MIN_STOCK) + MIN_STOCK;
             int nrRoti = random.nextInt(MAX_NRROTI - MIN_NRROTI) + MIN_NRROTI;
-            float greutate = random.nextFloat(MAX_GREUTATE - MIN_GREUTATE) + MIN_GREUTATE;
+            float greutate = random.nextFloat() * (MAX_GREUTATE - MIN_GREUTATE) + MIN_GREUTATE;
             int an = random.nextInt(MAX_AN - MIN_AN) + MIN_AN;
             int nrPedale = random.nextInt(MAX_NRPEDALE - MIN_NRPEDALE) + MIN_NRPEDALE;
             int acceleratie = random.nextInt(MAX_ACCELERATIE - MIN_ACCELERATIE) + MIN_ACCELERATIE;
-            VehiculFMSport.TipTeren tipTeren = tipuriTeren[random.nextInt(tipuriTeren.length)];
-            ArrayList<VehiculFMSport.EchipamentProtectie> echipamente = new ArrayList<VehiculFMSport.EchipamentProtectie>();
+            VehiculFMAgrement.TipTeren tipTeren = tipuriTeren[random.nextInt(tipuriTeren.length)];
+            ArrayList<VehiculFMAgrement.EchipamentProtectie> echipamente = new ArrayList<VehiculFMAgrement.EchipamentProtectie>();
+            VehiculFMAgrement.CategVarsta categVarsta = categoriiVarsta[random.nextInt(categoriiVarsta.length)];
             int nrEchipamente = random.nextInt(echipamenteProtectie.length);
             for (int j = 0; j < nrEchipamente; j++) {
                 echipamente.add(echipamenteProtectie[random.nextInt(echipamenteProtectie.length)]);
             }
-            VehiculFMSport vfm = new VehiculFMSport(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti,
-                    greutate, an, nrPedale, acceleratie, tipTeren, echipamente);
-            vehicule.add(vfm);
+            VehiculFMAgrement vfma = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, stock,
+                    nrRoti, greutate, an, nrPedale, acceleratie, tipTeren, echipamente, categVarsta);
+            vehicule.add(vfma);
         }
         return vehicule;
     }
 
-    // modificat pt returnare JSON
     public static JSONArray JSONseed(int nr) {
         if (nr > MAX || nr < MIN) {
             throw new IllegalArgumentException("Numarul de vehicule trebuie sa fie intre " + MIN + " si " + MAX);
         }
-        ArrayList<VehiculFMSport> vehicule = seed(nr);
+        ArrayList<VehiculFMAgrement> vehicule = seed(nr);
         return JSONseed(vehicule);
     }
 
-    // modificat pt returnare JSON
-    public static JSONArray JSONseed(ArrayList<VehiculFMSport> vehicule) {
+    public static JSONArray JSONseed(ArrayList<VehiculFMAgrement> vehicule) {
         return JSONseed(vehicule, fileName);
     }
 
-    // modificat pt returnare JSON
-    public static JSONArray JSONseed(boolean canBeNull, ArrayList<VehiculFMSport> vehicule) {
+    public static JSONArray JSONseed(boolean canBeNull, ArrayList<VehiculFMAgrement> vehicule) {
         return JSONseed(canBeNull, vehicule, fileName);
     }
 
-    // modificat pt returnare JSON
-    public static JSONArray JSONseed(ArrayList<VehiculFMSport> vehicule, String path) {
+    public static JSONArray JSONseed(ArrayList<VehiculFMAgrement> vehicule, String path) {
         return JSONseed(false, vehicule, path);
     }
 
-    // modificat pt returnare JSON
-    public static JSONArray JSONseed(boolean canBeNull, ArrayList<VehiculFMSport> vehicule, String path)
+    public static JSONArray JSONseed(boolean canBeNull, ArrayList<VehiculFMAgrement> vehicule, String path)
             throws IllegalArgumentException {
-        if ((vehicule == null || vehicule.size() == 0) && !canBeNull) {
-            throw new IllegalArgumentException("Lista de vehicule nu poate fi nula sau goala");
-        }
+        // if ((vehicule == null || vehicule.size() == 0) && !canBeNull) {
+        // throw new IllegalArgumentException("Lista de vehicule nu poate fi nula sau
+        // goala");
+        // }
         JSONArray vehiculeJSON = new JSONArray();
         for (int i = 0; i < vehicule.size(); i++) {
-            VehiculFMSport vfm = vehicule.get(i);
+            VehiculFMAgrement vfma = vehicule.get(i);
 
             JSONObject vehicul = new JSONObject();
-            vehicul.put("id", vfm.getId());
-            vehicul.put("vitezaMax", vfm.getVitezaMax());
-            vehicul.put("pret", vfm.getPret());
-            vehicul.put("marca", vfm.getMarca());
-            vehicul.put("model", vfm.getModel());
-            vehicul.put("tip", vfm.getTip());
-            vehicul.put("proprietar", vfm.getProprietar());
-            vehicul.put("stock", vfm.getStock());
-            vehicul.put("nrRoti", vfm.getNrRoti());
-            vehicul.put("greutate", vfm.getGreutate());
-            vehicul.put("an", vfm.getAnFabricatie());
-            vehicul.put("nrPedale", vfm.getNrPedale());
-            vehicul.put("acceleratie", vfm.getAcceleratie());
-            vehicul.put("tipTeren", vfm.getTipTeren());
-            vehicul.put("echipamente", vfm.getEchipamentProtectie());
+            vehicul.put("id", vfma.getId());
+            vehicul.put("vitezaMax", vfma.getVitezaMax());
+            vehicul.put("pret", vfma.getPret());
+            vehicul.put("marca", vfma.getMarca());
+            vehicul.put("model", vfma.getModel());
+            vehicul.put("tip", vfma.getTip());
+            vehicul.put("proprietar", vfma.getProprietar());
+            vehicul.put("stock", vfma.getStock());
+            vehicul.put("nrRoti", vfma.getNrRoti());
+            vehicul.put("greutate", vfma.getGreutate());
+            vehicul.put("an", vfma.getAnFabricatie());
+            vehicul.put("nrPedale", vfma.getNrPedale());
+            vehicul.put("acceleratie", vfma.getAcceleratie());
+            vehicul.put("tipTeren", vfma.getTipTeren());
+            vehicul.put("echipamente", vfma.getEchipamentProtectie());
+            vehicul.put("categVarsta", vfma.getCategVarsta());
             vehiculeJSON.put(vehicul);
         }
 
@@ -151,12 +153,11 @@ public class VehiculFMSportSeeder {
         return vehiculeJSON;
     }
 
-    // modificat pt acceptare JSON
-    public static ArrayList<VehiculFMSport> JSONReadSeed(JSONArray vehiculeJSON) throws IllegalArgumentException {
+    public static ArrayList<VehiculFMAgrement> JSONReadSeed(JSONArray vehiculeJSON) throws IllegalArgumentException {
         if (vehiculeJSON == null || vehiculeJSON.length() == 0) {
             throw new IllegalArgumentException("Lista de vehicule nu poate fi nula sau goala");
         }
-        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
         for (int i = 0; i < vehiculeJSON.length(); i++) {
             JSONObject vehicul = vehiculeJSON.getJSONObject(i);
             long id = vehicul.optLong("id");
@@ -172,15 +173,17 @@ public class VehiculFMSportSeeder {
             int an = vehicul.optInt("an");
             int nrPedale = vehicul.optInt("nrPedale");
             int acceleratie = vehicul.optInt("acceleratie");
-            VehiculFMSport.TipTeren tipTeren = VehiculFMSport.TipTeren.valueOf(vehicul.optString("tipTeren"));
-            ArrayList<VehiculFMSport.EchipamentProtectie> echipamente = new ArrayList<VehiculFMSport.EchipamentProtectie>();
+            VehiculFMAgrement.TipTeren tipTeren = VehiculFMAgrement.TipTeren.valueOf(vehicul.optString("tipTeren"));
+            VehiculFMAgrement.CategVarsta categVarsta = VehiculFMAgrement.CategVarsta
+                    .valueOf(vehicul.optString("categVarsta"));
+            ArrayList<VehiculFMAgrement.EchipamentProtectie> echipamente = new ArrayList<VehiculFMAgrement.EchipamentProtectie>();
             JSONArray echipamenteJSON = vehicul.optJSONArray("echipamente");
             for (int j = 0; j < echipamenteJSON.length(); j++) {
-                echipamente.add(VehiculFMSport.EchipamentProtectie.valueOf(echipamenteJSON.optString(j)));
+                echipamente.add(VehiculFMAgrement.EchipamentProtectie.valueOf(echipamenteJSON.optString(j)));
             }
-            VehiculFMSport vfm = new VehiculFMSport(vitezaMax, pret, marca, model, tip, proprietar, stock, nrRoti,
-                    greutate, an, nrPedale, acceleratie, tipTeren, echipamente, id);
-            vehicule.add(vfm);
+            VehiculFMAgrement vfma = new VehiculFMAgrement(vitezaMax, pret, marca, model, tip, proprietar, stock,
+                    nrRoti, greutate, an, nrPedale, acceleratie, tipTeren, echipamente, categVarsta, id);
+            vehicule.add(vfma);
         }
         return vehicule;
     }
@@ -191,11 +194,12 @@ public class VehiculFMSportSeeder {
      * @deprecated
      * 
      */
-    public static ArrayList<VehiculFMSport> JSONReadSeed(String path) throws IllegalArgumentException {
+    @Deprecated
+    public static ArrayList<VehiculFMAgrement> JSONReadSeed(String path) throws IllegalArgumentException {
         if (path == null || path.isEmpty()) {
             throw new IllegalArgumentException("Path-ul nu poate fi nul sau gol");
         }
-        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
         try {
             Scanner scanner = new Scanner(Paths.get(path), StandardCharsets.UTF_8.name());
             String content = scanner.useDelimiter("\\A").next();
@@ -214,47 +218,41 @@ public class VehiculFMSportSeeder {
     }
 
     // adaugat pt citirea din fisier si returnare pt interfata grafica
-    public static ArrayList<VehiculFMSport> getVehicule() {
-        ArrayList<VehiculFMSport> vehicule;
+    public static ArrayList<VehiculFMAgrement> getVehicule() {
+        ArrayList<VehiculFMAgrement> vehicule;
         try {
             vehicule = JSONReadSeed(fileName);
         } catch (IllegalArgumentException e) {
-            vehicule = new ArrayList<VehiculFMSport>();
+            vehicule = new ArrayList<VehiculFMAgrement>();
         }
         return vehicule;
     }
 
     // adaugat pt filtrare si returnare pt interfata grafica
-    public static ArrayList<VehiculFMSport> getVehicule(float pretMin, float pretMax, float vitezaMin,
+    public static ArrayList<VehiculFMAgrement> getVehicule(float pretMin, float pretMax, float vitezaMin,
             float vitezaMax) {
-        ArrayList<VehiculFMSport> vehicule;
+        ArrayList<VehiculFMAgrement> vehicule;
         try {
             vehicule = JSONReadSeed(fileName);
         } catch (IllegalArgumentException e) {
-            vehicule = new ArrayList<VehiculFMSport>();
+            vehicule = new ArrayList<VehiculFMAgrement>();
         }
         if (pretMin > 0 || pretMax > 0)
-            vehicule = VehiculFMSport.filtrarePret(vehicule, pretMax, pretMin);
+            vehicule = VehiculFMAgrement.filtrarePret(vehicule, pretMax, pretMin);
         if (vitezaMin > 0 || vitezaMax > 0)
-            vehicule = VehiculFMSport.filtrareViteza(vehicule, vitezaMax, vitezaMin);
+            vehicule = VehiculFMAgrement.filtrareViteza(vehicule, vitezaMax, vitezaMin);
         return vehicule;
     }
 
-    /**
-     * adaugat pt adaugarea unui vehicul in fisier
-     * Va fi stearsa la urmatoarea versiune
-     * 
-     * @deprecated
-     */
     public static boolean addVehicle(int nr) {
-        ArrayList<VehiculFMSport> vehiculeOld;
+        ArrayList<VehiculFMAgrement> vehiculeOld;
         try {
             vehiculeOld = JSONReadSeed(fileName);
         } catch (IllegalArgumentException e) {
-            vehiculeOld = new ArrayList<VehiculFMSport>();
+            vehiculeOld = new ArrayList<VehiculFMAgrement>();
         }
-        ArrayList<VehiculFMSport> vehiculeNew = seed(nr);
-        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        ArrayList<VehiculFMAgrement> vehiculeNew = seed(nr);
+        ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
         vehicule.addAll(vehiculeOld);
         vehicule.addAll(vehiculeNew);
         JSONseed(vehicule);
@@ -263,42 +261,29 @@ public class VehiculFMSportSeeder {
 
     // adaugat pt adaugarea unui vehicul in fisier
     public static JSONArray addVehicule(int nr) {
-        ArrayList<VehiculFMSport> vehiculeOld;
+        ArrayList<VehiculFMAgrement> vehiculeOld;
         try {
             vehiculeOld = JSONReadSeed(fileName);
         } catch (IllegalArgumentException e) {
-            vehiculeOld = new ArrayList<VehiculFMSport>();
+            vehiculeOld = new ArrayList<VehiculFMAgrement>();
         }
-        ArrayList<VehiculFMSport> vehiculeNew = seed(nr);
-        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        ArrayList<VehiculFMAgrement> vehiculeNew = seed(nr);
+        ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
         vehicule.addAll(vehiculeOld);
         vehicule.addAll(vehiculeNew);
         return JSONseed(vehicule);
     }
 
-    public static JSONArray addVehicule(VehiculFMSport vfm) {
-        ArrayList<VehiculFMSport> vehiculeOld;
+    public static JSONArray addVehicule(VehiculFMAgrement vfm) {
+        ArrayList<VehiculFMAgrement> vehiculeOld;
         try {
             vehiculeOld = JSONReadSeed(fileName);
         } catch (IllegalArgumentException e) {
-            vehiculeOld = new ArrayList<VehiculFMSport>();
+            vehiculeOld = new ArrayList<VehiculFMAgrement>();
         }
-        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
+        ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
         vehicule.addAll(vehiculeOld);
         vehicule.add(vfm);
-        return JSONseed(vehicule);
-    }
-
-    public static JSONArray addVehicule(ArrayList<VehiculFMSport> vfm) {
-        ArrayList<VehiculFMSport> vehiculeOld;
-        try {
-            vehiculeOld = JSONReadSeed(fileName);
-        } catch (IllegalArgumentException e) {
-            vehiculeOld = new ArrayList<VehiculFMSport>();
-        }
-        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
-        vehicule.addAll(vehiculeOld);
-        vehicule.addAll(vfm);
         return JSONseed(vehicule);
     }
 
@@ -308,17 +293,18 @@ public class VehiculFMSportSeeder {
      * 
      * @deprecated
      */
+    @Deprecated
     public static boolean resetData() {
-        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
-        VehiculFMSportSeeder.JSONseed(true, vehicule);
-        VehiculFMSport.resetIdPool();
+        ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
+        VehiculFMAgrementSeeder.JSONseed(true, vehicule);
+        VehiculFMAgrement.resetIdPool();
         return true;
     }
 
     // adaugat pt resetarea fisierului
     public static JSONArray resetVehicule() {
-        ArrayList<VehiculFMSport> vehicule = new ArrayList<VehiculFMSport>();
-        VehiculFMSport.resetIdPool();
+        ArrayList<VehiculFMAgrement> vehicule = new ArrayList<VehiculFMAgrement>();
+        VehiculFMAgrement.resetIdPool();
         return JSONseed(true, vehicule);
     }
 

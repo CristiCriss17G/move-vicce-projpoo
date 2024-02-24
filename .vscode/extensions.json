@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "vscjava.vscode-java-pack",
+    "tamasfe.even-better-toml",
+    "github.copilot",
+    "github.copilot-chat",
+    "vscjava.vscode-gradle",
+    "esbenp.prettier-vscode",
+    "redhat.fabric8-analytics"
+  ]
+}
