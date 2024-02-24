@@ -9,20 +9,14 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
     }
 }
 
 plugins {
     // Apply the foojay-resolver plugin to allow automatic download of JDKs
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.7.0"
-////                                                   # available:"0.8.0"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
     // See https://splitties.github.io/refreshVersions/
-    id("de.fayard.refreshVersions") version "0.60.2-SNAPSHOT"
-////                            # available:"0.60.2"
-////                            # available:"0.60.3"
-////                            # available:"0.60.4"
-////                            # available:"0.60.5"
+    id("de.fayard.refreshVersions") version "0.60.5"
 }
 
 rootProject.name = "move"

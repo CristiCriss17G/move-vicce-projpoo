@@ -12,6 +12,7 @@ plugins {
     `java-library`
     `maven-publish`
     id("org.openjfx.javafxplugin")
+    id("com.github.johnrengelman.shadow")
 }
 
 repositories {
@@ -38,6 +39,10 @@ testing {
     }
 }
 
+group = "com.vicce.move"
+version = "1.0"
+description = "move"
+
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
@@ -49,7 +54,6 @@ application {
     // Define the main class for the application.
     mainClass = "com.vicce.move.App"
 }
-
 
 javafx {
     version = "17"
@@ -68,4 +72,11 @@ tasks.withType<JavaCompile>() {
 
 tasks.withType<Javadoc>() {
     options.encoding = "UTF-8"
+}
+
+tasks.jar {
+    manifest {
+        attributes(mapOf("Implementation-Title" to project.name,
+                         "Implementation-Version" to project.version))
+    }
 }
